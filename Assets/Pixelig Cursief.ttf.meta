@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0674a385f95c60241a56dcc2d6e317b7
+timeCreated: 1502240168
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Pixelig Cursief
+  fontNames:
+  - Pixelig Cursief
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
