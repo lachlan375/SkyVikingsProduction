@@ -4,6 +4,7 @@ using UnityEngine;
 public enum crateValue { Common, Uncommon,Rare }
 public class postmaster : MonoBehaviour
 {
+
     public Font postMasterHeader;
     public Font postMasterText;
     public Sprite PostmaterBackground;
@@ -56,11 +57,17 @@ public class postmaster : MonoBehaviour
     public void OrdersGiven()
     {
         StartCoroutine(giveTheOrder());
+        timedQestLocation.gole = Orders[Number].hitbox;
+        timedQestLocation.qest = Orders[Number].qest;
+
     }
+
     IEnumerator giveTheOrder()
     {
         yield return new WaitForSeconds(1);
         giveOrder = true;
+
     }
+
 
 }

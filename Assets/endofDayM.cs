@@ -15,10 +15,6 @@ public class endofDayM : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (sun.transform.position.y <= sundown)
-        {
-         //   end.SetActive(true);
-            
-        }
+     
    }
 }

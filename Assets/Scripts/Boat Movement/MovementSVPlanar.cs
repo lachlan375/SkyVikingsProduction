@@ -6,7 +6,6 @@ public class MovementSVPlanar : MonoBehaviour {
 
 	public ShipStats stats;
 
-
 	// Use this for initialization
 	void Start () {
 		

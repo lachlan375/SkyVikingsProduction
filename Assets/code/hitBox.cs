@@ -5,6 +5,7 @@ using UnityEngine;
 public class hitBox : MonoBehaviour
 {
 
+    [Header("in the the box")]
     public bool inTheBox;
     public bool npcInbox;
     // Use this for initialization
