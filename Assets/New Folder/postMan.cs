@@ -11,7 +11,7 @@ public class postMan : MonoBehaviour {
     private GameObject boxCargo;
     public bool oneKind;
     private int ThecCargo;
-    public float loadingTime;    
+    public float loadingTime;
     public GameObject theLocation;
     public crateValue CargoVaule;
     [HideInInspector]
@@ -19,19 +19,22 @@ public class postMan : MonoBehaviour {
     public bool timedQest;
     public bool removeTime;
     public float ExtraTime;
-[HideInInspector]
+    public hitBox hitbox;
+    public qestComplet qest;
+    [HideInInspector]
     public bool fancyLoad;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         TheBoat = FindObjectOfType<BoatCargo>();
         player = FindObjectOfType<playerStats>();
         boxCargo = TheBoat.CargoHold;
-        if(CargoVaule == crateValue.Rare || CargoVaule == crateValue.Uncommon)
+        if (CargoVaule == crateValue.Rare || CargoVaule == crateValue.Uncommon)
         {
             fancyLoad = true;
         }
-        if(CargoVaule == crateValue.Common)
+        if (CargoVaule == crateValue.Common)
         {
             fancyLoad = false;
         }
@@ -42,9 +45,9 @@ public class postMan : MonoBehaviour {
     {
         player.curentQest.Add(QestCard[0]);
         loaded = false;
-         for (int cargo = 0; cargo < TheBoat.ShipCargoHold.Length; ++cargo)
+        for (int cargo = 0; cargo < TheBoat.ShipCargoHold.Length; ++cargo)
         {
- 
+
             if (oneKind == true)
             {
                 var theBox = Instantiate(cratesToGaive[0].TheCrate, TheBoat.ShipCargoHold[cargo].transform.position, transform.rotation);
@@ -77,7 +80,7 @@ public class postMan : MonoBehaviour {
     }
     IEnumerator Flashy()
     {
-        while(ThecCargo< TheBoat.ShipCargoHold.Length)
+        while (ThecCargo < TheBoat.ShipCargoHold.Length)
         {
             if (oneKind == true)
             {
@@ -89,7 +92,7 @@ public class postMan : MonoBehaviour {
             }
             if (oneKind == false && ThecCargo < cratesToGaive.Count)
             {
-              var theBox =  Instantiate(cratesToGaive[ThecCargo].TheCrate, TheBoat.ShipCargoHold[ThecCargo].transform.position, transform.rotation);
+                var theBox = Instantiate(cratesToGaive[ThecCargo].TheCrate, TheBoat.ShipCargoHold[ThecCargo].transform.position, transform.rotation);
                 theBox.transform.parent = boxCargo.transform;
                 TheBoat.information.Add(cratesToGaive[ThecCargo]);
                 TheBoat.boxes.Add(theBox.GetComponent<summonBox>());
@@ -102,6 +105,7 @@ public class postMan : MonoBehaviour {
         Debug.Log("loaed");
 
     }
+
 
 
 

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: d9073e6e7d38e834da414ae3991c14c1
-timeCreated: 1502240876
-licenseType: Free
+timeCreated: 1502345162
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: uipack_rpg_sheet_0
@@ -10,6 +10,7 @@ TextureImporter:
     21300006: uipack_rpg_sheet_3
     21300008: uipack_rpg_sheet_4
     21300010: uipack_rpg_sheet_5
+    21300012: uipack_rpg_sheet_6
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -18,8 +19,6 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
-    mipMapsPreserveCoverage: 0
-    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -35,13 +34,10 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    serializedVersion: 2
     filterMode: 0
     aniso: -1
     mipBias: -1
-    wrapU: 1
-    wrapV: -1
-    wrapW: -1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -77,6 +73,30 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -92,7 +112,6 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 78, y: 14, z: 72, w: 14}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: uipack_rpg_sheet_1
@@ -100,13 +119,12 @@ TextureImporter:
         serializedVersion: 2
         x: 2
         y: 414
-        width: 191
+        width: 188
         height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 79, y: 17, z: 83, w: 16}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: uipack_rpg_sheet_2
@@ -118,9 +136,8 @@ TextureImporter:
         height: 45
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 85, y: 11, z: 82, w: 17}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: uipack_rpg_sheet_3
@@ -134,7 +151,6 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: uipack_rpg_sheet_4
@@ -148,7 +164,6 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 45, y: 43, z: 43, w: 38}
       outline: []
-      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: uipack_rpg_sheet_5
@@ -159,13 +174,24 @@ TextureImporter:
         width: 22
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: uipack_rpg_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 323
+        width: 189
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 85, y: 20, z: 81, w: 14}
+      outline: []
       tessellationDetail: 0
     outline: []
-    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
