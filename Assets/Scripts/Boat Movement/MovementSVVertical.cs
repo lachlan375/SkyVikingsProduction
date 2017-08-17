@@ -46,7 +46,7 @@ public class MovementSVVertical : MonoBehaviour {
 				if (currentSpeedInt < totalSpeedInt) {
 					Debug.Log ("Current Speed increased!!!");
 					currentSpeedInt++;
-					//movingCheck = true;
+					movingCheck = true;
 				} else
 				{
 					Debug.Log ("Speed limit Reached!!!");
@@ -64,7 +64,7 @@ public class MovementSVVertical : MonoBehaviour {
 				else
 				{
 					Debug.Log ("Speed levels at Minimum acceptable level");
-					//movingCheck = false;
+					movingCheck = false;
 
 				}
                 
