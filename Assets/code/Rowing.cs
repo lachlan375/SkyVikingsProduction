@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Rowing : MonoBehaviour {
-    [Tooltip("if this is on this will contol the boats speed only have one on at a time")]
+    /*[Tooltip("if this is on this will contol the boats speed only have one on at a time")]
     public bool headRower;
     public playerStats stats;
     public ShipStats ship;
@@ -24,6 +24,9 @@ public class Rowing : MonoBehaviour {
         velocity = ship.rowingPower/forse;
      }
 	
+
+    
+    //* Lucy's original script
 	// Update is called once per frame
 	void Update () {
         if(AnkerDOwn == false)
@@ -39,7 +42,6 @@ public class Rowing : MonoBehaviour {
                 if (row.speed != 0 && slow == false)
                 {
                     //  StartCoroutine(speed());
-
                 }
             }
 
@@ -87,6 +89,94 @@ public class Rowing : MonoBehaviour {
             slow = false;
        
         
+    }*/
+
+    [Tooltip("if this is on this will contol the boats speed only have one on at a time")]
+    public bool headRower;
+    public playerStats stats;
+    public ShipStats ship;
+    public MovementSVVertical movementVertical;
+    [Tooltip("it needs more work but its half the speed of rowing power")]
+    public float velocity;
+    public bool isRowing;
+    public bool slow;
+    public float forse;
+     public Animator rowerAnim;
+    public float time;
+    private float MinSpeed;
+    public bool AnkerDOwn;
+
+    // Use this for initialization
+    void Start () {
+        /// velocity = stats.totealweight;
+        velocity = ship.rowingPower/forse;
+     }
+	
+
+    /*
+    //* Lucy's original script
+	// Update is called once per frame
+	void Update () {
+        if(AnkerDOwn == false)
+        {
+            rowerAnim.SetBool("isRowing", movementVertical.movingCheck);
+            if (movementVertical.movingCheck == true)
+            {
+                MinSpeed = ship.minSpeed;
+            }
+            if (movementVertical.movingCheck == false)
+            {
+                MinSpeed = 0;
+                if (movementVertical.speed != 0 && slow == false)
+                {
+                    StartCoroutine(speed());
+                }
+            }
+
+        }
     }
+     
+    IEnumerator speed()
+    {
+      
+            while (movementVertical.speed >= MinSpeed)
+            {
+                slow = true;
+            movementVertical.speed -= velocity;
+                yield return new WaitForSeconds(time);
+            }
+
+            if (movementVertical.speed <= 0)
+            {
+            movementVertical.speed = MinSpeed;
+            }
+            slow = false;
        
+        
     }
+
+    public void rowing()
+    {
+        if (headRower == true)
+        {
+            if (slow == false)
+            {
+                StartCoroutine(speed());
+            }
+            if (movementVertical.speed >= ship.maxSpeed)
+            {
+                movementVertical.speed = ship.rowingPower;
+
+            }
+            else
+            {
+                movementVertical.speed += ship.rowingPower;
+            }
+
+        }
+
+
+    }*/
+
+
+}

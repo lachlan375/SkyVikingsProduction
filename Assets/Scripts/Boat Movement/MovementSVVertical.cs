@@ -8,7 +8,7 @@ public class MovementSVVertical : MonoBehaviour {
     public GameObject boatObject;
     public Rigidbody rb;
 	public ShipStats shipStatsObject;
-
+    public RowerController rowObject;
 
 	//Speed References
     
@@ -16,6 +16,7 @@ public class MovementSVVertical : MonoBehaviour {
 	public float[] speedVar = new float[4];
 	public int currentSpeedInt; //ref for Current SpeedVar array
 	public int totalSpeedInt;	//TOTAL length counter SpeedVar array
+    public float speedConverted;
 
 	//Movement References
 	public float moveVertical;	// counter to save Vertical Input axis
@@ -46,7 +47,7 @@ public class MovementSVVertical : MonoBehaviour {
 				if (currentSpeedInt < totalSpeedInt) {
 					Debug.Log ("Current Speed increased!!!");
 					currentSpeedInt++;
-					//movingCheck = true;
+					movingCheck = true;
 				} else
 				{
 					Debug.Log ("Speed limit Reached!!!");
@@ -64,7 +65,7 @@ public class MovementSVVertical : MonoBehaviour {
 				else
 				{
 					Debug.Log ("Speed levels at Minimum acceptable level");
-					//movingCheck = false;
+					movingCheck = false;
 
 				}
                 
@@ -76,7 +77,7 @@ public class MovementSVVertical : MonoBehaviour {
 			Debug.Log("Current speed selection is " + currentSpeedInt + " at a FORCE Rating of " + speedVar[currentSpeedInt]);
 
 		}
-
+        rowObject.RowStatUpdate(currentSpeedInt, speedConverted);
 		rb.AddForce (transform.forward * speedVar[currentSpeedInt]);
 	}
 
