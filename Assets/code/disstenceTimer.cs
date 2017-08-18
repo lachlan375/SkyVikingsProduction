@@ -47,7 +47,6 @@ public class disstenceTimer : MonoBehaviour {
         if (qestStart == true)
         {
             clock.SetActive(true);
-
             numberts.text = "Time " + minutes + ":" + seconds + ":" + naoSeconds;
 
             if (gole.inTheBox == true)
@@ -112,7 +111,7 @@ public class disstenceTimer : MonoBehaviour {
     {
         distance = Vector3.Distance(start.transform.position, End.transform.position);
         speed = stats.maxSpeed / 10;
-        distence();
+       distence();
         Debug.Log("the qest is on");
     }
 }

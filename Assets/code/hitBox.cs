@@ -11,7 +11,7 @@ public class hitBox : MonoBehaviour
     // Use this for initialization
     void OnTriggerEnter(Collider other)
     {
-
+        Debug.Log("hit");
         if (other.tag.Equals("Player"))
         {
             inTheBox = true;

@@ -40,6 +40,7 @@ public class merchantUI : MonoBehaviour {
             }
 
         }
+       // go();
     }
 
     // Update is called once per frame
@@ -47,15 +48,21 @@ public class merchantUI : MonoBehaviour {
     {
 
     }
-
-    public void buttonDOAthing(int QestNumber)
+    public void go()
     {
-        ThePostMaster.Number = QestNumber;
+        ThePostMaster.Number = 0;
         ThePostMaster.OrdersGiven();
         qeststart.qestStart = true;
-        Time.timeScale = 1.0f;
         gameObject.SetActive(false);
-
+    }
+   
+    public void buttonDOAthing(int QestNumber)
+    {
+         ThePostMaster.Number = QestNumber;
+         ThePostMaster.OrdersGiven();
+         qeststart.qestStart = true;
+          gameObject.SetActive(false);
+        Debug.Log("beep");
 
     }
 
