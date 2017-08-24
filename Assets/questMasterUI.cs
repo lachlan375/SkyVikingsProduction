@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class boatwater : MonoBehaviour {
+public class questMasterUI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +13,9 @@ public class boatwater : MonoBehaviour {
 	void Update () {
 		
 	}
+    public void qestStart()
+    {
+        Debug.Log("i was cleacked");
+    }
+
 }
