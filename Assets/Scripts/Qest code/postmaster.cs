@@ -24,50 +24,40 @@ public class postmaster : MonoBehaviour
 
     void Update()
     {
-        if (giveOrder == true)
-        {
-            if (Orders[Number].fancyLoad == true)
-            {
-                Orders[Number].flashyLoad();
-            }
-
-            if (Orders[Number].fancyLoad == false)
-            {
-                Orders[Number].GiveItems();
-
-            }
-            if (Orders[Number].timedQest == true)
-            {
-                timedQestLocation.buffer = 0;
-                timedQestLocation.End = Orders[Number].theLocation;
-                if (Orders[Number].removeTime == false)
-                {
-                    timedQestLocation.buffer += Orders[Number].ExtraTime;
-                }
-                if (Orders[Number].removeTime == true)
-                {
-                    timedQestLocation.buffer -= Orders[Number].ExtraTime;
-                }
-                timedQestLocation.startQest();
-
-            }
-            giveOrder = false;
-        }
+        
+        
     }
     public void OrdersGiven()
     {
-        StartCoroutine(giveTheOrder());
-        timedQestLocation.gole = Orders[Number].hitbox;
-        timedQestLocation.qest = Orders[Number].qest;
-
-    }
-
-    IEnumerator giveTheOrder()
+    if (Orders[Number].fancyLoad == true)
     {
-        yield return new WaitForSeconds(1);
-        giveOrder = true;
+        Orders[Number].flashyLoad();
+    }
+
+    if (Orders[Number].fancyLoad == false)
+    {
+        Orders[Number].GiveItems();
 
     }
+    if (Orders[Number].timedQest == true)
+    {
+        Debug.Log("its on");
+        timedQestLocation.buffer = 0;
+        timedQestLocation.End = Orders[Number].theLocation;
+        if (Orders[Number].removeTime == false)
+        {
+            timedQestLocation.buffer += Orders[Number].ExtraTime;
+        }
+        if (Orders[Number].removeTime == true)
+        {
+            timedQestLocation.buffer -= Orders[Number].ExtraTime;
+        }
+        timedQestLocation.startQest();
+
+    }
+}
+
+
 
 
 }

@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class playerStats : MonoBehaviour {
     public static playerStats instance = null;
-
-
+    public string Destination;
     [Header("boat cargo")]
      public List<QestLog> curentQest = new List<QestLog>();
     public List<QestLog> finshedQuests = new List<QestLog>();
