@@ -58,11 +58,12 @@ public class merchantUI : MonoBehaviour {
    
     public void buttonDOAthing(int QestNumber)
     {
-         ThePostMaster.Number = QestNumber;
+        Debug.Log("beep");
+        ThePostMaster.Number = QestNumber;
          ThePostMaster.OrdersGiven();
          qeststart.qestStart = true;
           gameObject.SetActive(false);
-        Debug.Log("beep");
+        
 
     }
 
