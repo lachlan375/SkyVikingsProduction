@@ -13,11 +13,11 @@ public class ShipStats : MonoBehaviour
     public int rowingCrewCurrent;
     public int cargoBayCurrent;
     public  GameObject shipsArray;
-    //public float rowingPower;
-    //public float weight;
+    public float rowingPower;
+    public float weight;
     //[Tooltip("the speed of the ship be for weight")]
-    //public float maxSpeed;
-    //public float minSpeed;
+    public float maxSpeed;
+    public float minSpeed;
 
     void Awake()
     {

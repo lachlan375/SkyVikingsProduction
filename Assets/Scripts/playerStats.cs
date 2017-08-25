@@ -12,7 +12,7 @@ public class playerStats : MonoBehaviour {
     public List<QestLog> finshedQuests = new List<QestLog>();
 
     [Header("Player Progress")]
-    public int goldlevel;
+    public int goldLevel;
     public int respectLevel;
 
     private int couter;
@@ -33,13 +33,20 @@ public class playerStats : MonoBehaviour {
         
     }
 
-    // Update is called once per frame
-    void Update() {
-
-    }
-    public void checkWait()
+    void StatusUpdate(int goldUpdate, int respectUpdate)
     {
+        goldLevel = goldUpdate;
+        respectLevel = respectUpdate;
 
-     
+        if (respectLevel == 0)
+        {
+            gameObject.GetComponent<GameOverScript>().GameOverCall();
+        }
+    }
+    public void Update()
+    {
+        StatusUpdate(2, 0);
+
+
     }
 }
