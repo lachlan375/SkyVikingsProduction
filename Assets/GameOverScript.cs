@@ -5,15 +5,13 @@ using UnityEngine;
 public class GameOverScript : MonoBehaviour {
 
     // Use this for initialization
-    public Canvas gameOverCanvas;
-    public Canvas normalCanvas;
+    public GameObject gameOverCanvas;
+    public GameObject normalCanvas;
 
     public void GameOverCall()
     {
-        
-        gameOverCanvas.enabled = true;
-        normalCanvas.enabled = false;
-
+        normalCanvas.SetActive(false);
+        gameOverCanvas.SetActive(true);
     }
 
 }

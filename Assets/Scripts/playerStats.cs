@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class playerStats : MonoBehaviour {
     public static playerStats instance = null;
+    public GameObject levelManager;
 
+    public Canvas normalCanvas;
+    public Canvas gameoverCanvas;
+
+    public bool isGameEnded;
 
     [Header("boat cargo")]
      public List<QestLog> curentQest = new List<QestLog>();
@@ -15,10 +20,13 @@ public class playerStats : MonoBehaviour {
     public int goldLevel;
     public int respectLevel;
 
-    private int couter;
+    private int counter;
     // Use this for initialization
     void Awake()
     {
+
+        //Code that checks to see if there is already a instance of the same gameobject already existing.
+        //Important for existing Singleton objects
         if (instance == null)
         {
             instance = this;
@@ -29,8 +37,21 @@ public class playerStats : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
-        
+
+        if (SceneManager.GetActiveScene().buildIndex > 0)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    void OnSceneLoaded()
+    {
+        Debug.Log("New game level loaded");
+
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Destroy(this);
+        }
     }
 
     void StatusUpdate(int goldUpdate, int respectUpdate)
@@ -40,12 +61,27 @@ public class playerStats : MonoBehaviour {
 
         if (respectLevel == 0)
         {
-            gameObject.GetComponent<GameOverScript>().GameOverCall();
+
+            Invoke("EndGame", 5);
+        }
+        else
+        {
+            isGameEnded = false;
+        }
+    }
+
+    void EndGame()
+    {
+        
+        if (!isGameEnded)
+        {
+            isGameEnded = true;
+            levelManager.GetComponent<LevelManagment>().MainMenu();
         }
     }
     public void Update()
     {
-        StatusUpdate(2, 0);
+        StatusUpdate(0, 0);
 
 
     }
