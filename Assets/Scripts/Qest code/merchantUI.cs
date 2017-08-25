@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class merchantUI : MonoBehaviour {
     [HideInInspector]
     public playerStats player;
-    public postmaster ThePostMaster;
+    public qestCompletUI qestUi;
+    public postmaster ThePostMaster; 
     public Text[] falvorText;
     public Text[] merchantText;
     public GameObject[] buttons;
@@ -53,12 +54,13 @@ public class merchantUI : MonoBehaviour {
 
     public void buttonDOAthing(int QestNumber)
     {
-        Debug.Log("beep");
         player.Destination = ThePostMaster.Orders[0].theLocation.name;
-        ThePostMaster.Number = QestNumber;
-          ThePostMaster.OrdersGiven();
-             /// qeststart.qestStart = true;
-          gameObject.SetActive(false);
+        Debug.Log(ThePostMaster.Orders[0].theLocation.name);
+        qestUi.qestM = ThePostMaster.QestID;
+         ThePostMaster.Number = QestNumber;
+           ThePostMaster.OrdersGiven();
+       /// qeststart.qestStart = true;
+        gameObject.SetActive(false);
 
     }
 

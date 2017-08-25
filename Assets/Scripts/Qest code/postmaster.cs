@@ -20,8 +20,7 @@ public class postmaster : MonoBehaviour
     public bool giveOrder;
     [Tooltip("this is just here so you dont  for get to click in the disstenceTimer")]
     public disstenceTimer timedQestLocation;
-    public compass MainQest;
-
+    public qestComplet QestID;
     void Update()
     {
         
