@@ -31,11 +31,7 @@ public class BoatCargo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Complet == true)
-        {
-            finshed();
-            Complet = false;
-        }
+       
 	}
     public void finshed()
     {

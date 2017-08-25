@@ -19,7 +19,7 @@ public class DayOver : MonoBehaviour {
     // Use this for initialization
     void OnEnable()
     {
-        sunDown.andStop();
+       // sunDown.andStop();
         couter = 0;
         stats = FindObjectOfType<playerStats>();
         cargo();
@@ -88,7 +88,7 @@ public class DayOver : MonoBehaviour {
         ui.gameObject.GetComponent<merchantUI>().ThePostMaster = thepostmaster;
         ui.SetActive(true);
         gameObject.SetActive(false);
-        sunDown.andStop();
+     //   sunDown.andStop();
 
     }
     public void back()

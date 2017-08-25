@@ -109,7 +109,7 @@ public class Rowing : MonoBehaviour {
     // Use this for initialization
     void Start () {
         /// velocity = stats.totealweight;
-        velocity = ship.rowingPower/forse;
+     //   velocity = ship.rowingPower/forse;
      }
 	
 

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class merchantUI : MonoBehaviour {
-    public postmaster ThePostMaster;
+    [HideInInspector]
+    public playerStats player;
+    public qestCompletUI qestUi;
+    public postmaster ThePostMaster; 
     public Text[] falvorText;
     public Text[] merchantText;
     public GameObject[] buttons;
@@ -17,6 +20,7 @@ public class merchantUI : MonoBehaviour {
     // Use this for initialization
     void OnEnable()
     {
+        player = FindObjectOfType<playerStats>();
         open = true;
         panel.sprite = ThePostMaster.PostmaterBackground;
         fonts[0] = ThePostMaster.postMasterHeader;
@@ -46,24 +50,17 @@ public class merchantUI : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+    }
 
-    }
-    public void go()
-    {
-        ThePostMaster.Number = 0;
-        ThePostMaster.OrdersGiven();
-        qeststart.qestStart = true;
-        gameObject.SetActive(false);
-    }
-   
     public void buttonDOAthing(int QestNumber)
     {
-        Debug.Log("beep");
-        ThePostMaster.Number = QestNumber;
-         ThePostMaster.OrdersGiven();
-         qeststart.qestStart = true;
-          gameObject.SetActive(false);
-        
+        player.Destination = ThePostMaster.Orders[0].theLocation.name;
+        Debug.Log(ThePostMaster.Orders[0].theLocation.name);
+        qestUi.qestM = ThePostMaster.QestID;
+         ThePostMaster.Number = QestNumber;
+           ThePostMaster.OrdersGiven();
+       /// qeststart.qestStart = true;
+        gameObject.SetActive(false);
 
     }
 

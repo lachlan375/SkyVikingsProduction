@@ -19,15 +19,11 @@ public class postMan : MonoBehaviour {
     public bool timedQest;
     public bool removeTime;
     public float ExtraTime;
-    public hitBox hitbox;
-    public qestComplet qest;
-    [HideInInspector]
     public bool fancyLoad;
     // Use this for initialization
     void Start()
     {
-
-        TheBoat = FindObjectOfType<BoatCargo>();
+         TheBoat = FindObjectOfType<BoatCargo>();
         player = FindObjectOfType<playerStats>();
         boxCargo = TheBoat.CargoHold;
         if (CargoVaule == crateValue.Rare || CargoVaule == crateValue.Uncommon)

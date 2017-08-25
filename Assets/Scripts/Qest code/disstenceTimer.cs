@@ -109,8 +109,8 @@ public class disstenceTimer : MonoBehaviour {
     }
     public void startQest()
     {
-        distance = Vector3.Distance(start.transform.position, End.transform.position);
-        speed = stats.maxSpeed / 10;
+     //   distance = Vector3.Distance(start.transform.position, End.transform.position);
+       // speed = stats.maxSpeed / 10;
        distence();
         Debug.Log("the qest is on");
     }

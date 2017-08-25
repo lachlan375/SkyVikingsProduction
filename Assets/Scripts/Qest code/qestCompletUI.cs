@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class qestCompletUI : MonoBehaviour {
-    [HideInInspector]
     public qestComplet qestM;
     public GameObject end;
-
-    public void theQest(bool newQuest)
+     public void theQest(bool newQuest)
     {
         if (newQuest == true)
         {
@@ -23,7 +21,7 @@ public class qestCompletUI : MonoBehaviour {
     public void dayover()
     {
         Debug.Log("the days over");
-        end.SetActive(true);
+     //   end.SetActive(true);
         gameObject.SetActive(false);
     }
 
