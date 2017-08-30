@@ -10,7 +10,7 @@ public class qestCompletUI : MonoBehaviour {
         if (newQuest == true)
         {
             Time.timeScale = 0;
-            qestM.startQest();
+
             gameObject.SetActive(false);
         }
         if (newQuest == false)

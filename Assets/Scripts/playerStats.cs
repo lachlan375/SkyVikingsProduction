@@ -5,21 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class playerStats : MonoBehaviour {
     public static playerStats instance = null;
-<<<<<<< HEAD
-    public GameObject levelManager;
+     public GameObject levelManager;
 
     public Canvas normalCanvas;
     public Canvas gameoverCanvas;
 
     public bool isGameEnded;
-
-=======
-    public string Destination;
->>>>>>> 53569fc894a9539d83147b6b2d7140fd5ca93ff8
-    [Header("boat cargo")]
-     public List<QestLog> curentQest = new List<QestLog>();
-    public List<QestLog> finshedQuests = new List<QestLog>();
-
+ 
+  
     [Header("Player Progress")]
     public int goldLevel;
     public int respectLevel;

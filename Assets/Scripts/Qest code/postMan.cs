@@ -6,7 +6,6 @@ public class postMan : MonoBehaviour {
     [HideInInspector]
     public playerStats player;
     public List<CrateInformation> cratesToGaive = new List<CrateInformation>();
-    public List<QestLog> QestCard = new List<QestLog>();
     private BoatCargo TheBoat;
     private GameObject boxCargo;
     public bool oneKind;
@@ -39,7 +38,6 @@ public class postMan : MonoBehaviour {
 
     public void GiveItems()
     {
-        player.curentQest.Add(QestCard[0]);
         loaded = false;
         for (int cargo = 0; cargo < TheBoat.ShipCargoHold.Length; ++cargo)
         {

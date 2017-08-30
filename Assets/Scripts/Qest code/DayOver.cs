@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class DayOver : MonoBehaviour {
-    public playerStats stats;
     public Text [] thetext;
      public int couter;
-    public GameObject []  nextAndBack;
-   
+    public GameObject []  nextAndBack;   
     public string nubers;
+    public QuestManager QuestComplet;
     public ObjectPriceList price;
-    public int score;
-    private int box;
-    public postmaster thepostmaster;
-    public GameObject ui;
+     private int box;
+     public GameObject ui;
     public sunAndmoon sunDown;
     public bool dayover;
     // Use this for initialization
@@ -21,8 +18,7 @@ public class DayOver : MonoBehaviour {
     {
        // sunDown.andStop();
         couter = 0;
-        stats = FindObjectOfType<playerStats>();
-        cargo();
+         cargo();
         dayOver();
         dayover = true;
     }
@@ -32,63 +28,25 @@ public class DayOver : MonoBehaviour {
 	}
     public void cargo()
     {
-        for(int M = 0; M<stats.finshedQuests.Count;  M++)
+        int TheScore = 0;
+   for(int i =0; i < thetext.Length; ++i)
         {
-            box = stats.finshedQuests[M].cratesDeliverd;
-            if(box == 0)
+            thetext[i].text = "";
+            if(i<QuestComplet.CompletQestList.Count)
             {
-                box = 1;
+                thetext[i].text = QuestComplet.CompletQestList[i].QuestName;
+                TheScore += 1;
             }
-            if (stats.finshedQuests[M].value == crateValue.Common)
-            {
-                score += price.CommonVaule*box;
-            }
-            if (stats.finshedQuests[M].value == crateValue.Uncommon)
-            {
-                score += price.UncommonVale * box;
-            }
-            if (stats.finshedQuests[M].value == crateValue.Rare)
-            {
-                score += price.RareVaule * box;
-            }
-
         }
-        nubers = "gold :" + score;
+            nubers = "gold :" + TheScore;
      }
     public void dayOver()
     {
-        Debug.Log("im hit");
-      
-        if(couter < stats.finshedQuests.Count)
-        {
-                        for (int I = 0; I < thetext.Length; I++)
-            {
-                 thetext[I].text = "";
-                if (couter < stats.finshedQuests.Count)
-                {
-                thetext[I].text =   stats.finshedQuests[couter].CargoName +"\n"+ "  value : " + stats.finshedQuests[couter].value;
-             }
-            if (couter == stats.finshedQuests.Count)
-                {
-                    thetext[I].text = nubers;
-                }
-                 couter++;
-        }
-        
-        }
- 
+  
  
     }
     public void ANewday()
     {
-        while(stats.finshedQuests.Count != 0)
-        {
-            stats.finshedQuests.Remove(stats.finshedQuests[0]);
-        }
-        ui.gameObject.GetComponent<merchantUI>().ThePostMaster = thepostmaster;
-        ui.SetActive(true);
-        gameObject.SetActive(false);
-     //   sunDown.andStop();
 
     }
     public void back()
