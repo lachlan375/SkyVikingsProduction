@@ -27,16 +27,17 @@ public class qestComplet : MonoBehaviour {
         Time.timeScale = 0;
         Debug.Log("done");
         done.finshed();
-       // qestUi.qestM = QestComplet;
-        qestCompletObject.SetActive(true);
+        stats.Destination = "A";
+        // qestUi.qestM = QestComplet;
+      ///  qestCompletObject.SetActive(true);
  
 
     }
     public void startQest()
     {
- 
-        MerchantUI.ThePostMaster = boss;
-        merchant.SetActive(true);
+
+           MerchantUI.ThePostMaster = boss;
+             merchant.SetActive(true);
 
     }
 
@@ -47,8 +48,8 @@ public class qestComplet : MonoBehaviour {
         {
             if(stats.Destination == townName)
             {
-                finshed();               
-                Debug.Log("yes");
+                 finshed();               
+                 Debug.Log("yes");
             }
             if (stats.Destination != townName)
             {

@@ -35,10 +35,10 @@ public class BoatCargo : MonoBehaviour {
 	}
     public void finshed()
     {
-        player.curentQest[0].cratesDeliverd = boxes.Count;
-        Debug.Log(player.curentQest[0].cratesDeliverd);
-        player.finshedQuests.Add(player.curentQest[0]);
-        player.curentQest.Remove(player.curentQest[0]);
+         player.curentQest[0].cratesDeliverd = boxes.Count;
+         Debug.Log(player.curentQest[0].cratesDeliverd);
+ player.finshedQuests.Add(player.curentQest[0]);
+   player.curentQest.Remove(player.curentQest[0]);
 
         if (fanncyShiping == true)
         {
