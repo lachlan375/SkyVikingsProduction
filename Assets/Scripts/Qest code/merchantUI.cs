@@ -40,7 +40,6 @@ public class merchantUI : MonoBehaviour {
             }
 
         }
-       // go();
     }
 
     // Update is called once per frame

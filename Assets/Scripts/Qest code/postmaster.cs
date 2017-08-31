@@ -56,10 +56,10 @@ public class postmaster : MonoBehaviour
     }
     public void OrdersGiven()
     {
-        StartCoroutine(giveTheOrder());
-        timedQestLocation.gole = Orders[Number].hitbox;
         timedQestLocation.qest = Orders[Number].qest;
-
+        Debug.Log(timedQestLocation.qest);
+        timedQestLocation.gole = Orders[Number].hitbox;
+        StartCoroutine(giveTheOrder());
     }
 
     IEnumerator giveTheOrder()

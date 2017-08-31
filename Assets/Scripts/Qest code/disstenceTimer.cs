@@ -49,16 +49,7 @@ public class disstenceTimer : MonoBehaviour {
             clock.SetActive(true);
             numberts.text = "Time " + minutes + ":" + seconds + ":" + naoSeconds;
 
-            if (gole.inTheBox == true)
-            {
-                countdown = false;
-                Debug.Log(minutes);
-                Debug.Log(time);
-                boat.Complet = true;
-                qest.finshed();
-                qestStart = false;
-                Debug.Log("win");
-            }
+      
 
             if (countdown == true)
             {

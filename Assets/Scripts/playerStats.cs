@@ -8,6 +8,7 @@ public class playerStats : MonoBehaviour {
      public List<QestLog> curentQest = new List<QestLog>();
     public List<QestLog> finshedQuests = new List<QestLog>();
     private int couter;
+    public string Destnation;
      // Use this for initialization
     void Start () {
     }
