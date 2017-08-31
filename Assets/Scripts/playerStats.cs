@@ -1,25 +1,89 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerStats : MonoBehaviour {
- 
-    [Header("boat cargo")]
-     public List<QestLog> curentQest = new List<QestLog>();
-    public List<QestLog> finshedQuests = new List<QestLog>();
-    private int couter;
-    public string Destnation;
+    public static playerStats instance = null;
+
+    public GameObject levelManager;
+
+    public Canvas normalCanvas;
+    public Canvas gameoverCanvas;
+
+    public bool isGameEnded;
+
      // Use this for initialization
-    void Start () {
+
+    public int goldLevel;
+    public int respectLevel;
+    private int counter;
+    void Start()
+    {
     }
 
-    // Update is called once per frame
-    void Update() {
-
-    }
-    public void checkWait()
+    // Use this for initialization
+    void Awake()
     {
 
-     
+        //Code that checks to see if there is already a instance of the same gameobject already existing.
+        //Important for existing Singleton objects
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+
+            Destroy(gameObject);
+        }
+
+
+        if (SceneManager.GetActiveScene().buildIndex > 0)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    void OnSceneLoaded()
+    {
+        Debug.Log("New game level loaded");
+
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Destroy(this);
+        }
+    }
+
+    void StatusUpdate(int goldUpdate, int respectUpdate)
+    {
+        goldLevel = goldUpdate;
+        respectLevel = respectUpdate;
+
+        if (respectLevel == 0)
+        {
+
+            Invoke("EndGame", 5);
+        }
+        else
+        {
+            isGameEnded = false;
+        }
+    }
+
+    void EndGame()
+    {
+        
+        if (!isGameEnded)
+        {
+            isGameEnded = true;
+            levelManager.GetComponent<LevelManagment>().MainMenu();
+        }
+    }
+    public void Update()
+    {
+        StatusUpdate(0, 0);
+
+
     }
 }
