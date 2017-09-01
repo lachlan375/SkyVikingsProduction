@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CargoVaule {Common,Uncommon,Rare}
 public class ObjectPriceList : MonoBehaviour
 
 {

@@ -62,7 +62,6 @@ public class summonBox : MonoBehaviour
             if (Effects[end[1]].isPlaying == false)
             {
                 source.PlayOneShot(SoundEfeact, 0.7F);
-                Debug.Log("its over");
                 Destroy(gameObject);
             }
 
