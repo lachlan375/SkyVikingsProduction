@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class playerStatUpdate : MonoBehaviour {
-    public static playerStatUpdate instance = null;
+public class playerStats : MonoBehaviour {
+    public static playerStats instance = null;
 
-    public GameObject levelManager; //ref to actual level manager
+    public GameObject levelManager;
 
+    public Canvas normalCanvas;
+    public Canvas gameoverCanvas;
 
-    public bool isGameEnded; //flag to see if respect levels still above min
+    public bool isGameEnded;
 
 
     public string Destination;
@@ -46,7 +48,7 @@ public class playerStatUpdate : MonoBehaviour {
         }
     }
 
-    /*void OnSceneLoaded()
+    void OnSceneLoaded()
     {
         Debug.Log("New game level loaded");
 
@@ -54,7 +56,7 @@ public class playerStatUpdate : MonoBehaviour {
         {
             Destroy(this);
         }
-    }*/
+    }
 
     void StatusUpdate(int goldUpdate, int respectUpdate)
     {
@@ -83,7 +85,7 @@ public class playerStatUpdate : MonoBehaviour {
     }
     public void Update()
     {
-        
+        StatusUpdate(0, 0);
 
 
     }

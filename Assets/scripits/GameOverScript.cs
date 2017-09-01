@@ -8,10 +8,11 @@ public class GameOverScript : MonoBehaviour {
     public GameObject gameOverCanvas;
     public GameObject normalCanvas;
 
-    public void GameOverCall()
+    public void GameOverCanvas()
     {
         normalCanvas.SetActive(false);
         gameOverCanvas.SetActive(true);
     }
+
 
 }
