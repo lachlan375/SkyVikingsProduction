@@ -13,7 +13,7 @@ public class QuestManager : MonoBehaviour {
     [Tooltip("finshed Quests")]
     public QuestUI QestComplet;
     public theShip ship;
-   
+    public bool TheQuestComplet;
 
     public void completQests(string Location)
     {
@@ -27,6 +27,7 @@ public class QuestManager : MonoBehaviour {
                 CompletQestList.Add(CurrentQestsList[i]);
                 CurrentQestsList.Remove(CurrentQestsList[i]);
                 QestComplet.turnon(Location);
+                TheQuestComplet = true;
                 ship.destoyCargo();
              }
         }

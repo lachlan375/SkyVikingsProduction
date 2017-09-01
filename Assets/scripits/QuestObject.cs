@@ -12,13 +12,14 @@ public class QuestObject : MonoBehaviour {
      public string QuestGIverName;
     [Tooltip("someting about there store")]
     public string flavorText;
-
+    public QuestUI questUI;
     [Header("Quests to give")]
     [Tooltip("Qest ID")]
     public List<Quest> AvailableQuests = new List<Quest>();
-      private bool inTheBox;
+      public bool inTheBox;
       void Start ()
     {
+       
         TownName = gameObject.name;
  for(int i = 0; i < AvailableQuests.Count; i++)
         {
@@ -29,7 +30,18 @@ public class QuestObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-   
+        if(inTheBox == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) 
+
+            {
+                questUI.turnon(TownName);
+                inTheBox = false;
+
+            }
+        }
+     
+
     }
     #region trigers
     void OnTriggerEnter(Collider other)
@@ -37,9 +49,12 @@ public class QuestObject : MonoBehaviour {
         Debug.Log("hit");
          if (other.tag == "Player")
         {
-            inTheBox = true; 
             other.gameObject.GetComponent<QuestManager>().completQests(TownName);
-
+            if (other.gameObject.GetComponent<QuestManager>().TheQuestComplet == false)
+            {
+                inTheBox = true;
+                Debug.Log("hay");
+            }
         }
     }
     void OnTriggerExit(Collider other)

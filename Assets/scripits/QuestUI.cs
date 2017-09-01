@@ -87,12 +87,13 @@ public class QuestUI : MonoBehaviour {
     {
         QuestOver.SetActive(false);
         QuestsMenu.SetActive(false);
-
+        ThePlayer.TheQuestComplet = false;
     }
     public void takeAnewQuest()
     {
         QuestOver.SetActive(false);
         QuestsMenu.SetActive(true);
+        ThePlayer.TheQuestComplet = false;
 
     }
     public void endDay()
