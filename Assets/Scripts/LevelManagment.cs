@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManagment : MonoBehaviour {
 
     public int currentlevelInt;
     public int maxLevelInt;
 
-    //public float[] levelRespect;
-    //public Transform[] levelHQLocation;
+    public Image black;
+    public Animator anim;
 
     public static LevelManagment instance = null;
 
@@ -66,6 +67,8 @@ public class LevelManagment : MonoBehaviour {
         if (currentlevelInt < maxLevelInt)
         {
             currentlevelInt++;
+            StartCoroutine(Fading());
+
             SceneManager.LoadScene(currentlevelInt);
         }
     }
@@ -73,7 +76,15 @@ public class LevelManagment : MonoBehaviour {
     public void Update() {
 
         if (goto_NxtLevel == true) {
+            
             NextLevel();
         }
+    }
+
+    IEnumerator Fading()
+    {
+        anim.SetBool("Fade", true);
+        yield return new WaitUntil(()=> black.color.a == 1);
+        
     }
 }

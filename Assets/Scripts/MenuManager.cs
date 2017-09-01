@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
-    // Use this for initialization
-	void Start () {
+
+    public bool is_ActiveHQMode;        //flag to check if HQ Mode is active
+                                        // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -24,6 +26,8 @@ public class MenuManager : MonoBehaviour {
     {
         Application.Quit();
     }
+
+
 
 
 }

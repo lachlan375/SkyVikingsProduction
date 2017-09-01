@@ -27,14 +27,14 @@ namespace UnityStandardAssets.Cameras
         protected override void FollowTarget(float deltaTime)
         {
             // if no target, or no time passed then we quit early, as there is nothing to do
-            if (!(deltaTime > 0) || m_Target == null)
+            if (!(deltaTime > 0) || m_TargetPlayer == null)
             {
                 return;
             }
 
             // initialise some vars, we'll be modifying these in a moment
-            var targetForward = m_Target.forward;
-            var targetUp = m_Target.up;
+            var targetForward = m_TargetPlayer.forward;
+            var targetUp = m_TargetPlayer.up;
 
             if (m_FollowVelocity && Application.isPlaying)
             {
@@ -85,7 +85,7 @@ namespace UnityStandardAssets.Cameras
             }
 
             // camera position moves towards target position:
-            transform.position = Vector3.Lerp(transform.position, m_Target.position, deltaTime*m_MoveSpeed);
+            transform.position = Vector3.Lerp(transform.position, m_TargetPlayer.position, deltaTime*m_MoveSpeed);
 
             // camera's rotation is split into two parts, which can have independend speed settings:
             // rotating towards the target's forward direction (which encompasses its 'yaw' and 'pitch')

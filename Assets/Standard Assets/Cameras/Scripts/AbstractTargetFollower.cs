@@ -12,7 +12,7 @@ namespace UnityStandardAssets.Cameras
             ManualUpdate, // user must call to update camera
         }
 
-        [SerializeField] protected Transform m_Target;            // The target object to follow
+        [SerializeField] protected Transform m_TargetPlayer;            // The target object to follow
         [SerializeField] private bool m_AutoTargetPlayer = true;  // Whether the rig should automatically target the player.
         [SerializeField] private UpdateType m_UpdateType;         // stores the selected update type
 
@@ -27,8 +27,8 @@ namespace UnityStandardAssets.Cameras
             {
                 FindAndTargetPlayer();
             }
-            if (m_Target == null) return;
-            targetRigidbody = m_Target.GetComponent<Rigidbody>();
+            if (m_TargetPlayer == null) return;
+            targetRigidbody = m_TargetPlayer.GetComponent<Rigidbody>();
         }
 
 
@@ -36,7 +36,7 @@ namespace UnityStandardAssets.Cameras
         {
             // we update from here if updatetype is set to Fixed, or in auto mode,
             // if the target has a rigidbody, and isn't kinematic.
-            if (m_AutoTargetPlayer && (m_Target == null || !m_Target.gameObject.activeSelf))
+            if (m_AutoTargetPlayer && (m_TargetPlayer == null || !m_TargetPlayer.gameObject.activeSelf))
             {
                 FindAndTargetPlayer();
             }
@@ -51,7 +51,7 @@ namespace UnityStandardAssets.Cameras
         {
             // we update from here if updatetype is set to Late, or in auto mode,
             // if the target does not have a rigidbody, or - does have a rigidbody but is set to kinematic.
-            if (m_AutoTargetPlayer && (m_Target == null || !m_Target.gameObject.activeSelf))
+            if (m_AutoTargetPlayer && (m_TargetPlayer == null || !m_TargetPlayer.gameObject.activeSelf))
             {
                 FindAndTargetPlayer();
             }
@@ -66,7 +66,7 @@ namespace UnityStandardAssets.Cameras
         {
             // we update from here if updatetype is set to Late, or in auto mode,
             // if the target does not have a rigidbody, or - does have a rigidbody but is set to kinematic.
-            if (m_AutoTargetPlayer && (m_Target == null || !m_Target.gameObject.activeSelf))
+            if (m_AutoTargetPlayer && (m_TargetPlayer == null || !m_TargetPlayer.gameObject.activeSelf))
             {
                 FindAndTargetPlayer();
             }
@@ -92,13 +92,13 @@ namespace UnityStandardAssets.Cameras
 
         public virtual void SetTarget(Transform newTransform)
         {
-            m_Target = newTransform;
+            m_TargetPlayer = newTransform;
         }
 
 
         public Transform Target
         {
-            get { return m_Target; }
+            get { return m_TargetPlayer; }
         }
     }
 }
