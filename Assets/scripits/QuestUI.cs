@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class QuestUI : MonoBehaviour {
+    public string Dayover;
     [Header("list  of quest items")]
     public List<QuestObject> Quests = new List<QuestObject>();
     public QuestManager ThePlayer;
     [Header("quest setup")]
     [Tooltip("the panel")]
     public GameObject QuestsMenu;
+    public GameObject QuestOver;
     [Tooltip("the npc quest givers name")]
     public Text header;
     [Tooltip("the flavor text")]
@@ -18,19 +21,22 @@ public class QuestUI : MonoBehaviour {
     public GameObject[] Buttons;
     public int ID;
     public theShip Ship;
+    public GameObject newQuests;
     // Use this for initialization
     void Start () {
-        QuestsMenu.SetActive(false);	
+        QuestsMenu.SetActive(false);
+        QuestOver.SetActive(false);
 	}
     void OnEnable()
     {
-        menuSetup(0);
         header.text = Quests[0].QuestGIverName;
         flavorText.text = Quests[0].flavorText;
-    }
+        QuestOver.SetActive(true);
+        menuSetup(0);
+            
+      }
 
 
-    // Update is called once per frame
 
     public void turnon(string TownName)
     {
@@ -40,13 +46,14 @@ public class QuestUI : MonoBehaviour {
             {
                 header.text = Quests[i].QuestGIverName;
                 flavorText.text = Quests[i].flavorText;
-                QuestsMenu.SetActive(true);
+                QuestOver.SetActive(true);
                 menuSetup(i);
             }
         }
      }
     public void  menuSetup(int townID)
     {
+        bool questsAvalable = true;
         ID = townID;
        int textcount = 0;
         for(int i =0; i< questText.Length; i++)
@@ -61,16 +68,37 @@ public class QuestUI : MonoBehaviour {
                     questText[textcount].text = "Cargo:" + Quests[townID].AvailableQuests[i].QuestName + "\n" + "Vaule:" + Quests[townID].AvailableQuests[i].vaule+"\n"+ "Deliver to:" + Quests[townID].AvailableQuests[i].QueststLocation;
                     Buttons[textcount].gameObject.GetComponent<QuestButton>().QuestName = Quests[townID].AvailableQuests[i].QuestName;
                     textcount++;
+                  
                 }
 
             }
         }
         if(textcount == 0)
         {
+            questsAvalable = false;
             questText[0].text = "NO QUESTS";
 
         }
+        newQuests.SetActive(questsAvalable);
+        QuestOver.SetActive(true);
+
+    }
+    public void Quit()
+    {
+        QuestOver.SetActive(false);
+        QuestsMenu.SetActive(false);
+
+    }
+    public void takeAnewQuest()
+    {
+        QuestOver.SetActive(false);
         QuestsMenu.SetActive(true);
+
+    }
+    public void endDay()
+    {
+        Debug.Log("dayover");
+        SceneManager.LoadScene(Dayover);
 
     }
     public void startQuest(string QuestName)
