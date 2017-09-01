@@ -14,9 +14,9 @@ public class playerStatUpdate : MonoBehaviour {
 
     public string Destination;
 
-    [Header("boat cargo")]
-     public List<QestLog> curentQest = new List<QestLog>();
-    public List<QestLog> finshedQuests = new List<QestLog>();
+    // [Header("boat cargo")]
+    // public List<QestLog> curentQest = new List<QestLog>();
+    // public List<QestLog> finshedQuests = new List<QestLog>();
 
     [Header("Player Progress")]
     public int goldLevel;
