@@ -34,10 +34,8 @@ public class qestComplet : MonoBehaviour {
     }
     public void startQest()
     {
- 
         MerchantUI.ThePostMaster = boss;
         merchant.SetActive(true);
-
     }
 
     void OnTriggerEnter(Collider other)

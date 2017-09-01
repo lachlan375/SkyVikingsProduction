@@ -5,13 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class LevelManagment : MonoBehaviour {
 
+    public int currentlevelInt;
+    public int maxLevelInt;
+
+    //public float[] levelRespect;
+    //public Transform[] levelHQLocation;
 
     public static LevelManagment instance = null;
-    // Use this for initialization
-    void Start () {
-        
 
-    }
+    public bool goto_NxtLevel;
+    
+
 
     void Awake()
     {
@@ -21,7 +25,6 @@ public class LevelManagment : MonoBehaviour {
         }
         else if (instance != this)
         {
-
             Destroy(gameObject);
         }
 
@@ -29,6 +32,18 @@ public class LevelManagment : MonoBehaviour {
         {
             DontDestroyOnLoad(gameObject);
         }
+
+        
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
+
+        maxLevelInt = SceneManager.sceneCountInBuildSettings;
+        --maxLevelInt;
+        
+
     }
 
     void OnSceneLoaded()
@@ -44,6 +59,21 @@ public class LevelManagment : MonoBehaviour {
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
-        
+    }
+
+    public void NextLevel()
+    {
+        if (currentlevelInt < maxLevelInt)
+        {
+            currentlevelInt++;
+            SceneManager.LoadScene(currentlevelInt);
+        }
+    }
+
+    public void Update() {
+
+        if (goto_NxtLevel == true) {
+            NextLevel();
+        }
     }
 }
