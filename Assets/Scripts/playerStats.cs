@@ -9,7 +9,7 @@ public class playerStatUpdate : MonoBehaviour {
     public GameObject levelManager; //ref to actual level manager
 
 
-    public bool isGameEnded; //flag to see if respect levels still above min
+    public bool isGameEnded = false; //flag to see if respect levels still above min
 
 
     public string Destination;

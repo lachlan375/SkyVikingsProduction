@@ -6,6 +6,8 @@ public class CameraTargetSwitch : MonoBehaviour {
     public GameObject origCam;
     public GameObject hqCam;
 
+
+
     //public bool is_hqModeActive;
 /*
 	Start()

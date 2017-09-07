@@ -85,7 +85,7 @@ public class playerStats : MonoBehaviour {
     }
     public void Update()
     {
-        StatusUpdate(0, 0);
+        //StatusUpdate(0, 0);
 
 
     }
