@@ -14,9 +14,7 @@ public class playerStatUpdate : MonoBehaviour {
 
     public string Destination;
 
-    // [Header("boat cargo")]
-    // public List<QestLog> curentQest = new List<QestLog>();
-    // public List<QestLog> finshedQuests = new List<QestLog>();
+  
 
     [Header("Player Progress")]
     public int goldLevel;
@@ -46,16 +44,7 @@ public class playerStatUpdate : MonoBehaviour {
         }
     }
 
-    /*void OnSceneLoaded()
-    {
-        Debug.Log("New game level loaded");
-
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            Destroy(this);
-        }
-    }*/
-
+    
     void StatusUpdate(int goldUpdate, int respectUpdate)
     {
         goldLevel = goldUpdate;

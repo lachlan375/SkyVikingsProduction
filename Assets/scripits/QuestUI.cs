@@ -22,6 +22,7 @@ public class QuestUI : MonoBehaviour {
     public int ID;
     public theShip Ship;
     public GameObject newQuests;
+    public GameObject dayover;
     // Use this for initialization
     void Start () {
         QuestsMenu.SetActive(false);
@@ -35,7 +36,11 @@ public class QuestUI : MonoBehaviour {
         menuSetup(0);
             
       }
-
+    public void queestOver()
+    {
+        dayover.SetActive(true);
+        Debug.Log("its over");
+    }
 
 
     public void turnon(string TownName)
@@ -99,7 +104,7 @@ public class QuestUI : MonoBehaviour {
     public void endDay()
     {
         Debug.Log("dayover");
-        SceneManager.LoadScene(Dayover);
+      ///  SceneManager.LoadScene(Dayover);
 
     }
     public void startQuest(string QuestName)
