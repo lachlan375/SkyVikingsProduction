@@ -66,10 +66,10 @@ namespace BoatTutorial
 				Vector3 buoyancyForce = BuoyancyForce(rhoWater, triangleData);
 
 				//Add the force to the boat
-				boatRB.AddForceAtPosition(buoyancyForce, triangleData.center);
+				boatRB.AddForce(buoyancyForce);
 
 
-				//Debug
+                //Debug
 
 				//Normal
 				Debug.DrawRay(triangleData.center, triangleData.normal * 3f, Color.white);
