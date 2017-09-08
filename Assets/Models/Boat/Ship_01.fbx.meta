@@ -1,20 +1,15 @@
 fileFormatVersion: 2
-guid: 71716446895602a44ad0736772576f5e
-timeCreated: 1504676413
+guid: f80b7cad1c190af439d48dbe6eab73a6
+timeCreated: 1504840771
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Rudder
-    100002: //RootNode
-    400000: Rudder
-    400002: //RootNode
-    2300000: Rudder
-    2300002: //RootNode
-    3300000: Rudder
-    3300002: //RootNode
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Ship_01
-    4300002: Rudder
     9500000: //RootNode
   materials:
     importMaterials: 1

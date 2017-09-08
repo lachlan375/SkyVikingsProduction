@@ -1,30 +1,25 @@
 fileFormatVersion: 2
-guid: a234f96fc092ab44bb6975af17c93d44
-timeCreated: 1504676413
+guid: fbe7e84b6e6d8e940ab78fb120959ab6
+timeCreated: 1504839698
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: Flag
-    100002: Rudder
-    100004: Sail
-    100006: //RootNode
+    100002: Sail
+    100004: //RootNode
     400000: Flag
-    400002: Rudder
-    400004: Sail
-    400006: //RootNode
+    400002: Sail
+    400004: //RootNode
     2300000: Flag
-    2300002: Rudder
-    2300004: Sail
-    2300006: //RootNode
+    2300002: Sail
+    2300004: //RootNode
     3300000: Flag
-    3300002: Rudder
-    3300004: Sail
-    3300006: //RootNode
+    3300002: Sail
+    3300004: //RootNode
     4300000: Ship_03
     4300002: Sail
     4300004: Flag
-    4300006: Rudder
     9500000: //RootNode
   materials:
     importMaterials: 1
