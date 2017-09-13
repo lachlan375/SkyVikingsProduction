@@ -16,6 +16,8 @@ public class MovementSVHorizontal : MonoBehaviour
     public GameObject boatObject;
     public Rigidbody rb;
     public float amount = 50.0f;
+    [Tooltip("For more natural turning, force will be applied this distance forward from the center of mass.")]
+    public float turnForceOffset = 5f;
 
 
     // Use this for initialization
@@ -55,10 +57,11 @@ public class MovementSVHorizontal : MonoBehaviour
 
 
             //}
-
-            rb.AddForce(transform.right * amount * rotate);
-
-
+            //TEMP REMOVED BY ADAM
+            // rb.AddForce(transform.right * amount * rotate);
+            //TEMP REMOVED BY ADAM
+            Vector3 forceAddPos = transform.position + rb.centerOfMass + (transform.forward * turnForceOffset);
+            rb.AddForceAtPosition(transform.right * amount * rotate, forceAddPos);
         }
     }
 
