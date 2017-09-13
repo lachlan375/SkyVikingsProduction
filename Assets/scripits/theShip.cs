@@ -49,4 +49,22 @@ public class theShip : MonoBehaviour {
             Thecargo.Remove(Thecargo[0]);
         }
     }
+    public void removeCargo(int amountoRemove)
+    {
+        
+            for(int i = 0; i< amountoRemove; i++)
+            {
+            if (Thecargo.Count > 0)
+            {
+                Destroy(Thecargo[0]);
+        Thecargo.Remove(Thecargo[0]);
+            
+            }
+  
+        }
+  
+
+
+
+    }
 }

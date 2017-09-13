@@ -30,12 +30,10 @@ public class MovementSVVertical : MonoBehaviour {
         //speedVar = new float[] { 0.0f, 10000.0f, 30000.0f, 50000.0f };
 		currentSpeedInt = 0;
 		totalSpeedInt = speedVar.Length - 1;
-
     }
 
 	void FixedUpdate()
 	{
-		
 		if (Input.GetButtonDown ("Vertical"))
 		{
 			
@@ -66,16 +64,12 @@ public class MovementSVVertical : MonoBehaviour {
 				{
 					Debug.Log ("Speed levels at Minimum acceptable level");
 					movingCheck = false;
-
 				}
-                
 			}
 
 
 			Debug.Log("Vertical Axis is " + moveVertical);
-
 			Debug.Log("Current speed selection is " + currentSpeedInt + " at a FORCE Rating of " + speedVar[currentSpeedInt]);
-
 		}
         rowObject.RowStatUpdate(currentSpeedInt, speedConverted);
 		rb.AddForce (transform.forward * speedVar[currentSpeedInt]);
