@@ -7,6 +7,8 @@ public class basicBaot : MonoBehaviour {
     public NavMeshAgent navM;
     public int theTarget;
     public hitBox alertField;
+    public bool alert;
+    
     // Use this for initialization
     void Start () {
         theTarget = 0;
@@ -15,13 +17,18 @@ public class basicBaot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         navM.SetDestination(target[theTarget].transform.position);
-        if(alertField.inTheBox == true)
-        {
-            theTarget = 1;
+
+         if (alertField.inTheBox == true && alert == true)
+            {
+                theTarget = 1;
+            }
+            if (alertField.inTheBox == false)
+            {
+                theTarget = 0;
+            }
+
         }
-        if (alertField.inTheBox == false)
-        {
-            theTarget = 0;
-        }
-    }
+
+  
+    
 }
