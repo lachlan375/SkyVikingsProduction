@@ -15,9 +15,9 @@ public class MovementSVHorizontal : MonoBehaviour
 
     public GameObject boatObject;
     public Rigidbody rb;
-    public float amount = 50.0f;
+    public float amount;
     [Tooltip("For more natural turning, force will be applied this distance forward from the center of mass.")]
-    public float turnForceOffset = 5f;
+    public float turnForceOffset;
 
 
     // Use this for initialization
