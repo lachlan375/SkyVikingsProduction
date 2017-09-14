@@ -8,6 +8,7 @@ public class MovementInputController : MonoBehaviour {
 
     public MovementSVHorizontal horizRef;
     public MovementSVVertical vertRef;
+    public RowerController rowRef;
 
     [Header("Movement Input")]
     public float moveVertical;
@@ -26,6 +27,7 @@ public class MovementInputController : MonoBehaviour {
 
         horizRef = GetComponent<MovementSVHorizontal>();
         vertRef = GetComponent<MovementSVVertical>();
+        
 
         currentSpeedInt = 0;
         totalSpeedInt = vertRef.VertInit();
@@ -85,6 +87,7 @@ public class MovementInputController : MonoBehaviour {
 
         vertRef.MoveVertUpdate(currentSpeedInt);
         horizRef.MoveHorizUpdate(currentSpeedInt);
+        //rowRef.RowStatUpdate(currentSpeedInt);
 
     }
 }

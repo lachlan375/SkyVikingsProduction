@@ -16,7 +16,7 @@ public class RowerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	public void RowStatUpdate (int movementInt, float minSpeed ) {
+	public void RowStatUpdate (int movementInt) {
         movementCurrent = movementInt;
     }
 
@@ -27,4 +27,8 @@ public class RowerController : MonoBehaviour {
 
         }
     }
+
+
+
+
 }
