@@ -9,11 +9,18 @@ public class MovementSVHorizontal : MonoBehaviour
     //public float rotSpeedMin;
 
     //public float maxSpeed;
-
+    
     float rotate;
+    public bool is_rotating;
+
     public bool tiltFuction;
     public float tilt;
+
+
     float rotation;
+    public Quaternion originalRotation;
+    public Quaternion toTransform;
+    public float tiltRetRotation = 1.0f;
 
     //public GameObject boatObject;
     public Rigidbody rb;
@@ -37,6 +44,7 @@ public class MovementSVHorizontal : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        originalRotation = transform.rotation;
     }
 
     // Update is called once per frame
@@ -70,6 +78,7 @@ public class MovementSVHorizontal : MonoBehaviour
             //TEMP REMOVED BY ADAM
             // rb.AddForce(transform.right * amount * rotate);
             //TEMP REMOVED BY ADAM
+
             if (currentSpeedInt != 0)
             {
                 if (tiltFuction)
@@ -78,24 +87,58 @@ public class MovementSVHorizontal : MonoBehaviour
                 }
             }
 
+            is_rotating = true;
+
             Vector3 forceAddPos = transform.position + rb.centerOfMass + (transform.forward * turnForceOffset);
             rb.AddForceAtPosition(transform.right * amount[currentSpeedInt] * rotate, forceAddPos);
             
+        }
+        else
+        {
+            if (is_rotating)
+            {
+                //toTransform.rotation
+                TiltEnding();
+                is_rotating = false;
+            }
         }
     }
 
     public void MoveHorizUpdate(int speedIntRef)
     {
         currentSpeedInt = speedIntRef;
+
     }
 
     public void TiltFunctionality()
     {
+        //Physics Rotation
         //TEMP Test to see if tilt functionality can be added
         rotation = rb.rotation.eulerAngles.y;
         rb.rotation = Quaternion.Euler(0.0f, rotation, GetComponent<Rigidbody>().velocity.x * -tilt);
+        //END of Physics Rotation
+
+        //Transform Rotation
+
     }
 
+    public void TiltEnding()
+    {
+        //Physics Rotation
+        //TEMP Test to see if tilt functionality can be added
+
+        //rb.rotation = Quaternion.Euler(0, rotation, 0);
+
+        //END of Physics Rotation
+
+        originalRotation.y = transform.rotation.y;
+        originalRotation.x = 0;
+        originalRotation.z = 0;
+
+        //Transform Rotation
+        rb.rotation = Quaternion.Slerp(transform.rotation, originalRotation, Time.time * tiltRetRotation);
+
+    }
 
 
 }
