@@ -18,7 +18,7 @@ public class basicBaot : MonoBehaviour {
 	void Update () {
         navM.SetDestination(target[theTarget].transform.position);
 
-         if (alertField.inTheBox == true && alert == true)
+         if (alertField.inTheBox)
             {
                 theTarget = 1;
             }
