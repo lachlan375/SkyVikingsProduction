@@ -11,7 +11,9 @@ public class MovementSVHorizontal : MonoBehaviour
     //public float maxSpeed;
 
     float rotate;
-    //float rotation;
+    public bool tiltFuction;
+    public float tilt;
+    float rotation;
 
     //public GameObject boatObject;
     public Rigidbody rb;
@@ -22,10 +24,11 @@ public class MovementSVHorizontal : MonoBehaviour
     //public float amount = 50.0f;
     public float[] amount = new float[4];
 
-
-    
+   
 
     [Tooltip("For more natural turning, force will be applied this distance forward from the center of mass.")]
+
+  
     public float turnForceOffset;
 
 
@@ -41,7 +44,7 @@ public class MovementSVHorizontal : MonoBehaviour
     {
         rotate = Input.GetAxis("Horizontal");
 
-        
+
         if (rotate != 0)
         {
 
@@ -67,14 +70,30 @@ public class MovementSVHorizontal : MonoBehaviour
             //TEMP REMOVED BY ADAM
             // rb.AddForce(transform.right * amount * rotate);
             //TEMP REMOVED BY ADAM
+            if (currentSpeedInt != 0)
+            {
+                if (tiltFuction)
+                {
+                    TiltFunctionality();
+                }
+            }
+
             Vector3 forceAddPos = transform.position + rb.centerOfMass + (transform.forward * turnForceOffset);
             rb.AddForceAtPosition(transform.right * amount[currentSpeedInt] * rotate, forceAddPos);
+            
         }
     }
 
     public void MoveHorizUpdate(int speedIntRef)
     {
         currentSpeedInt = speedIntRef;
+    }
+
+    public void TiltFunctionality()
+    {
+        //TEMP Test to see if tilt functionality can be added
+        rotation = rb.rotation.eulerAngles.y;
+        rb.rotation = Quaternion.Euler(0.0f, rotation, GetComponent<Rigidbody>().velocity.x * -tilt);
     }
 
 
