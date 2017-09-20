@@ -12,7 +12,7 @@ public class ShipStats : MonoBehaviour
 
     public int rowingCrewCurrent;
     public int cargoBayCurrent;
-    public  GameObject shipsArray;
+    public  GameObject [] shipsArray;
     public float rowingPower;
     public float weight;
     //[Tooltip("the speed of the ship be for weight")]
