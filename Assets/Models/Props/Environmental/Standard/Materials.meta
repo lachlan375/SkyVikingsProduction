@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Models/Props/Environmental/Standard/Materials.meta
+guid: 05a59a97a1df4d644ac0281552eecb3f
+folderAsset: yes
+timeCreated: 1505433112
+licenseType: Free
+=======
 guid: e415f224d18454a4d8c753e88fd8f282
 folderAsset: yes
 timeCreated: 1505434079
 licenseType: Pro
+>>>>>>> 3ff349c195780fb8849230e1d7f303c264dde84e:Assets/Models/Props/Environmental/Standard/Materials.meta
 DefaultImporter:
   userData: 
   assetBundleName: 
