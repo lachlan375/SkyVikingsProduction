@@ -7,6 +7,7 @@ public class MovementSVVertical : MonoBehaviour {
 	//Included Gameobject References
     //public GameObject boatObject;
     public Rigidbody rb;
+	//public Transform boatTransform;
 	//public ShipStats shipStatsObject;
     //public RowerController rowObject;
 
@@ -24,6 +25,7 @@ public class MovementSVVertical : MonoBehaviour {
     void Start () {
 
         rb = GetComponent<Rigidbody>();
+		//boatTransform = gameObject.transform;
 
 		currentSpeedInt = 0;
 		
@@ -33,6 +35,7 @@ public class MovementSVVertical : MonoBehaviour {
 	{
         //rowObject.RowStatUpdate(currentSpeedInt, speedConverted);
 		rb.AddForce (transform.forward * speedVarArray[currentSpeedInt]);
+
 	}
 
     public void MoveVertUpdate(int speedIntRef)

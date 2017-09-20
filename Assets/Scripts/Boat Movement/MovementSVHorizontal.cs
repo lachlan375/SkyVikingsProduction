@@ -20,7 +20,8 @@ public class MovementSVHorizontal : MonoBehaviour
     float rotation;
     public Quaternion originalRotation;
     public Quaternion toTransform;
-    public float tiltRetRotation = 1.0f;
+    public float tiltRetRotation = 10.0f;
+
 
     //public GameObject boatObject;
     public Rigidbody rb;
@@ -30,6 +31,12 @@ public class MovementSVHorizontal : MonoBehaviour
 
     //public float amount = 50.0f;
     public float[] amount = new float[4];
+
+	public Transform thisTransform;
+	public Vector3 startPos;
+	public Vector3 endPos;
+	public float time;
+
 
    
 
@@ -45,7 +52,8 @@ public class MovementSVHorizontal : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         originalRotation = transform.rotation;
-    }
+
+	}
 
     // Update is called once per frame
     void FixedUpdate()
@@ -95,19 +103,16 @@ public class MovementSVHorizontal : MonoBehaviour
         }
         else
         {
-            if (is_rotating)
-            {
-                //toTransform.rotation
-                TiltEnding();
-                is_rotating = false;
-            }
+				TiltEnding();
+                //is_rotating = false;
+
+            
         }
     }
 
     public void MoveHorizUpdate(int speedIntRef)
     {
         currentSpeedInt = speedIntRef;
-
     }
 
     public void TiltFunctionality()
@@ -119,26 +124,52 @@ public class MovementSVHorizontal : MonoBehaviour
         //END of Physics Rotation
 
         //Transform Rotation
-
     }
 
     public void TiltEnding()
     {
-        //Physics Rotation
+		//originalRotation.y = 
+		//Physics Rotation
         //TEMP Test to see if tilt functionality can be added
 
         //rb.rotation = Quaternion.Euler(0, rotation, 0);
 
         //END of Physics Rotation
 
-        originalRotation.y = transform.rotation.y;
-        originalRotation.x = 0;
-        originalRotation.z = 0;
+
 
         //Transform Rotation
-        rb.rotation = Quaternion.Slerp(transform.rotation, originalRotation, Time.time * tiltRetRotation);
+        
+		//rb.rotation = Quaternion.Lerp(transform.rotation, originalRotation, Time.deltaTime * 2);
 
-    }
+		//rb.rotation = Quaternion.Euler(0, originalRotation.y, 0 * -tilt);
+
+
+		//Literally just copying and pasting
+		//rb.rotation = Quaternion.Slerp (rb.rotation, originalRotation, Time.time * 2.0f);
+
+		originalRotation.y = rb.rotation.y;
+		originalRotation.x = 0;
+		originalRotation.z = 0;
+
+			float i = 0.0f;
+			float rate = 2.0f/time;
+			
+		while (i < 1.0) {
+			i += Time.deltaTime * rate;
+			//thisTransform.position = Vector3.Lerp (startPos, endPos, i);
+			rb.rotation = Quaternion.Lerp(transform.rotation, originalRotation, i);
+
+		}
+
+		is_rotating = false;
+
+
+
+
+		}
+				
+    
 
 
 }
