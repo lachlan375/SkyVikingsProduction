@@ -95,12 +95,4 @@ public class MovementHorizontal : MonoBehaviour {
 	}
 
 
-//public void TiltFunctionality()
-//{
-
-//rotation = rb.rotation.eulerAngles.y;
-//rb.rotation = Quaternion.Euler(0.0f, rotation, GetComponent<Rigidbody>().velocity.x * -tilt);
-//}
-
-
 }
