@@ -26,7 +26,7 @@ public class MovementInputController : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody>();
 
-        horizRef = GetComponent<MovementSVHorizontal>();
+        moveHoriz = GetComponent<MovementHorizontal>();
         vertRef = GetComponent<MovementSVVertical>();
         
 
@@ -87,7 +87,7 @@ public class MovementInputController : MonoBehaviour {
         }
 
         vertRef.MoveVertUpdate(currentSpeedInt);
-        horizRef.MoveHorizUpdate(currentSpeedInt);
+        
 		moveHoriz.MoveHorizUpdate (currentSpeedInt);
         //rowRef.RowStatUpdate(currentSpeedInt);
 

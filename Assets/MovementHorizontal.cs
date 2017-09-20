@@ -20,7 +20,7 @@ public class MovementHorizontal : MonoBehaviour {
 	float rotation;
 	public Quaternion originalRotation;
 	public Quaternion toTransform;
-	public float tiltRetRotation = 10.0f;
+
 
 
 	//public GameObject boatObject;
@@ -61,34 +61,32 @@ public class MovementHorizontal : MonoBehaviour {
 		originalRotation = transform.rotation;
 
 		rotate = Input.GetAxis ("Horizontal");
-		rotate = Mathf.Clamp (rotate, -0.250f, 0.250f);
 
-		//CHECK to see what INPUT is
-		if (rotate != 0) {
+        if (currentSpeedInt > 0)
+        {
+            rotate = Mathf.Clamp(rotate, -0.450f, 0.450f);
 
-			//CHECK to if movement > 0 and Tilt function enabled
-			if (currentSpeedInt != 0 && tiltFuction) {
-				TiltFunctionality ();
-			}
+            // work out the angle we should at due to our turning
+            // TODO - make this stronger with forwards velocity
+            float desiredZAngle = rotate * -45.0f;
 
-			is_rotating = true;
+            // and lerp towards it.
+            float toTransformY = originalRotation.eulerAngles.y;
+            toTransform = Quaternion.Euler(0.0f, toTransformY, desiredZAngle);
 
+            rb.rotation = Quaternion.Slerp(originalRotation, toTransform, 0.5f);
 
-			//Rotate object using ADD Foce at Pos
-			Vector3 forceAddPos = transform.position + rb.centerOfMass + (transform.forward * turnForceOffset);
-			rb.AddForceAtPosition (transform.right * amount [currentSpeedInt] * rotate, forceAddPos);
+            originalRotation = rb.rotation;
+        }
 
-		} else {
-			if (is_rotating == true && tiltFuction) {
-				TiltEnding ();
-				is_rotating = false;
-			}
-				
+        if (rotate != 0)
+        {
+            //Rotate object using ADD Foce at Pos
+            Vector3 forceAddPos = transform.position + rb.centerOfMass + (transform.forward * turnForceOffset);
+            rb.AddForceAtPosition(transform.right * amount[currentSpeedInt] * rotate, forceAddPos);
 
-
-
-		}
-	}
+        }
+    }
 
 	//UPdate function called by other scripts to pass on current speed
 	public void MoveHorizUpdate(int speedIntRef)
@@ -97,68 +95,12 @@ public class MovementHorizontal : MonoBehaviour {
 	}
 
 
-	public void TiltFunctionality()
-	{
+//public void TiltFunctionality()
+//{
 
-		rotation = rb.rotation.eulerAngles.y;
-		rb.rotation = Quaternion.Euler(0.0f, rotation, GetComponent<Rigidbody>().velocity.x * -tilt);
-	}
-
-	public void TiltEnding()
-	{
-
-
-
-		float toTransformY = rb.rotation.y;
-
-		toTransform = Quaternion.Euler (0.0f , toTransformY, 0.0f);
-
-		float i = 0.0f;
-		float rate = 2.0f/time;
-
-
-		while (i < 1.0) {
-
-
-			i += Time.deltaTime * rate;
-			originalRotation = rb.rotation;
-
-
-			//thisTransform.position = Vector3.Lerp (startPos, endPos, i);
-			rb.rotation = Quaternion.Slerp(originalRotation, toTransform, i);
-
-			Debug.Log ("Tilt ending has been activated");
-		}
-
-
-
-
-		/*rotation = rb.rotation.eulerAngles.y;
-		rb.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);*/
-
-		/*originalRotation.y = rb.rotation.y;
-		originalRotation.x = 0;
-		originalRotation.z = 0;
-
-		float i = 0.0f;
-		float rate = 2.0f/time;
-
-		while (i < 1.0) {
-			i += Time.deltaTime * rate;
-			//thisTransform.position = Vector3.Lerp (startPos, endPos, i);
-			rb.rotation = Quaternion.Lerp(transform.rotation, originalRotation, i);
-
-		}*/
-
-
-
-
-
-
-
-	}
-
-
+//rotation = rb.rotation.eulerAngles.y;
+//rb.rotation = Quaternion.Euler(0.0f, rotation, GetComponent<Rigidbody>().velocity.x * -tilt);
+//}
 
 
 }
