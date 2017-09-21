@@ -22,6 +22,8 @@ public class MovementInputController : MonoBehaviour {
     public bool is_moving;
     public bool is_idle;
 
+    public 
+
 
 
     // Use this for initialization
@@ -80,7 +82,9 @@ public class MovementInputController : MonoBehaviour {
             else
             {
                 Debug.Log("Speed limit Reached!!!");
+                currentSpeedInt = totalSpeedInt;
             }
+
         }
 
         //Checking to see IF GOING BACKWARD
@@ -104,6 +108,7 @@ public class MovementInputController : MonoBehaviour {
                 is_moving = false;
             }
         }
+
 
         vertRef.MoveVertUpdate(currentSpeedInt);
         
