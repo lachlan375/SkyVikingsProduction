@@ -9,6 +9,7 @@ public class MovementInputController : MonoBehaviour {
     public MovementSVHorizontal horizRef;
     public MovementSVVertical vertRef;
     public RowerController rowRef;
+	public MovementHorizontal moveHoriz;
 
     [Header("Movement Input")]
     public float moveVertical;
@@ -25,7 +26,7 @@ public class MovementInputController : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody>();
 
-        horizRef = GetComponent<MovementSVHorizontal>();
+        moveHoriz = GetComponent<MovementHorizontal>();
         vertRef = GetComponent<MovementSVVertical>();
         
 
@@ -38,7 +39,7 @@ public class MovementInputController : MonoBehaviour {
     {
         if (Input.GetButtonDown("Vertical"))
         {
-            Debug.Log("Debug log ACTIVATED");
+            //Debug.Log("Debug log ACTIVATED");
             moveVertical = Input.GetAxis("Vertical");
             MovementCheck(moveVertical);
         }
@@ -51,7 +52,7 @@ public class MovementInputController : MonoBehaviour {
 
         }
         
-        Debug.Log("Current speed selection is " + currentSpeedInt);
+        //Debug.Log("Current speed selection is " + currentSpeedInt);
     }
 
     public void MovementCheck(float movementInput)
@@ -86,8 +87,9 @@ public class MovementInputController : MonoBehaviour {
         }
 
         vertRef.MoveVertUpdate(currentSpeedInt);
-        horizRef.MoveHorizUpdate(currentSpeedInt);
-        //rowRef.RowStatUpdate(currentSpeedInt);
+        
+		moveHoriz.MoveHorizUpdate (currentSpeedInt);
+        rowRef.RowStatUpdate(currentSpeedInt);
 
     }
 }

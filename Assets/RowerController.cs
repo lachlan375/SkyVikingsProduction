@@ -8,23 +8,29 @@ public class RowerController : MonoBehaviour {
     public MovementSVVertical movementVertical;
     public int movementCurrent;
 
-    public float[] speedRowVar = new float[4];
-
+    public float[] speedAdditiveArray = new float[4];
+	public float currentSpeedAdditive;
     // Use this for initialization
     void Start () {
-        
+
 	}
 	
 	// Update is called once per frame
 	public void RowStatUpdate (int movementInt) {
         movementCurrent = movementInt;
+		currentSpeedAdditive = speedAdditiveArray [movementCurrent];
     }
+
+
+
+	//check movement current.
+	//if > 0 then
 
     public void Rowing()
     {
         if (movementCurrent > 0)
         {
-
+			
         }
     }
 
