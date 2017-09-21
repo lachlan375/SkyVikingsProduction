@@ -89,7 +89,7 @@ public class MovementInputController : MonoBehaviour {
         vertRef.MoveVertUpdate(currentSpeedInt);
         
 		moveHoriz.MoveHorizUpdate (currentSpeedInt);
-        //rowRef.RowStatUpdate(currentSpeedInt);
+        rowRef.RowStatUpdate(currentSpeedInt);
 
     }
 }
