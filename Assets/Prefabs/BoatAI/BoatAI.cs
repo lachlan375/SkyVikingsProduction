@@ -13,5 +13,5 @@ public class BoatAI : MonoBehaviour
     public Transform Player;
     public int TheTargetID;
     public float StopingDisteance;
-  
+    public Transform cannon;
 }
