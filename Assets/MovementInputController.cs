@@ -19,7 +19,9 @@ public class MovementInputController : MonoBehaviour {
     public int currentSpeedInt; //ref for Current SpeedVar array
     public int totalSpeedInt;	//TOTAL length counter SpeedVar array
 
-    public bool movingCheck;
+    public bool is_moving;
+    public bool is_idle;
+
 
 
     // Use this for initialization
@@ -30,7 +32,7 @@ public class MovementInputController : MonoBehaviour {
         vertRef = GetComponent<MovementSVVertical>();
         
 
-        currentSpeedInt = 0;
+        currentSpeedInt = 1;
         totalSpeedInt = vertRef.VertInit();
     }
 
@@ -63,7 +65,17 @@ public class MovementInputController : MonoBehaviour {
             {
                 Debug.Log("Current Speed increased!!!");
                 currentSpeedInt++;
-                movingCheck = true;
+                if (currentSpeedInt == 1)
+                {
+                    is_moving = false;
+                    is_idle = true;
+                }
+
+                else
+                {
+                    is_moving = true;
+                    is_idle = false;
+                }
             }
             else
             {
@@ -76,13 +88,20 @@ public class MovementInputController : MonoBehaviour {
         {
             if (currentSpeedInt > 0)
             {
+                
                 Debug.Log("Current Speed slowed down!!!");
+
                 currentSpeedInt--;
+
+                if (currentSpeedInt == 0)
+                {
+                    
+                }
             }
             else
             {
                 Debug.Log("Speed levels at Minimum acceptable level");
-                movingCheck = false;
+                is_moving = false;
             }
         }
 

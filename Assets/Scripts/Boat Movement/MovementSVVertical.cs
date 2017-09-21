@@ -27,7 +27,7 @@ public class MovementSVVertical : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
 		//boatTransform = gameObject.transform;
 
-		currentSpeedInt = 0;
+		currentSpeedInt = 1;
 		
     }
 
@@ -46,7 +46,7 @@ public class MovementSVVertical : MonoBehaviour {
     //Function designed to USE length of Speed Array for the TotalSpeedCounter in Movement Controller
     public int VertInit()
     {
-        totalSpeedInt = speedVarArray.Length - 1;
+        totalSpeedInt = speedVarArray.Length;
         return totalSpeedInt;
     }
 

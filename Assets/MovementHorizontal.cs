@@ -28,6 +28,7 @@ public class MovementHorizontal : MonoBehaviour {
 
 
 	public int currentSpeedInt;
+    public int stationaryInt = 1;
 
 	//public float amount = 50.0f;
 	public float[] amount = new float[4];
@@ -62,19 +63,19 @@ public class MovementHorizontal : MonoBehaviour {
 
 		rotate = Input.GetAxis ("Horizontal");
 
-        if (currentSpeedInt > 0)
+        if (currentSpeedInt != stationaryInt)
         {
-            rotate = Mathf.Clamp(rotate, -0.450f, 0.450f);
+            rotate = Mathf.Clamp(rotate, -1.00f, 1.00f);
 
             // work out the angle we should at due to our turning
             // TODO - make this stronger with forwards velocity
-            float desiredZAngle = rotate * -45.0f;
+            float desiredZAngle = rotate * -25.0f;
 
             // and lerp towards it.
             float toTransformY = originalRotation.eulerAngles.y;
             toTransform = Quaternion.Euler(0.0f, toTransformY, desiredZAngle);
 
-            rb.rotation = Quaternion.Slerp(originalRotation, toTransform, 0.5f);
+            rb.rotation = Quaternion.Slerp(originalRotation, toTransform, 5.0f);
 
             originalRotation = rb.rotation;
         }
