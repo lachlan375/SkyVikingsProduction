@@ -5,10 +5,25 @@ using UnityEngine;
 public class steallCargo : MonoBehaviour {
     public int CargotoSteal;
     public float speed;
- 
-    void Update()
+  public float spellTimeDuration;
+    public Rigidbody bullet;
+
+    void Start()
     {
-        transform.position += Vector3.forward *speed;
+
+
+    }
+    void Update()
+
+    {
+        bullet.velocity = gameObject.transform.forward;
+
+        spellTimeDuration -= Time.deltaTime;
+
+        if (spellTimeDuration <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     void OnTriggerEnter(Collider other)
     {
