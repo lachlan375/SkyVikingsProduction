@@ -33,18 +33,11 @@ public class MovementHorizontal : MonoBehaviour {
     public float time;
 
 
-
-
-
-
-
 	// Use this for initialization
 
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
-
-
 	}
 
 	// Update is called once per frame

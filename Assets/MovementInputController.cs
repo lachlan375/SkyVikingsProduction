@@ -32,7 +32,8 @@ public class MovementInputController : MonoBehaviour {
 
         moveHoriz = GetComponent<MovementHorizontal>();
         vertRef = GetComponent<MovementSVVertical>();
-        
+        rowRef = GetComponent<RowerController>();
+
 
         currentSpeedInt = 1;
         totalSpeedInt = vertRef.VertInit();
@@ -52,11 +53,10 @@ public class MovementInputController : MonoBehaviour {
         if (Input.GetButtonDown("Horizontal"))
         {
             moveHorizontal = Input.GetAxis("Horizontal");
-
-
         }
+
+        //rb.AddForce(transform.forward * 1000.0f);
         
-        //Debug.Log("Current speed selection is " + currentSpeedInt);
     }
 
     public void MovementCheck(float movementInput)
@@ -67,16 +67,18 @@ public class MovementInputController : MonoBehaviour {
             {
                 Debug.Log("Current Speed increased!!!");
                 currentSpeedInt++;
-                if (currentSpeedInt == 1)
+
+                //Check to see if boat is stationary
+                if (currentSpeedInt != 1)
                 {
-                    is_moving = false;
-                    is_idle = true;
+                    is_moving = true;
+                    is_idle = false;
                 }
 
                 else
                 {
-                    is_moving = true;
-                    is_idle = false;
+                    is_moving = false;
+                    is_idle = true;
                 }
             }
             else
@@ -96,24 +98,27 @@ public class MovementInputController : MonoBehaviour {
                 Debug.Log("Current Speed slowed down!!!");
 
                 currentSpeedInt--;
-
-                if (currentSpeedInt == 0)
+                if (currentSpeedInt == 1)
                 {
-                    
+                    Debug.Log("Vessel is now stationary!!!");
+                    is_moving = false;
+                    is_idle = true;
                 }
             }
             else
             {
                 Debug.Log("Speed levels at Minimum acceptable level");
-                is_moving = false;
+                
             }
         }
 
-
+    // Call functions from Vert/Horizontal/Rowing Movement scripts AND pass on the current speed INT coutnerz
         vertRef.MoveVertUpdate(currentSpeedInt);
         
 		moveHoriz.MoveHorizUpdate (currentSpeedInt);
         rowRef.RowStatUpdate(currentSpeedInt);
 
     }
+
+
 }

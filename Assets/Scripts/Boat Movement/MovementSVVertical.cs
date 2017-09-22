@@ -9,7 +9,7 @@ public class MovementSVVertical : MonoBehaviour {
     public Rigidbody rb;
 	//public Transform boatTransform;
 	//public ShipStats shipStatsObject;
-    //public RowerController rowObject;
+    public RowerController rowObject;
 
 	//Speed References
     
@@ -22,35 +22,40 @@ public class MovementSVVertical : MonoBehaviour {
     //public float speedConverted;
 
     public bool movingCheck;
-
+    
     // Use this for initialization
     void Start () {
 
         rb = GetComponent<Rigidbody>();
-		//boatTransform = gameObject.transform;
+        rowObject = GetComponent<RowerController>();
+        //boatTransform = gameObject.transform;
 
-		currentSpeedInt = 1;
-		
+        currentSpeedInt = 1;
     }
 
-	void FixedUpdate()
+    //Function designed to USE length of Speed Array for the TotalSpeedCounter in Movement Controller
+    //Called from Movement Controller
+    public int VertInit()
+    {
+        //Setting up counter for Total Speed counter
+        totalSpeedInt = speedVarArray.Length - 1;
+        return totalSpeedInt;
+    }
+
+    void FixedUpdate()
 	{
-        //rowObject.RowStatUpdate(currentSpeedInt, speedConverted);
-		rb.AddForce (transform.forward * speedVarArray[currentSpeedInt]);
+        
+		//rb.AddForce (transform.forward * rowObject.rowingSpeedCurrent;
+        rb.AddForce (transform.forward * speedVarArray[currentSpeedInt]);
 
-	}
-
+    }
+    //Function called from Movement Controller  to current class with latest INT counter
     public void MoveVertUpdate(int speedIntRef)
     {
         currentSpeedInt = speedIntRef;
         speedCurrentVal = speedVarArray[currentSpeedInt];
     }
 
-    //Function designed to USE length of Speed Array for the TotalSpeedCounter in Movement Controller
-    public int VertInit()
-    {
-        totalSpeedInt = speedVarArray.Length - 1;
-        return totalSpeedInt;
-    }
+
 
 }
