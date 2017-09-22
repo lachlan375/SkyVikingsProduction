@@ -4,46 +4,38 @@ using UnityEngine;
 
 public class MovementHorizontal : MonoBehaviour {
 
-	//public Quaternion rot;
-	//public float rotSpeed;
-	//public float rotSpeedMin;
 
-	//public float maxSpeed;
-
-	float rotate;
+	public float rotate;
+    public float rotationClamp;
 	public bool is_rotating;
 
-	public bool tiltFuction;
+    [Tooltip("For more natural turning, force will be applied this distance forward from the center of mass.")]
+    public float turnForceOffset;
+
+    public bool tiltFuction;
 	public float tilt;
 
-
-	float rotation;
+    
 	public Quaternion originalRotation;
 	public Quaternion toTransform;
 
 
 
-	//public GameObject boatObject;
 	public Rigidbody rb;
 
+    public float[] rotationVarArray = new float[5];
+    public int currentSpeedInt;
+    public int stationaryInt = 1;  //reference for idle position
 
-	public int currentSpeedInt;
 
-	//public float amount = 50.0f;
-	public float[] amount = new float[4];
 
-	public Transform thisTransform;
-	public Vector3 startPos;
-	public Vector3 endPos;
-	public float time;
+    [Tooltip("Rotation time for tilting")]
+    public float time;
 
 
 
 
-	[Tooltip("For more natural turning, force will be applied this distance forward from the center of mass.")]
 
-
-	public float turnForceOffset;
 
 
 	// Use this for initialization
@@ -62,19 +54,19 @@ public class MovementHorizontal : MonoBehaviour {
 
 		rotate = Input.GetAxis ("Horizontal");
 
-        if (currentSpeedInt > 0)
+        if (currentSpeedInt != stationaryInt)
         {
-            rotate = Mathf.Clamp(rotate, -0.450f, 0.450f);
+            rotate = Mathf.Clamp(rotate, -rotationClamp, rotationClamp);
 
             // work out the angle we should at due to our turning
             // TODO - make this stronger with forwards velocity
-            float desiredZAngle = rotate * -45.0f;
+            float desiredZAngle = rotate * -25.0f;
 
             // and lerp towards it.
             float toTransformY = originalRotation.eulerAngles.y;
             toTransform = Quaternion.Euler(0.0f, toTransformY, desiredZAngle);
 
-            rb.rotation = Quaternion.Slerp(originalRotation, toTransform, 0.5f);
+            rb.rotation = Quaternion.Slerp(originalRotation, toTransform, Time.deltaTime * time);
 
             originalRotation = rb.rotation;
         }
@@ -83,7 +75,7 @@ public class MovementHorizontal : MonoBehaviour {
         {
             //Rotate object using ADD Foce at Pos
             Vector3 forceAddPos = transform.position + rb.centerOfMass + (transform.forward * turnForceOffset);
-            rb.AddForceAtPosition(transform.right * amount[currentSpeedInt] * rotate, forceAddPos);
+            rb.AddForceAtPosition(transform.right * rotationVarArray[currentSpeedInt] * rotate, forceAddPos);
 
         }
     }

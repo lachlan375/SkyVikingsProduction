@@ -46,7 +46,7 @@ public class QuestObject : MonoBehaviour {
     #region trigers
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hit");
+ 
          if (other.tag == "Player")
         {
             other.gameObject.GetComponent<QuestManager>().completQests(TownName);
