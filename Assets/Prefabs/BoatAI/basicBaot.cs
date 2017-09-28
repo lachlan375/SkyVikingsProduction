@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.AI;
 public class basicBaot : BoatAI {
     public Transform [] target;
-   
+    public NavMeshAgent BoatNavMesh;
+    public hitBox HitBox;
+    public hitBox Playerinrage;
+    public Transform cannon;
+
     // Use this for initialization
     void Start () {
         TheTargetID = 0;
@@ -40,6 +44,10 @@ public class basicBaot : BoatAI {
                 Debug.Log("hit");
             }
 
+        }
+        if(Playerinrage.inTheBox == false)
+        {
+            Alert = false;
         }
     }
     public void restart()
