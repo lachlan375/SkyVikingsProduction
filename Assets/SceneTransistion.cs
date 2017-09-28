@@ -85,6 +85,7 @@ public class SceneTransistion : MonoBehaviour {
 
         
         SceneManager.LoadScene(index);
+		Debug.Log ("Fade activated");
     }
 
     void NextLevel()
