@@ -40,9 +40,9 @@ public class LevelManagment : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-
-        maxLevelInt = SceneManager.sceneCountInBuildSettings;
-        --maxLevelInt;
+        //Redundant code transferred to Scene Transition class
+       // maxLevelInt = SceneManager.sceneCountInBuildSettings;
+        //--maxLevelInt;
         
 
     }
@@ -80,7 +80,7 @@ public class LevelManagment : MonoBehaviour {
             NextLevel();
         }
     }
-
+    
     IEnumerator Fading()
     {
         anim.SetBool("Fade", true);
