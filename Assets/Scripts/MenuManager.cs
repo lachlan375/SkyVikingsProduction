@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
-
+    public int index;
     public bool is_ActiveHQMode;        //flag to check if HQ Mode is active
                                         // Use this for initialization
+    public SceneTransistion sceneTransitRef;
+                                            
     void Start () {
-		
-	}
+        sceneTransitRef = gameObject.GetComponent<SceneTransistion>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -19,7 +21,9 @@ public class MenuManager : MonoBehaviour {
 
     public void NewGame()
     {
-        SceneManager.LoadScene(1);
+        sceneTransitRef.SceneTransistionFunction(2);
+
+       
     }
 
         public void Exit()

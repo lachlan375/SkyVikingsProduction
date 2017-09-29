@@ -29,7 +29,7 @@ public class steallCargo : MonoBehaviour {
     {
         if (other.tag.Equals("Boat"))
         {
-
+            Debug.Log("push a thing ");
             other.gameObject.GetComponent<theShip>().removeCargo(CargotoSteal);
             Destroy(gameObject);
         }

@@ -1,10 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: dba33a2bf8b23400bacf323fc2816a51
 labels:
 - Lowpoly
 - Shader
 - Water
 timeCreated: 1506559980
+=======
+guid: 00b0a2059644b6f418ed19ffe4f3e4f6
+timeCreated: 1506560700
+>>>>>>> e1b435d98b1838e00803ff4e85ac28bf23a3dbf1
 licenseType: Free
 NativeFormatImporter:
   mainObjectFileID: 0

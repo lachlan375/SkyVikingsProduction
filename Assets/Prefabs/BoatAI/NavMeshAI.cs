@@ -79,7 +79,6 @@ public class NavMeshAI : BoatAI
         stop = true;
         yield return new WaitForSeconds(waitTime);
         stop = false;
-        Debug.Log("go");
     }
 }
 
