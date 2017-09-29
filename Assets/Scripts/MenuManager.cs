@@ -9,6 +9,8 @@ public class MenuManager : MonoBehaviour {
     public bool is_ActiveHQMode;        //flag to check if HQ Mode is active
                                         // Use this for initialization
     public SceneTransistion sceneTransitRef;
+
+    public int newGame = 2;
                                             
     void Start () {
         sceneTransitRef = gameObject.GetComponent<SceneTransistion>();
@@ -21,7 +23,7 @@ public class MenuManager : MonoBehaviour {
 
     public void NewGame()
     {
-        sceneTransitRef.SceneTransistionFunction(2);
+        sceneTransitRef.SceneTransistionFunction(newGame);
 
        
     }
