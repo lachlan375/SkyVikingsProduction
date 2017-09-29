@@ -39,8 +39,8 @@ public class Stalactite : MonoBehaviour
 
     void Instantiate()
     {
-        Debug.Log("ExPLODE")
-;        var go = Instantiate(spike, new Vector3(spawnPos.x, spikeHeight, spawnPos.z), transform.rotation);
+        Debug.Log("ExPLODE");
+        var go = Instantiate(spike, new Vector3(spawnPos.x, spikeHeight, spawnPos.z), transform.rotation);
         go.name = spike.name;
         var col = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider coll in col)
@@ -50,10 +50,11 @@ public class Stalactite : MonoBehaviour
             Rigidbody rb = coll.GetComponent<Rigidbody>();
             if (rb)
             {
-                float force0 = force;
-                if (rb.mass > 500)
-                    force0 *= 10;
-                rb.AddExplosionForce(force0, transform.position, explosionRadius);
+                float proximity = (transform.position - coll.transform.position).magnitude;
+                float effect = force - (proximity / explosionRadius);
+                //if (rb.mass > 500)
+                //    force0 *= 10;
+                rb.AddExplosionForce(effect, transform.position, explosionRadius);
             }
         }
     }
