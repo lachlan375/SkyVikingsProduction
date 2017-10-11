@@ -11,7 +11,7 @@ public class Rowing : MonoBehaviour {
     
     public MovementSVVertical moveVertRef;
     public MovementInputController moveControlRef;
-    public RowerController rowingControlRef;
+
 
     [Tooltip("it needs more work but its half the speed of rowing power")]
     public float velocity;
@@ -23,23 +23,122 @@ public class Rowing : MonoBehaviour {
     public float MinSpeed;
     public bool AnkerDOwn;
 
+	public float currentSpeed;
+
     // Use this for initialization
     void Start () {
-        velocity = 1000.0f;
+        //velocity = 1000.0f;
 
-        rowingControlRef = gameObject.GetComponent<RowerController>();
+		rowerAnim = gameObject.GetComponent<Animator> ();
+
      }
-	
 
+
+
+	// Update is called once per frame
+	void Update ()
+	{
+		//Editing CHECK Just a check to see if function is ENABLED
+
+			rowerAnim.SetBool ("isRowing", moveVertRef.movingCheck);
+
+			if (moveVertRef.movingCheck == true)
+			{
+				MinSpeed = moveVertRef.speedCurrentVal;
+			}
+			else
+			{
+				MinSpeed = 0;
+			}
+			
+			if (moveVertRef.speedCurrentVal != 0) {
+				if (slow == false) {
+					StartCoroutine(speedAcceleration());
+					Debug.Log ("speed coroutine started");
+				}
+				else if (slow == true)
+				{
+					StartCoroutine(speedDecay());
+				}
+
+			}
+
+			//rb.AddForce (transform.forward * speedVarArray[currentSpeedInt];
+
+	}
+
+
+	/*public void speedDecay()
+	{
+
+		if (moveVertRef.rowingCurrentVal >= MinSpeed)
+		{
+			moveVertRef.rowingCurrentVal -= velocity;
+		}
+
+	}*/
+
+	IEnumerator speedDecay()
+	{
+		
+
+		while (slow == true)
+		{
+			
+			moveVertRef.rowingCurrentVal -= velocity;
+
+
+			yield return new WaitForSeconds(time);
+		}
+
+
+
+	}
+
+	IEnumerator speedAcceleration()
+	{
+
+
+		while (slow == false)
+		{
+
+			moveVertRef.rowingCurrentVal += moveVertRef.rowingSpeedArray[moveVertRef.currentSpeedInt];
+
+
+			yield return new WaitForSeconds(time);
+		}
+
+
+
+	}
+
+	/*public void speedAcceleration()
+	{
+
+			if (moveVertRef.rowingCurrentVal > moveVertRef.rowingSpeedMax)
+			{
+				moveVertRef.rowingCurrentVal = moveVertRef.rowingSpeedMax;
+				Debug.Log ("Speed to MAX");
+			}
+			else
+			{
+			//moveVertRef.rowingCurrentVal += moveVertRef.rowingPower;
+			moveVertRef.rowingCurrentVal = moveVertRef.rowingSpeedArray[moveVertRef.currentSpeedInt];
+			}
+
+	}*/
     
-    
+	/*
+	//REFERENCE FOR Priorr version setup
+	//Mix of my code and Lucy's
+
 	// Update is called once per frame
 	void Update () {
 
         //Editing CHECK Just a check to see if function is ENABLED
         if (AnkerDOwn == false)
         {
-            //rowerAnim.SetBool("isRowing", moveVertRef.movingCheck);
+            rowerAnim.SetBool("isRowing", moveVertRef.movingCheck);
                         
             if (moveVertRef.movingCheck == true)
             {
@@ -56,12 +155,11 @@ public class Rowing : MonoBehaviour {
                 Debug.Log("speed coroutine started");
                 }
            }
-
-
         //rb.AddForce (transform.forward * speedVarArray[currentSpeedInt];
     }
-    
-    /*IEnumerator speed()
+  
+	//LUCY's Original Code
+    IEnumerator speed()
     {
 
         
@@ -96,5 +194,6 @@ public class Rowing : MonoBehaviour {
             {
                 rowingControlRef.rowingSpeedCurrent += ship.rowingPower;
             }
-        }*/
+        }
+	}*/
 }

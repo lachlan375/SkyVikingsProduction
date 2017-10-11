@@ -6,10 +6,10 @@ public class MovementInputController : MonoBehaviour {
 
     public Rigidbody rb;
 
-    public MovementSVHorizontal horizRef;
+    public MovementHorizontal horizRef;
     public MovementSVVertical vertRef;
     public RowerController rowRef;
-	public MovementHorizontal moveHoriz;
+
 
     [Header("Movement Input")]
     public float moveVertical;
@@ -20,17 +20,14 @@ public class MovementInputController : MonoBehaviour {
     public int totalSpeedInt;	//TOTAL length counter SpeedVar array
 
     public bool is_moving;
-    public bool is_idle;
-
-    public 
-
+    
 
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
 
-        moveHoriz = GetComponent<MovementHorizontal>();
+        horizRef = GetComponent<MovementHorizontal>();
         vertRef = GetComponent<MovementSVVertical>();
         rowRef = GetComponent<RowerController>();
 
@@ -55,8 +52,10 @@ public class MovementInputController : MonoBehaviour {
             moveHorizontal = Input.GetAxis("Horizontal");
         }
 
-        //rb.AddForce(transform.forward * 1000.0f);
-        
+		vertRef.MoveVertUpdate(currentSpeedInt, is_moving);
+
+		horizRef.MoveHorizUpdate (currentSpeedInt);
+                
     }
 
     public void MovementCheck(float movementInput)
@@ -72,13 +71,11 @@ public class MovementInputController : MonoBehaviour {
                 if (currentSpeedInt != 1)
                 {
                     is_moving = true;
-                    is_idle = false;
                 }
 
                 else
                 {
                     is_moving = false;
-                    is_idle = true;
                 }
             }
             else
@@ -90,7 +87,7 @@ public class MovementInputController : MonoBehaviour {
         }
 
         //Checking to see IF GOING BACKWARD
-        else if (moveVertical < -0)
+        else if (moveVertical < 0)
         {
             if (currentSpeedInt > 0)
             {
@@ -98,12 +95,14 @@ public class MovementInputController : MonoBehaviour {
                 Debug.Log("Current Speed slowed down!!!");
 
                 currentSpeedInt--;
-                if (currentSpeedInt == 1)
-                {
-                    Debug.Log("Vessel is now stationary!!!");
-                    is_moving = false;
-                    is_idle = true;
-                }
+				if (currentSpeedInt == 1) {
+					Debug.Log ("Vessel is now stationary!!!");
+					is_moving = false;
+				} else
+				{
+					is_moving = true;
+				}
+
             }
             else
             {
@@ -113,10 +112,10 @@ public class MovementInputController : MonoBehaviour {
         }
 
     // Call functions from Vert/Horizontal/Rowing Movement scripts AND pass on the current speed INT coutnerz
-        vertRef.MoveVertUpdate(currentSpeedInt);
+		/*vertRef.MoveVertUpdate(currentSpeedInt, is_moving);
         
-		moveHoriz.MoveHorizUpdate (currentSpeedInt);
-        rowRef.RowStatUpdate(currentSpeedInt);
+		horizRef.MoveHorizUpdate (currentSpeedInt);
+        //rowRef.RowStatUpdate(currentSpeedInt);*/
 
     }
 
