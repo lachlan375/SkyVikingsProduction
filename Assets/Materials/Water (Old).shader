@@ -14,8 +14,8 @@ Shader "Custom/Water" {
 		_RandomHeight("Random height", Float) = 0.5
 		_RandomSpeed("Random Speed", Float) = 0.5
 
-		_MainTex("Albedo (RGB)", 2D) = "white" {}
-		_MaskTex("Mask", 2D) = "black" {}
+		//_MainTex("Albedo (RGB)", 2D) = "white" {}
+		//_MaskTex("Mask", 2D) = "black" {}
 	}
 		SubShader
 		{
@@ -45,7 +45,7 @@ Shader "Custom/Water" {
 			return frac(sin(dot(co.xyz ,float3(19.9128,75.2,34.5122))) * 12765.5213);
 		}
 
-		sampler2D _MaskTex;
+		//sampler2D _MaskTex;
 
 		float _WaveLength;
 		float _WaveHeight;
@@ -65,8 +65,8 @@ Shader "Custom/Water" {
 			float3	norm : NORMAL;
 			float2  uv : TEXCOORD0;
 
-			float2 uv_MainTex;
-			float4 screenPos;
+			//float2 uv_MainTex;
+			//float4 screenPos;
 		};
 
 		struct g2f
@@ -175,14 +175,14 @@ Shader "Custom/Water" {
 			OUT.specularColor = specularReflection;
 			triStream.Append(OUT);
 
-			float2 screenUV = IN.screenPos.xy / IN.screenPos.w;
-			float m = tex2D(_MaskTex, screenUV).r;
+		//	float2 screenUV = IN.screenPos.xy / IN.screenPos.w;
+		//	float m = tex2D(_MaskTex, screenUV).r;
 
-			if (m > 0) discard;
+		//	if (m > 0) discard;
 
-			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
-			o.Albedo = c.rgb;
-		}
+		//	fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+		//	o.Albedo = c.rgb;
+		//}
 
 		half4 frag(g2f IN) : COLOR
 		{
