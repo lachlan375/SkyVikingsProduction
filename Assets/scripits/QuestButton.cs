@@ -13,6 +13,7 @@ public class QuestButton : MonoBehaviour {
     }
     void OnButtonClick()
     {
+        Debug.Log("Quest button pressed");
         TheQuest.startQuest(QuestName);
     }
 

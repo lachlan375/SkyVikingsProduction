@@ -109,6 +109,7 @@ public class QuestUI : MonoBehaviour {
     }
     public void startQuest(string QuestName)
     {
+        Debug.Log("Start qu3est ACTIVATED!!!");
 for(int i=0; i<Quests[ID].AvailableQuests.Count; i++)
         {
             if(QuestName == Quests[ID].AvailableQuests[i].QuestName)
