@@ -6,45 +6,45 @@ using UnityEngine.UI;
 
 public class Geyser : MonoBehaviour
 {
-    private IEnumerator coroutine1;
+    public float force = 100;
 
-    public float thrust = 100;
-
-    public AudioSource woosh;
+    public AudioClip whoosh;
 
     private ParticleSystem particle;
+    BoxCollider falloff;
 
     void Start()
     {
+        falloff = gameObject.GetComponent<BoxCollider>();
         particle = gameObject.GetComponent<ParticleSystem>();
-        coroutine1 = Push();
-
-        if (enabled)
-        {
-            StartCoroutine(coroutine1);
-        }
+        StartCoroutine(Push());
     }
 
     IEnumerator Push()
     {
         while (enabled)
         {
-            //particle.Play();
-            //woosh.Play();
+            particle.Play();
             ApplyForce();
-            yield return new WaitForSeconds(1);
+            AudioSource.PlayClipAtPoint(whoosh, transform.position, 1f);
+            yield return new WaitForSeconds(5);
         }
     }
 
     void ApplyForce()
     {
         BoxCollider box = gameObject.GetComponent<BoxCollider>();
-        Collider[] cols = Physics.OverlapBox(transform.TransformPoint(box.center), transform.TransformVector(box.size), transform.rotation, (1 << /* ONLY Layer: */ 8));
-        foreach (Collider col in cols)
+        Collider[] col = Physics.OverlapBox(transform.position, falloff.size); //transform.TransformPoint(box.center), transform.TransformVector(box.size), transform.rotation, (1 << /* ONLY Layer: */ 8));
+        foreach (Collider coll in col)
         {
-            Rigidbody rb = col.GetComponent<Rigidbody>();
+            Rigidbody rb = coll.GetComponent<Rigidbody>();
             if (rb)
-                rb.AddForce(transform.forward * thrust);
+            {
+                //rb.AddForce(transform.forward * thrust);
+                float proximity = (transform.position - coll.transform.position).magnitude;
+                float effect = force - (proximity / falloff.size.y);
+                rb.AddExplosionForce(effect, transform.position, falloff.size.y);
+            }
         }
     }
 }
