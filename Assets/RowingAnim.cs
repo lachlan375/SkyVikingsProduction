@@ -8,7 +8,7 @@ public class RowingAnim : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rowingRef = gameObject.GetComponent<Rowing>();	
+		
 	}
 	
 	// Update is called once per frame
