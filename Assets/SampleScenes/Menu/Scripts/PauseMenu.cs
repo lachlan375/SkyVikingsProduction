@@ -4,19 +4,20 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    private Toggle m_MenuToggle;
+	private Toggle m_MenuToggle;
+
 	private float m_TimeScaleRef = 1f;
     private float m_VolumeRef = 1f;
-    private bool m_Paused;
+	private bool m_Paused = false;
 
 
-    void Awake()
+	void Awake()
     {
         m_MenuToggle = GetComponent <Toggle> ();
 	}
 
 
-    private void MenuOn ()
+	private void MenuOn ()
     {
         m_TimeScaleRef = Time.timeScale;
         Time.timeScale = 0f;
@@ -38,11 +39,11 @@ public class PauseMenu : MonoBehaviour
 
     public void OnMenuStatusChange ()
     {
-        if (m_MenuToggle.isOn && !m_Paused)
+		if (m_MenuToggle.isOn && !m_Paused)
         {
             MenuOn();
         }
-        else if (!m_MenuToggle.isOn && m_Paused)
+		else if (!m_MenuToggle.isOn && m_Paused)
         {
             MenuOff();
         }
