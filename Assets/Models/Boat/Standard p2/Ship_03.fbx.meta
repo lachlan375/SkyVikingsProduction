@@ -1,30 +1,30 @@
 fileFormatVersion: 2
-guid: 2542e9d558ed4ee43be00e0486104617
-timeCreated: 1507761729
+guid: ca35687f53a985741b644c2b8cdcc425
+timeCreated: 1507853160
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Boat_Inner_03
-    100002: Boat_Outer_03
+    100000: Boat_Inner
+    100002: Boat_outter
     100004: Flag
     100006: Sail
     100008: //RootNode
-    400000: Boat_Inner_03
-    400002: Boat_Outer_03
+    400000: Boat_Inner
+    400002: Boat_outter
     400004: Flag
     400006: Sail
     400008: //RootNode
-    2300000: Boat_Inner_03
-    2300002: Boat_Outer_03
+    2300000: Boat_Inner
+    2300002: Boat_outter
     2300004: Flag
     2300006: Sail
-    3300000: Boat_Inner_03
-    3300002: Boat_Outer_03
+    3300000: Boat_Inner
+    3300002: Boat_outter
     3300004: Flag
     3300006: Sail
-    4300000: Boat_Outer_03
-    4300002: Boat_Inner_03
+    4300000: Boat_Inner
+    4300002: Boat_outter
     4300004: Flag
     4300006: Sail
     9500000: //RootNode
