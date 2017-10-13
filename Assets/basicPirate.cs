@@ -17,14 +17,14 @@ public class basicPirate : MonoBehaviour {
 	void Update () {
         if(theBoat.Alert == true)
         {
+            theBoat.cannon.transform.transform.LookAt(theBoat.Player);
             if (theBoat.ReachedDesnation == true)
         {
            if(fired == false)
             {
-                    theBoat.cannon.transform.transform.LookAt(theBoat.Player);
-                    StartCoroutine(fireTheCanons());
+                     StartCoroutine(fireTheCanons());
                     fired = true;
-                   
+                    Debug.Log("boom");
             }
         }
         }
@@ -34,7 +34,7 @@ public class basicPirate : MonoBehaviour {
     {
  
         var theSpell = Instantiate(Spell, theBoat.cannon.transform.position, transform.rotation);
-        theSpell.GetComponent<steallCargo>().CargotoSteal = caroToSteal;
+        theSpell.GetComponent<SpellcCntroller>().CargotoSteal = caroToSteal;
 
         Debug.Log("shoot");
             yield return new WaitForSeconds(realodTime);
