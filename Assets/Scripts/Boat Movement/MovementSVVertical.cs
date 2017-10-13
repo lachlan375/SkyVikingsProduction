@@ -27,6 +27,7 @@ public class MovementSVVertical : MonoBehaviour {
 
 	public float rowingPower;
 
+    public bool rowingPausedCheck;
     public bool movingCheck;
     
     // Use this for initialization
@@ -57,13 +58,15 @@ public class MovementSVVertical : MonoBehaviour {
 
 
     //Function called from Movement Controller  to current class with latest INT counter
-    public void MoveVertUpdate(int speedIntRef, bool is_moving)
+    public void MoveVertUpdate(int speedIntRef, bool is_rowingPaused, bool is_moving)
     {
         currentSpeedInt = speedIntRef;
         speedCurrentVal = minSpeedArray[currentSpeedInt];
 		rowingCurrentVal = rowingSpeedArray [currentSpeedInt];
 
-		movingCheck = is_moving;
+        rowingPausedCheck = is_rowingPaused;
+
+        movingCheck = is_moving;
     }
 
 
