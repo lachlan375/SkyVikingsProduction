@@ -6,44 +6,52 @@ using UnityEngine.UI;
 
 public class Geyser : MonoBehaviour
 {
-    public float force = 100;
+    public float force, explosionRadius;
+    float wait, rand;
 
     public AudioClip whoosh;
 
-    private ParticleSystem particle;
-    BoxCollider falloff;
+    ParticleSystem particle;
 
     void Start()
     {
-        falloff = gameObject.GetComponent<BoxCollider>();
         particle = gameObject.GetComponent<ParticleSystem>();
-        StartCoroutine(Push());
+        rand = Random.Range(3.0f, 7.0f);
     }
 
-    IEnumerator Push()
+    void Update()
     {
-        while (enabled)
+        wait += Time.deltaTime;
+
+        if (wait >= rand)
         {
-            particle.Play();
-            ApplyForce();
-            AudioSource.PlayClipAtPoint(whoosh, transform.position, 1f);
-            yield return new WaitForSeconds(5);
+            DOTHINGFUCK();
+            wait = 0;
+            rand = Random.Range(3.0f, 7.0f);
         }
+    }
+
+    void DOTHINGFUCK()
+    {
+        particle.Play();
+        ApplyForce();
+        AudioSource.PlayClipAtPoint(whoosh, transform.position, 1f);
     }
 
     void ApplyForce()
     {
         BoxCollider box = gameObject.GetComponent<BoxCollider>();
-        Collider[] col = Physics.OverlapBox(transform.position, falloff.size); //transform.TransformPoint(box.center), transform.TransformVector(box.size), transform.rotation, (1 << /* ONLY Layer: */ 8));
+        Collider[] col = Physics.OverlapBox(transform.position, Vector3.Scale(box.size, transform.lossyScale * 0.5f), transform.rotation);
         foreach (Collider coll in col)
         {
             Rigidbody rb = coll.GetComponent<Rigidbody>();
             if (rb)
             {
                 //rb.AddForce(transform.forward * thrust);
+                //Vector3 direction = col
                 float proximity = (transform.position - coll.transform.position).magnitude;
-                float effect = force - (proximity / falloff.size.y);
-                rb.AddExplosionForce(effect, transform.position, falloff.size.y);
+                float effect = force - (proximity / explosionRadius);
+                rb.AddForce(transform.up * effect, ForceMode.Force);
             }
         }
     }
