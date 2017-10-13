@@ -55,14 +55,14 @@ public class MovementInputController : MonoBehaviour {
             moveHorizontal = Input.GetAxis("Horizontal");
         }
 
-        if (Input.GetKeyDown("VerticalCancel"))
+        /*if (Input.GetKeyDown("VerticalCancel"))
         {
             /*movePaused = Input.GetAxis("VerticalCancel");
-            VertCancelationCheck(movePaused);*/
+            VertCancelationCheck(movePaused);
             is_rowingPaused = true;
 
         }
-        else { is_rowingPaused = false; }
+        else { is_rowingPaused = false; }*/
 
         vertRef.MoveVertUpdate(currentSpeedInt, is_rowingPaused, is_moving);
 		horizRef.MoveHorizUpdate (currentSpeedInt);
