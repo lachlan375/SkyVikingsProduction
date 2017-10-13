@@ -14,11 +14,15 @@ public class MovementInputController : MonoBehaviour {
     [Header("Movement Input")]
     public float moveVertical;
     public float moveHorizontal;
+    public float movePaused;
+    [Tooltip("Time allowed for ship activation/deactivation")]
+    public float time;
 
     [Header("Ship Speed Settings")]
     public int currentSpeedInt; //ref for Current SpeedVar array
     public int totalSpeedInt;	//TOTAL length counter SpeedVar array
 
+    public bool is_rowingPaused;
     public bool is_moving;
     
 
@@ -46,28 +50,35 @@ public class MovementInputController : MonoBehaviour {
             MovementCheck(moveVertical);
         }
 
-
         if (Input.GetButtonDown("Horizontal"))
         {
             moveHorizontal = Input.GetAxis("Horizontal");
         }
 
-		vertRef.MoveVertUpdate(currentSpeedInt, is_moving);
+        if (Input.GetKeyDown("VerticalCancel"))
+        {
+            /*movePaused = Input.GetAxis("VerticalCancel");
+            VertCancelationCheck(movePaused);*/
+            is_rowingPaused = true;
 
+        }
+        else { is_rowingPaused = false; }
+
+        vertRef.MoveVertUpdate(currentSpeedInt, is_rowingPaused, is_moving);
 		horizRef.MoveHorizUpdate (currentSpeedInt);
-                
     }
 
     public void MovementCheck(float movementInput)
     {
         if (movementInput > 0)
         {
+            //CHECK to see if PLAYER is moving under the Speed limit
             if (currentSpeedInt < totalSpeedInt)
             {
                 Debug.Log("Current Speed increased!!!");
                 currentSpeedInt++;
 
-                //Check to see if boat is stationary
+                //CHECK to see if PLAYER is moving
                 if (currentSpeedInt != 1)
                 {
                     is_moving = true;
@@ -83,15 +94,12 @@ public class MovementInputController : MonoBehaviour {
                 Debug.Log("Speed limit Reached!!!");
                 currentSpeedInt = totalSpeedInt;
             }
-
         }
-
-        //Checking to see IF GOING BACKWARD
+        //CHECK to see INPUT (Vertical Movement) is going backwards
         else if (moveVertical < 0)
         {
             if (currentSpeedInt > 0)
             {
-                
                 Debug.Log("Current Speed slowed down!!!");
 
                 currentSpeedInt--;
@@ -102,22 +110,56 @@ public class MovementInputController : MonoBehaviour {
 				{
 					is_moving = true;
 				}
-
             }
             else
             {
                 Debug.Log("Speed levels at Minimum acceptable level");
-                
             }
         }
-
     // Call functions from Vert/Horizontal/Rowing Movement scripts AND pass on the current speed INT coutnerz
 		/*vertRef.MoveVertUpdate(currentSpeedInt, is_moving);
         
 		horizRef.MoveHorizUpdate (currentSpeedInt);
         //rowRef.RowStatUpdate(currentSpeedInt);*/
+    }
+
+    public void VertCancelationCheck(float vertCanceled)
+    {
 
     }
 
+    /// <summary>
+    /// Called when player movement options need to be Activated/Deactivated
+    /// </summary>
+    /// <param name="inputMovementAllowed"></param>
+
+    //Method that is called to CHECK if player object should be paused, or restarted
+    public void MovementActivationCall(bool inputMovementAllowed)
+    {
+        if (!inputMovementAllowed)
+        {
+            Debug.Log("TURN OFF Movement Controller");
+            //horizRef.enabled = false;
+            vertRef.enabled = false;
+        }
+        else
+        {
+            StartCoroutine(MovementPause());
+        }
+    }
+
+    //Coroutine function called from MovementActivationCall.
+    //Resets player movement, but only after a pause.
+    IEnumerator MovementPause()
+    {
+
+        Debug.Log("TURN ON Movement Controller REQUESTED");
+        yield return new WaitForSeconds(3.0f);
+        Debug.Log("TURN ON Movement Controller ACTIVATED");
+        
+        vertRef.MoveVertUpdate(1, false ,false);
+        vertRef.enabled = true;
+    }
+    
 
 }

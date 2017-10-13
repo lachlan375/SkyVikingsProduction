@@ -18,9 +18,12 @@ public class theShip : MonoBehaviour {
     public bool fanncyShiping;
     public float time;
     public bool yes;
-	void Start () {
- 
 
+    public MovementInputController movementController;
+
+	void Start () {
+
+        
     }
 
     // Update is called once per frame
@@ -30,14 +33,20 @@ public class theShip : MonoBehaviour {
 
     public void loadTheboat(int TownID,int QuestID)
     {
+        //var s2 = gameObject.Ge
+        movementController.MovementActivationCall(false);
         Debug.Log(Cargoslots.Length);
         for(int i =0; i< Cargoslots.Length; i++)
         {
             var Abox = Instantiate(theQuest.Quests[TownID].AvailableQuests[QuestID].TheCargo[0].theCargo, new Vector3(Cargoslots[i].transform.position.x, shipsDeack.transform.position.y, Cargoslots[i].transform.position.z), Quaternion.identity);
             Abox.transform.parent = CargoHold.transform;
             Thecargo.Add(Abox);
+            
         }
-    
+        movementController.MovementActivationCall(true);
+
+
+
 
     }
     public void destoyCargo()

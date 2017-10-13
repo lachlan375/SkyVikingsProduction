@@ -42,7 +42,7 @@ public class Rowing : MonoBehaviour {
 	{
 		//Editing CHECK Just a check to see if function is ENABLED
 
-			rowerAnimPort.SetBool ("isRowing", moveVertRef.movingCheck);
+			rowerAnimPort.SetBool ("isRowing", "isRowingPaused", moveVertRef.movingCheck, moveVertRef.row);
 			rowerAnimSB.SetBool ("isRowing", moveVertRef.movingCheck);
 
 			if (moveVertRef.movingCheck == true)
@@ -55,15 +55,24 @@ public class Rowing : MonoBehaviour {
 			}
 			
 			if (moveVertRef.speedCurrentVal != 0) {
-				if (slow == false) {
-					StartCoroutine(speedAcceleration());
-					Debug.Log ("speed coroutine started");
-				}
-				else if (slow == true)
-				{
-					StartCoroutine(speedDecay());
-				}
 
+                if (!moveVertRef.rowingPausedCheck)
+                    {
+                    
+                        if (slow == false) {
+                            StartCoroutine(speedAcceleration());
+                            Debug.Log("speed coroutine started");
+                        }
+                        else if (slow == true)
+                        {
+                            StartCoroutine(speedDecay());
+                        }
+
+                    }
+                else
+                {
+                    StartCoroutine(speedPause());
+                }
 			}
 
 			//rb.AddForce (transform.forward * speedVarArray[currentSpeedInt];
@@ -115,7 +124,16 @@ public class Rowing : MonoBehaviour {
 
 	}
 
-	/*public void speedAcceleration()
+    IEnumerator speedPause()
+    {
+        while (moveVertRef.rowingPausedCheck)
+        {
+            moveVertRef.rowingCurrentVal -= velocity;
+            yield return new WaitForSeconds(time);
+        }
+    }
+
+    /*public void speedAcceleration()
 	{
 
 			if (moveVertRef.rowingCurrentVal > moveVertRef.rowingSpeedMax)
@@ -130,8 +148,8 @@ public class Rowing : MonoBehaviour {
 			}
 
 	}*/
-    
-	/*
+
+    /*
 	//REFERENCE FOR Priorr version setup
 	//Mix of my code and Lucy's
 

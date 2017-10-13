@@ -23,6 +23,9 @@ public class QuestUI : MonoBehaviour {
     public theShip Ship;
     public GameObject newQuests;
     public GameObject dayover;
+
+    [Tooltip("Pause and Unpause Menu fuctionality")]
+    public PauseMenuActivation pauseMenu;
     // Use this for initialization
     void Start () {
         QuestsMenu.SetActive(false);
@@ -34,8 +37,9 @@ public class QuestUI : MonoBehaviour {
         flavorText.text = Quests[0].flavorText;
         QuestOver.SetActive(true);
         menuSetup(0);
-            
-      }
+        
+
+    }
     public void queestOver()
     {
         dayover.SetActive(true);
@@ -55,7 +59,9 @@ public class QuestUI : MonoBehaviour {
                 menuSetup(i);
             }
         }
-     }
+        //Pause Menu is activated when Fucnction QuestUI is turned On
+        pauseMenu.MenuOn();
+    }
     public void  menuSetup(int townID)
     {
         bool questsAvalable = true;
@@ -90,22 +96,26 @@ public class QuestUI : MonoBehaviour {
     }
     public void Quit()
     {
+        
         QuestOver.SetActive(false);
         QuestsMenu.SetActive(false);
         ThePlayer.TheQuestComplet = false;
+        pauseMenu.MenuOff();
     }
     public void takeAnewQuest()
     {
+        
         QuestOver.SetActive(false);
         QuestsMenu.SetActive(true);
         ThePlayer.TheQuestComplet = false;
+        
 
     }
     public void endDay()
     {
         Debug.Log("dayover");
       ///  SceneManager.LoadScene(Dayover);
-
+      //// something lachlan needs to sort out
     }
     public void startQuest(string QuestName)
     {
@@ -120,6 +130,6 @@ for(int i=0; i<Quests[ID].AvailableQuests.Count; i++)
                 QuestsMenu.SetActive(false);
             }
         }
-
+        pauseMenu.MenuOff();
     }
 }
