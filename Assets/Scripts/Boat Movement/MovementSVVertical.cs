@@ -15,7 +15,7 @@ public class MovementSVVertical : MonoBehaviour {
 	//Speed References
 	public int currentSpeedInt; //ref for Current SpeedVar array
 	[Tooltip("Array to store BASE speeds of boat.  Will be sent to movement controller in init function")]
-	public float[] speedVarArray = new float[5];
+	public float[] minSpeedArray = new float[5];
 	public float speedCurrentVal;
 
 	[Tooltip("From BASE speed to ROWING speed")]
@@ -60,7 +60,7 @@ public class MovementSVVertical : MonoBehaviour {
     public void MoveVertUpdate(int speedIntRef, bool is_moving)
     {
         currentSpeedInt = speedIntRef;
-        speedCurrentVal = speedVarArray[currentSpeedInt];
+        speedCurrentVal = minSpeedArray[currentSpeedInt];
 		rowingCurrentVal = rowingSpeedArray [currentSpeedInt];
 
 		movingCheck = is_moving;
