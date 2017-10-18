@@ -8,6 +8,7 @@ public class SpellcCntroller : MonoBehaviour {
     public bool hit;
     public float timer;
     public float maxTime;
+    public bool pirate;
     public int CargotoSteal;
     void OnEnable()
     {
@@ -34,18 +35,27 @@ public class SpellcCntroller : MonoBehaviour {
             Efeacts[1].SetActive(true);
             hit = true;
         }
+
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Boat"))
+        if(pirate == true)
         {
-            hit = true;
-            Debug.Log("push a thing ");
-            other.gameObject.GetComponent<theShip>().removeCargo(CargotoSteal);
-            Destroy(gameObject);
+            if (other.tag.Equals("Boat"))
+            {
+                hit = true;
+                Debug.Log("push a thing ");
+                other.gameObject.GetComponent<theShip>().removeCargo(CargotoSteal);
+                Destroy(gameObject);
+            }
+
         }
 
 
+    }
+    public void finshed()
+    {
+        Destroy(gameObject);
     }
 
 }
