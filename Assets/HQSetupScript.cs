@@ -9,7 +9,7 @@ public class HQSetupScript : MonoBehaviour {
     public Transform hqSetupTransform;
     public bool is_ActiveHQMode;        //flag to check if HQ Mode is active
 
-    public GameObject longBoat;
+    //public GameObject longBoat;
     
     
 	

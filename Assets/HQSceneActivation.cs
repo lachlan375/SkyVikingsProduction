@@ -33,7 +33,7 @@ public class HQSceneActivation : MonoBehaviour {
     {
         if (is_ActiveHQMode == true)
         {
-            SceneManager.LoadScene("HQ");
+            //SceneManager.LoadScene("HQ");
         }
     }
 }

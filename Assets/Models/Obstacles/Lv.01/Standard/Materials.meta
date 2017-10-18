@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Models/Obstacles/Lv.01/Standard/Materials.meta
 guid: d375e8735dfe7fb43896b53b5e3f6c73
 folderAsset: yes
 timeCreated: 1508295374
+=======
+guid: 204f9fab22b3cad479772f088ba2a74d
+folderAsset: yes
+timeCreated: 1508290397
+>>>>>>> b66c843eb09466d729fe884804fbeefdd595da23:Assets/Models/Obstacles/Lv.01/Standard/Materials.meta
 licenseType: Free
 DefaultImporter:
   userData: 
