@@ -19,6 +19,10 @@ public class ShipStats : MonoBehaviour
     public float maxSpeed;
     public float minSpeed;
 
+	[Header("Ship Progress")]
+	public int currentShip;
+	public int totalShips;
+
     void Awake()
     {
         if (instance == null)
@@ -34,4 +38,16 @@ public class ShipStats : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
     }
+
+	void Start ()
+	{
+		totalShips = shipsArray.Length;
+	}
+
+	public void NewShip()
+	{
+		
+	}
+
+
 }
