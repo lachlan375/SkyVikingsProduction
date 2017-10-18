@@ -22,21 +22,14 @@ public class gunContoler : MonoBehaviour {
 	void Update () {
 		if(Isfireing == true)
         {
-            shotcouter++;
-            var theSpell = Instantiate(bullet, fireponit.transform.position, fireponit.transform.rotation);
-            if (pirateShip == true)
-            {
-                theSpell.GetComponent<SpellcCntroller>().CargotoSteal = caroToSteal;
-            }
-            if(shotcouter >= maxshots)
-            {
-                Isfireing = false;
-            }
-        }
+             var theSpell = Instantiate(bullet, fireponit.transform.position, fireponit.transform.rotation);
+       }
 	}
     public void startfire(int steal)
     {
         caroToSteal = steal;
+        var theSpell = Instantiate(bullet, fireponit.transform.position, fireponit.transform.rotation);
+        theSpell.GetComponent<SpellcCntroller>().CargotoSteal = caroToSteal;
 
     }
 }
