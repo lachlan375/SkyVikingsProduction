@@ -20,6 +20,10 @@ public class playerStatUpdate : MonoBehaviour {
     public int goldLevel;
     public int respectLevel;
 
+	[Header("Ship Progress")]
+	public int currentShip;
+
+
     private int counter;
     // Use this for initialization
     void Awake()
@@ -67,13 +71,11 @@ public class playerStatUpdate : MonoBehaviour {
         if (!isGameEnded)
         {
             isGameEnded = true;
+			//need to insert death/failure canvas
+			//fade function
             levelManager.GetComponent<LevelManagment>().MainMenu();
         }
     }
-    public void Update()
-    {
-        
 
 
-    }
 }

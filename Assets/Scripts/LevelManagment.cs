@@ -73,13 +73,13 @@ public class LevelManagment : MonoBehaviour {
         }
     }
 
-    public void Update() {
+    /*public void Update() {
 
         if (goto_NxtLevel == true) {
             
             NextLevel();
         }
-    }
+    }*/
     
     IEnumerator Fading()
     {
