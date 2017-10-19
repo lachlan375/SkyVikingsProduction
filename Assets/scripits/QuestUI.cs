@@ -114,6 +114,8 @@ public class QuestUI : MonoBehaviour {
     public void endDay()
     {
         Debug.Log("dayover");
+        dayover.SetActive(true);
+        QuestOver.SetActive(false);
       ///  SceneManager.LoadScene(Dayover);
       //// something lachlan needs to sort out
     }
