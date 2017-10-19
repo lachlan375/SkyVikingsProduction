@@ -26,8 +26,8 @@ public class CameraTargetSwitch : MonoBehaviour {
     void Start()
     {
 
-        origCam = GameObject.FindGameObjectWithTag("MainCamera");
-        hqCam = GameObject.FindGameObjectWithTag("HQCamera");
+        //origCam = GameObject.FindGameObjectWithTag("MainCamera");
+        //hqCam = GameObject.FindGameObjectWithTag("HQCamera");
 
     }
 
@@ -40,17 +40,18 @@ public class CameraTargetSwitch : MonoBehaviour {
     public void CameraSwitch(bool is_swtiching)
     {
         Debug.Log("camera switch called");
-       /* if (is_swtiching)
+        if (is_swtiching)
         {
-
+            
             hqCam.SetActive(true);
-            origCam.SetActive (false);
+            origCam.SetActive(false);
+            Debug.Log("HQ Cam activated!!!");
         }
         else
         {
             hqCam.SetActive(false);
             origCam.SetActive(true);
-        }*/
+        }
     }
 
 

@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class endofDayM : MonoBehaviour {
-    public Text [] quetSlots;
+    public Text  quetSlots;
     public QuestManager quest;
      public Text gold;
     // Use this for initialization
     void OnEnable()
     {
+        int Exp = 0;
         int Gold = 0;
-
-         for(int i = 0;i< quetSlots.Length; i++)
+        if(quest.CompletQestList.Count == 0)
+        {
+            quetSlots.text = "no quests coplet ";
+        }
+         for(int i = 0;i< 20; i++)
         {
             
-            quetSlots[i].text = "";
-            if(i< quest.CompletQestList.Count)
+             if(i< quest.CompletQestList.Count)
             {
-                quetSlots[i].text = quest.CompletQestList[i].QuestName;
-                Gold += 1;
+                Exp = quest.CompletQestList[i].ExpReward * quest.CompletQestList[i].TheCargo.Count;
+                quetSlots.text += quest.CompletQestList[i].QuestName+"  Exp:"+quest.CompletQestList[i].ExpReward+ "\n";
+                Gold += 5;
+                Exp += quest.CompletQestList[i].ExpReward;
              }
              
         }
-        gold.text ="gold:" + Gold;
+        gold.text ="gold:" + Gold +"  Exp"+Exp;
 
      }
 
