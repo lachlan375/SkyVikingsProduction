@@ -18,8 +18,8 @@ public class HQSceneActivation : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        hqSetupObject = GameObject.FindGameObjectWithTag("Respawn");
-        hqSetupTransform = hqSetupObject.transform;
+        /*hqSetupObject = GameObject.FindGameObjectWithTag("Respawn");
+        hqSetupTransform = hqSetupObject.transform;*/
 
     }
 
@@ -31,9 +31,10 @@ public class HQSceneActivation : MonoBehaviour {
 
     void HQActivation()
     {
+        /*
         if (is_ActiveHQMode == true)
         {
             //SceneManager.LoadScene("HQ");
-        }
+        }*/
     }
 }

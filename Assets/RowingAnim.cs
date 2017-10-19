@@ -7,18 +7,6 @@ public class RowingAnim : MonoBehaviour {
 	public Rowing rowingRef;
 
 	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-
-
-
 
 
 	public void SpeedStart()

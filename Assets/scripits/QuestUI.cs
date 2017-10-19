@@ -113,6 +113,7 @@ public class QuestUI : MonoBehaviour {
     }
     public void endDay()
     {
+        //pauseMenu.MenuOff();
         Debug.Log("dayover");
       ///  SceneManager.LoadScene(Dayover);
       //// something lachlan needs to sort out

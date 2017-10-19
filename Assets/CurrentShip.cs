@@ -24,7 +24,7 @@ public class CurrentShip : MonoBehaviour {
 		
 		instantiatedShip = gameObject.GetComponent<ShipStats> ().shipsArray [gameObject.GetComponent<ShipStats> ().currentShip];
 
-		posHQRespawn = hqContRef.GetComponent<HQSetupScript> ().hqSetupTransform;
+		//posHQRespawn = hqContRef.GetComponent<HQSetupScript> ().hqSetupTransform;
 
 
 	}
