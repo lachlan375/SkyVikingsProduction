@@ -23,13 +23,22 @@ public class QuestManager : MonoBehaviour {
         if(CurrentQestsList[i].QueststLocation == Location)
             {
                 Debug.Log("win");
+
+                ship.reportcargo(CurrentQestsList[i].MercantscargoName);
+                if(ship.cargoDeliverd >0)
+                {
                 CurrentQestsList[i].Progress = QuestProgress.Done;
+                    CurrentQestsList[i].ExpTogive(ship.cargoDeliverd);
+                }
+                else
+                {
+                    CurrentQestsList[i].Progress = QuestProgress.NotAvailable;
+                }
                 CompletQestList.Add(CurrentQestsList[i]);
                 CurrentQestsList.Remove(CurrentQestsList[i]);
                 QestComplet.turnon(Location);
                 TheQuestComplet = true;
-                ship.destoyCargo();
-             }
+              }
         }
         
     }

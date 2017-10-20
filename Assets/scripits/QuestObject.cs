@@ -15,15 +15,17 @@ public class QuestObject : MonoBehaviour {
     public QuestUI questUI;
     [Header("Quests to give")]
     [Tooltip("Qest ID")]
+    public ObjectPriceList Caroprice;
     public List<Quest> AvailableQuests = new List<Quest>();
       public bool inTheBox;
       void Start ()
     {
-       
+        Caroprice = FindObjectOfType<ObjectPriceList>();
         TownName = gameObject.name;
  for(int i = 0; i < AvailableQuests.Count; i++)
         {
             AvailableQuests[i].setup();
+            AvailableQuests[i].price = Caroprice;
         }
 	}
 	
