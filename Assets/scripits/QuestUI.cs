@@ -24,12 +24,15 @@ public class QuestUI : MonoBehaviour {
     public GameObject newQuests;
     public GameObject dayover;
 
+    public CameraTargetSwitch targetSwitchRef;
+
     [Tooltip("Pause and Unpause Menu fuctionality")]
     public PauseMenuActivation pauseMenu;
     // Use this for initialization
     void Start () {
         QuestsMenu.SetActive(false);
         QuestOver.SetActive(false);
+
 	}
     void OnEnable()
     {
@@ -113,11 +116,19 @@ public class QuestUI : MonoBehaviour {
     }
     public void endDay()
     {
+
+        targetSwitchRef.CameraSwitch(true);
+
+        pauseMenu.MenuOff();
         Debug.Log("dayover");
         dayover.SetActive(true);
         QuestOver.SetActive(false);
+
+        
+
+
       ///  SceneManager.LoadScene(Dayover);
-      //// something lachlan needs to sort out
+        //// something lachlan needs to sort out
     }
     public void startQuest(string QuestName)
     {

@@ -73,14 +73,7 @@ public class LevelManagment : MonoBehaviour {
         }
     }
 
-    /*public void Update() {
-
-        if (goto_NxtLevel == true) {
-            
-            NextLevel();
-        }
-    }*/
-    
+  
     IEnumerator Fading()
     {
         anim.SetBool("Fade", true);

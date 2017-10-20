@@ -9,6 +9,8 @@ public class CameraSwitch : MonoBehaviour
 
     private int m_CurrentActiveObject;
 
+    //public bool acti
+
 
     private void OnEnable()
     {
