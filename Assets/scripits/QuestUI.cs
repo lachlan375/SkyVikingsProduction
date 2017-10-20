@@ -121,6 +121,7 @@ public class QuestUI : MonoBehaviour {
     }
     public void startQuest(string QuestName)
     {
+        string nameOfQuest= "";
         Debug.Log("Start qu3est ACTIVATED!!!");
 for(int i=0; i<Quests[ID].AvailableQuests.Count; i++)
         {
@@ -128,7 +129,7 @@ for(int i=0; i<Quests[ID].AvailableQuests.Count; i++)
             {
                 ThePlayer.CurrentQestsList.Add(Quests[ID].AvailableQuests[i]);
                 Quests[ID].AvailableQuests[i].Progress = QuestProgress.Accepted;
-                Ship.loadTheboat(ID, i);
+                Ship.loadTheboat(ID, i, Quests[ID].AvailableQuests[i].MercantscargoName);
                 QuestsMenu.SetActive(false);
             }
         }
