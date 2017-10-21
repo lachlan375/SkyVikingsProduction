@@ -26,16 +26,38 @@ public class Quest
     [Tooltip("Qest Requirements")]
     public int QuestObjectiveRequirements;
     [Header("Quest rewards")]
-
     [Tooltip("how much Exp to hand out")]
     public int ExpReward;
     public CargoVaule vaule;
+    public ObjectPriceList price;
+    public int goldFOrquest;
+    [Tooltip("this is to help check if  the cargo made it ")]
+    public string MercantscargoName;
     public List<CargoInformation> TheCargo = new List<CargoInformation>();
     public void setup()
     {
         QueststLocation = qestLocationGameObject.name;
+     }
+    public void ExpTogive(int caroAmount)
+    {
+        int expGive = 0;
+        if(vaule == CargoVaule.Common)
+        {
+            expGive = price.CommonVaule;
+        }
+        if (vaule == CargoVaule.Uncommon)
+        {
+            expGive = price.UncommonVale;
+        }
+        if (vaule == CargoVaule.Rare)
+        {
+            expGive = price.RareVaule;
+        }
+        for (int i = 0; i<caroAmount; i++)
+        {
+            ExpReward += expGive;
+        }
     }
-
 
 
 }

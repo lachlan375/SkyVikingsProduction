@@ -23,6 +23,7 @@ public class QuestUI : MonoBehaviour {
     public theShip Ship;
     public GameObject newQuests;
     public GameObject dayover;
+    public qustsInfo questsLists;
 
     public CameraTargetSwitch targetSwitchRef;
 
@@ -52,13 +53,13 @@ public class QuestUI : MonoBehaviour {
 
     public void turnon(string TownName)
     {
-        for(int i = 0; i<Quests.Count; i++)
+         for(int i = 0; i<Quests.Count; i++)
         {
             if (Quests[i].TownName == TownName)
             {
                 header.text = Quests[i].QuestGIverName;
                 flavorText.text = Quests[i].flavorText;
-                QuestOver.SetActive(true);
+                QuestOver.SetActive(true);             
                 menuSetup(i);
             }
         }
@@ -67,6 +68,7 @@ public class QuestUI : MonoBehaviour {
     }
     public void  menuSetup(int townID)
     {
+        questsLists.cantUse = true;
         bool questsAvalable = true;
         ID = townID;
        int textcount = 0;
@@ -99,7 +101,7 @@ public class QuestUI : MonoBehaviour {
     }
     public void Quit()
     {
-        
+        questsLists.cantUse = false;
         QuestOver.SetActive(false);
         QuestsMenu.SetActive(false);
         ThePlayer.TheQuestComplet = false;
@@ -107,7 +109,7 @@ public class QuestUI : MonoBehaviour {
     }
     public void takeAnewQuest()
     {
-        
+ 
         QuestOver.SetActive(false);
         QuestsMenu.SetActive(true);
         ThePlayer.TheQuestComplet = false;
@@ -116,7 +118,7 @@ public class QuestUI : MonoBehaviour {
     }
     public void endDay()
     {
-
+ 
         targetSwitchRef.CameraSwitch(true);
 
         pauseMenu.MenuOff();
@@ -132,6 +134,7 @@ public class QuestUI : MonoBehaviour {
     }
     public void startQuest(string QuestName)
     {
+        string nameOfQuest= "";
         Debug.Log("Start qu3est ACTIVATED!!!");
 for(int i=0; i<Quests[ID].AvailableQuests.Count; i++)
         {
@@ -139,7 +142,7 @@ for(int i=0; i<Quests[ID].AvailableQuests.Count; i++)
             {
                 ThePlayer.CurrentQestsList.Add(Quests[ID].AvailableQuests[i]);
                 Quests[ID].AvailableQuests[i].Progress = QuestProgress.Accepted;
-                Ship.loadTheboat(ID, i);
+                Ship.loadTheboat(ID, i, Quests[ID].AvailableQuests[i].MercantscargoName);
                 QuestsMenu.SetActive(false);
             }
         }

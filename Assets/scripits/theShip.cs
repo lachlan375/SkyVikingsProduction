@@ -18,7 +18,7 @@ public class theShip : MonoBehaviour {
     public bool fanncyShiping;
     public float time;
     public bool yes;
-
+    public int cargoDeliverd;
     public MovementInputController movementController;
 
 	void Start () {
@@ -31,7 +31,7 @@ public class theShip : MonoBehaviour {
 
     }
 
-    public void loadTheboat(int TownID,int QuestID)
+    public void loadTheboat(int TownID,int QuestID,string QestGIverName)
     {
         //var s2 = gameObject.Ge
         movementController.MovementActivationCall(false);
@@ -39,6 +39,7 @@ public class theShip : MonoBehaviour {
         for(int i =0; i< Cargoslots.Length; i++)
         {
             var Abox = Instantiate(theQuest.Quests[TownID].AvailableQuests[QuestID].TheCargo[0].theCargo, new Vector3(Cargoslots[i].transform.position.x, shipsDeack.transform.position.y, Cargoslots[i].transform.position.z), Quaternion.identity);
+            Abox.gameObject.name = QestGIverName;
             Abox.transform.parent = CargoHold.transform;
             Thecargo.Add(Abox);
             
@@ -49,8 +50,26 @@ public class theShip : MonoBehaviour {
 
 
     }
+    public void reportcargo( string gameobjectName)
+    {
+        cargoDeliverd = 0;
+        for(int i = 0; i< Thecargo.Count; i++)
+        {
+            if(gameobjectName == Thecargo[i].name)
+            {
+                cargoDeliverd++;
+                Debug.Log("i was hit");
+                Destroy(Thecargo[i]);
+                Thecargo.Remove(Thecargo[i]);
+                i -= 1;
+            }
+        }
+  
+
+    }
     public void destoyCargo()
     {
+        
         while (Cargoslots.Length >0)
         {
              

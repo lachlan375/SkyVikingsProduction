@@ -7,7 +7,7 @@ public class DayOver : MonoBehaviour {
     public Text [] thetext;
      public int couter;
     public GameObject []  nextAndBack;
-   
+  public  
     public string nubers;
     public ObjectPriceList price;
     public int score;

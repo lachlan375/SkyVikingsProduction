@@ -32,13 +32,12 @@ public class CameraTargetSwitch : MonoBehaviour {
 
     
 
-
     public void CameraSwitch(bool is_swtiching)
     {
         Debug.Log("camera switch called");
         if (is_swtiching)
         {
-            
+
             hqCam.SetActive(true);
             origCam.SetActive(false);
             Debug.Log("HQ Cam activated!!!");
@@ -60,5 +59,6 @@ public class CameraTargetSwitch : MonoBehaviour {
 
 
 	}
+
 
 }
