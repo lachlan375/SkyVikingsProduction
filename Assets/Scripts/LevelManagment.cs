@@ -15,9 +15,7 @@ public class LevelManagment : MonoBehaviour {
     public static LevelManagment instance = null;
 
 
-	public float [] levelUnlock_boss;
-
-    public bool goto_NxtLevel;
+	public bool goto_NxtLevel;
     
 
 

@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HQSceneMode : MonoBehaviour {
-	public int sceneMode;
-
-	public float [] level_Upgrade;
+public class stuffexample : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,10 +12,5 @@ public class HQSceneMode : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-	}
-
-	public void sceneMode_StatusCheck()
-	{
-			
 	}
 }
