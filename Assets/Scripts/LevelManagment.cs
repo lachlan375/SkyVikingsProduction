@@ -14,6 +14,9 @@ public class LevelManagment : MonoBehaviour {
 
     public static LevelManagment instance = null;
 
+
+	public float [] levelUnlock_boss;
+
     public bool goto_NxtLevel;
     
 
@@ -73,18 +76,13 @@ public class LevelManagment : MonoBehaviour {
         }
     }
 
-    /*public void Update() {
-
-        if (goto_NxtLevel == true) {
-            
-            NextLevel();
-        }
-    }*/
-    
+  
     IEnumerator Fading()
     {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(()=> black.color.a == 1);
         
     }
+
+
 }

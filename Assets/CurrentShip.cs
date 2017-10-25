@@ -5,6 +5,7 @@ using UnityEngine;
 public class CurrentShip : MonoBehaviour {
 
 	public GameObject instantiatedShip;
+    public GameObject currentShip;
 
 	public Transform posShipCurrent;
 	public Transform posShipTransformTo;
@@ -21,25 +22,56 @@ public class CurrentShip : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-		instantiatedShip = gameObject.GetComponent<ShipStats> ().shipsArray [gameObject.GetComponent<ShipStats> ().currentShip];
+		posHQRespawn = GameObject.FindGameObjectWithTag("Respawn").transform;
 
-		posHQRespawn = hqContRef.GetComponent<HQSetupScript> ().hqSetupTransform;
-
-
-	}
+        NewHQShip_Spawn();
+    }
 	
 
 	void Update()
 	{
-		SpawnShipHQ ();
+        CurrentShipHQ_Spawn();
 	}
 
-	void SpawnShipHQ()
+    void ShipHQInstantiation()
+    {
+        if (currentShip != instantiatedShip)
+        {
+            NewHQShip_Spawn();
+        }
+        else
+        {
+            CurrentShipHQ_Spawn();
+        }
+    }
+
+    void CurrentShipHQ_Spawn()
 	{
 		if (is_spawning == true) 
 		{
-			//instantiatedShip.GetComponent<Transform>().transform = posHQRespawn;
-		}
+            currentShip.transform.position = posHQRespawn.transform.position;
+            is_spawning = false;
+        }
+
+
 	}
+
+    void NewHQShip_Spawn()
+    {
+        Destroy(currentShip);
+
+        instantiatedShip = gameObject.GetComponent<ShipStats>().shipsArray[gameObject.GetComponent<ShipStats>().currentShip];
+
+        currentShip = instantiatedShip;
+        currentShip = Instantiate(currentShip);
+        currentShip.transform.parent = transform;
+
+        currentShip.transform.position = posHQRespawn.transform.position;
+    }
+
+    void instantiatedShipUpdate()
+    {
+
+    }
+
 }

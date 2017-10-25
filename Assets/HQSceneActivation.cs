@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class HQSceneActivation : MonoBehaviour {
 
-    private GameObject hqSetupObject;
-    public Transform hqSetupTransform;
+    
+    public Transform hqTransform;
     public bool is_ActiveHQMode;        //flag to check if HQ Mode is active
 
-    public GameObject hq_Cam;
+    public GameObject playerContRef;
+    //public CurrentShip instantBoat;
+    public GameObject currentBoat;
+
 
     public Scene hq_Scene;
     public string hqString;
@@ -18,22 +21,39 @@ public class HQSceneActivation : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        hqSetupObject = GameObject.FindGameObjectWithTag("Respawn");
-        hqSetupTransform = hqSetupObject.transform;
+        playerContRef = GameObject.FindGameObjectWithTag("GameController");
+        currentBoat = playerContRef.GetComponent<CurrentShip>().instantiatedShip;
+
+
+        hqTransform = GameObject.FindGameObjectWithTag("Respawn").transform;
+        
+        currentBoat = GameObject.FindGameObjectWithTag("Player");
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (is_ActiveHQMode)
+        {
+            HQActivation();
+        }
 
+        else
+        {
+
+        }
     }
 
-    void HQActivation()
+    public void HQActivation()
     {
-        if (is_ActiveHQMode == true)
-        {
-            //SceneManager.LoadScene("HQ");
-        }
+        currentBoat.transform.position = hqTransform.transform.position;
+        //freeze animation + lock boat
+        //particle effect
+    }
+
+    public void HQNewBoat()
+    {
+
     }
 }

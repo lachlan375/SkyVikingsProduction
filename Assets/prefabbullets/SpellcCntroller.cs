@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpellcCntroller : MonoBehaviour {
     public float Speed;
     public GameObject [] Efeacts;
+    public ParticleSystem expload;
     public bool hit;
     public float timer;
     public float maxTime;
@@ -18,22 +19,33 @@ public class SpellcCntroller : MonoBehaviour {
         Efeacts[1].SetActive(false);
     }
     void Update () {
+        timer += 0.1f;
+
 
         if (hit == false)
         {
-        timer += 0.1f;
         transform.Translate(Vector3.forward*Speed);
         }
         if(hit == true)
         {
+
              Efeacts[0].SetActive(false);
             Efeacts[1].SetActive(true);
+            if(!expload.IsAlive())
+            {
+                Destroy(gameObject);
+            }
+
         }
       
         if(timer >= maxTime)
         {
+            if(hit == false)
+            {
             Efeacts[1].SetActive(true);
             hit = true;
+           }           
+          
         }
 
     }
@@ -43,14 +55,15 @@ public class SpellcCntroller : MonoBehaviour {
         {
             if (other.tag.Equals("Boat"))
             {
-                hit = true;
-                Debug.Log("push a thing ");
+                 if(hit == false)
+                {
                 other.gameObject.GetComponent<theShip>().removeCargo(CargotoSteal);
-                Destroy(gameObject);
+                    hit = true;
+                }
             }
 
         }
-
+        
 
     }
     public void finshed()
