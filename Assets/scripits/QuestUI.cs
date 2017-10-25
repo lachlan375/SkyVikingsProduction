@@ -25,6 +25,9 @@ public class QuestUI : MonoBehaviour {
     public GameObject dayover;
     public qustsInfo questsLists;
 
+
+	//Lachlans HQ Additions
+	public HQSceneActivation targetHQRef;
     public CameraTargetSwitch targetSwitchRef;
 
     [Tooltip("Pause and Unpause Menu fuctionality")]
@@ -118,7 +121,7 @@ public class QuestUI : MonoBehaviour {
     }
     public void endDay()
     {
- 
+		targetHQRef.HQActivation ();
         targetSwitchRef.CameraSwitch(true);
 
         pauseMenu.MenuOff();

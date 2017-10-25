@@ -26,6 +26,8 @@ public class playerStatUpdate : MonoBehaviour {
 
     private int counter;
     // Use this for initialization
+
+
     void Awake()
     {
 

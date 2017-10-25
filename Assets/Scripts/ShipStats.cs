@@ -23,6 +23,8 @@ public class ShipStats : MonoBehaviour
 	public int currentShip;
 	public int totalShips;
 
+    public bool testbool;
+
     void Awake()
     {
         if (instance == null)
@@ -44,10 +46,24 @@ public class ShipStats : MonoBehaviour
 		totalShips = shipsArray.Length;
 	}
 
+    void Update()
+    {
+        if (testbool == true)
+        {
+            NewShip();
+        }
+    }
+
 	public void NewShip()
 	{
-		
-	}
+        if (currentShip < totalShips)
+        {
+            currentShip++;
+            testbool = false;
+            
+        }
+        
+    }
 
 
 }
