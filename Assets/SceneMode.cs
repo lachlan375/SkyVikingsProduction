@@ -17,7 +17,7 @@ public class SceneMode : MonoBehaviour {
 		
 	}
 
-	public void sceneMode_StatusCheck()
+	public void sceneMode_Check()
 	{
 
             switch (sceneMode)
