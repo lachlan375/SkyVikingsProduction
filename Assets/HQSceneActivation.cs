@@ -45,7 +45,7 @@ public class HQSceneActivation : MonoBehaviour {
         }
     }
 
-    void HQActivation()
+    public void HQActivation()
     {
         currentBoat.transform.position = hqTransform.transform.position;
         //freeze animation + lock boat

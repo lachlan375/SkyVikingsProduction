@@ -31,8 +31,8 @@ public class MovementInputController : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody>();
 
-        horizRef = GetComponent<MovementHorizontal>();
-        vertRef = GetComponent<MovementSVVertical>();
+        horizRef = gameObject.GetComponent<MovementHorizontal>();
+		vertRef = gameObject.GetComponent<MovementSVVertical>();
         rowRef = GetComponent<RowerController>();
 
 
