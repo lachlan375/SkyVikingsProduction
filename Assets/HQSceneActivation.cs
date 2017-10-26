@@ -39,10 +39,7 @@ public class HQSceneActivation : MonoBehaviour {
             HQActivation();
         }
 
-        else
-        {
 
-        }
     }
 
     public void HQActivation()

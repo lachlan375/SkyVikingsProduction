@@ -1,0 +1,382 @@
+fileFormatVersion: 2
+guid: 1a0c68d602ea70c4c9e40a4a280291d9
+timeCreated: 1508976965
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Giant_arm_L_CTRL
+    100004: Giant_arm_L_CTRL_GRP
+    100006: Giant_arm_L_IKH
+    100008: Giant_arm_R_CTRL
+    100010: Giant_arm_R_CTRL_GRP
+    100012: Giant_arm_R_IKH
+    100014: Giant_chest_JNT
+    100016: Giant_clav_L_JNT
+    100018: Giant_clav_R_JNT
+    100020: Giant_elbow_L_CTRL
+    100022: Giant_elbow_L_CTRL_GRP
+    100024: Giant_elbow_L_JNT
+    100026: Giant_elbow_R_CTRL
+    100028: Giant_elbow_R_CTRL_GRP
+    100030: Giant_elbow_R_JNT
+    100032: Giant_foot_L_END
+    100034: Giant_foot_L_IKH
+    100036: Giant_foot_L_JNT
+    100038: Giant_foot_R_END
+    100040: Giant_foot_R_IKH
+    100042: Giant_foot_R_JNT
+    100044: Giant_head_END
+    100046: Giant_head_JNT
+    100048: Giant_knee_L_CTRL
+    100050: Giant_knee_L_CTRL_GRP
+    100052: Giant_knee_L_JNT
+    100054: Giant_knee_R_CTRL
+    100056: Giant_knee_R_CTRL_GRP
+    100058: Giant_knee_R_JNT
+    100060: Giant_leg_L_CTRL
+    100062: Giant_leg_L_CTRL_GRP
+    100064: Giant_leg_L_IKH
+    100066: Giant_leg_L_JNT
+    100068: Giant_leg_R_CTRL
+    100070: Giant_leg_R_CTRL_GRP
+    100072: Giant_leg_R_IKH
+    100074: Giant_leg_R_JNT
+    100076: Giant_lilfig_01_L_JNT
+    100078: Giant_lilfig_01_R_JNT
+    100080: Giant_lilfig_02_L_JNT
+    100082: Giant_lilfig_02_R_JNT
+    100084: Giant_lilfig_L_END
+    100086: Giant_lilfig_R_END
+    100088: Giant_mid_JNT
+    100090: Giant_midfig_01_L_JNT
+    100092: Giant_midfig_01_R_JNT
+    100094: Giant_midfig_02_L_JNT
+    100096: Giant_midfig_02_R_JNT
+    100098: Giant_midfig_L_END
+    100100: Giant_midfig_R_END
+    100102: Giant_neck_JNT
+    100104: Giant_palm_L_JNT
+    100106: Giant_palm_R_JNT
+    100108: Giant_rig_GRP
+    100110: Giant_root_CTRL
+    100112: Giant_root_CTRL_GRP
+    100114: Giant_root_JNT
+    100116: Giant_shoulder_L_JNT
+    100118: Giant_shoulder_R_JNT
+    100120: Giant_thumb_01_L_JNT
+    100122: Giant_thumb_01_R_JNT
+    100124: Giant_thumb_02_L_JNT
+    100126: Giant_thumb_02_R_JNT
+    100128: Giant_thumb_L_END
+    100130: Giant_thumb_R_END
+    100132: Giant_toes_L_JNT
+    100134: Giant_toes_R_JNT
+    100136: Giant_wrist_L_JNT
+    100138: Giant_wrist_R_JNT
+    100140: IceGiant_MESH
+    100142: pile
+    100144: Snowball
+    400000: //RootNode
+    400002: Giant_arm_L_CTRL
+    400004: Giant_arm_L_CTRL_GRP
+    400006: Giant_arm_L_IKH
+    400008: Giant_arm_R_CTRL
+    400010: Giant_arm_R_CTRL_GRP
+    400012: Giant_arm_R_IKH
+    400014: Giant_chest_JNT
+    400016: Giant_clav_L_JNT
+    400018: Giant_clav_R_JNT
+    400020: Giant_elbow_L_CTRL
+    400022: Giant_elbow_L_CTRL_GRP
+    400024: Giant_elbow_L_JNT
+    400026: Giant_elbow_R_CTRL
+    400028: Giant_elbow_R_CTRL_GRP
+    400030: Giant_elbow_R_JNT
+    400032: Giant_foot_L_END
+    400034: Giant_foot_L_IKH
+    400036: Giant_foot_L_JNT
+    400038: Giant_foot_R_END
+    400040: Giant_foot_R_IKH
+    400042: Giant_foot_R_JNT
+    400044: Giant_head_END
+    400046: Giant_head_JNT
+    400048: Giant_knee_L_CTRL
+    400050: Giant_knee_L_CTRL_GRP
+    400052: Giant_knee_L_JNT
+    400054: Giant_knee_R_CTRL
+    400056: Giant_knee_R_CTRL_GRP
+    400058: Giant_knee_R_JNT
+    400060: Giant_leg_L_CTRL
+    400062: Giant_leg_L_CTRL_GRP
+    400064: Giant_leg_L_IKH
+    400066: Giant_leg_L_JNT
+    400068: Giant_leg_R_CTRL
+    400070: Giant_leg_R_CTRL_GRP
+    400072: Giant_leg_R_IKH
+    400074: Giant_leg_R_JNT
+    400076: Giant_lilfig_01_L_JNT
+    400078: Giant_lilfig_01_R_JNT
+    400080: Giant_lilfig_02_L_JNT
+    400082: Giant_lilfig_02_R_JNT
+    400084: Giant_lilfig_L_END
+    400086: Giant_lilfig_R_END
+    400088: Giant_mid_JNT
+    400090: Giant_midfig_01_L_JNT
+    400092: Giant_midfig_01_R_JNT
+    400094: Giant_midfig_02_L_JNT
+    400096: Giant_midfig_02_R_JNT
+    400098: Giant_midfig_L_END
+    400100: Giant_midfig_R_END
+    400102: Giant_neck_JNT
+    400104: Giant_palm_L_JNT
+    400106: Giant_palm_R_JNT
+    400108: Giant_rig_GRP
+    400110: Giant_root_CTRL
+    400112: Giant_root_CTRL_GRP
+    400114: Giant_root_JNT
+    400116: Giant_shoulder_L_JNT
+    400118: Giant_shoulder_R_JNT
+    400120: Giant_thumb_01_L_JNT
+    400122: Giant_thumb_01_R_JNT
+    400124: Giant_thumb_02_L_JNT
+    400126: Giant_thumb_02_R_JNT
+    400128: Giant_thumb_L_END
+    400130: Giant_thumb_R_END
+    400132: Giant_toes_L_JNT
+    400134: Giant_toes_R_JNT
+    400136: Giant_wrist_L_JNT
+    400138: Giant_wrist_R_JNT
+    400140: IceGiant_MESH
+    400142: pile
+    400144: Snowball
+    2300000: pile
+    2300002: Snowball
+    3300000: pile
+    3300002: Snowball
+    4300000: IceGiant_MESH
+    4300002: Snowball
+    4300004: pile
+    7400000: Full_Clip
+    7400002: Roar
+    7400004: Idle
+    7400006: Throw
+    7400008: Angry
+    9500000: //RootNode
+    13700000: IceGiant_MESH
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Full_Clip
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 810
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Roar
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 120
+      lastFrame: 260
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Throw
+      takeName: Take 001
+      firstFrame: 260
+      lastFrame: 400
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Angry
+      takeName: Take 001
+      firstFrame: 400
+      lastFrame: 810
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -30,6 +30,9 @@ public class gunContoler : MonoBehaviour {
         caroToSteal = steal;
         var theSpell = Instantiate(bullet, fireponit.transform.position, fireponit.transform.rotation);
         theSpell.GetComponent<SpellcCntroller>().CargotoSteal = caroToSteal;
-
+    }
+    public void throwSnowball()
+    {
+        Instantiate(bullet, fireponit.transform.position, fireponit.transform.rotation);
     }
 }

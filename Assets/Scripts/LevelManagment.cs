@@ -9,15 +9,14 @@ public class LevelManagment : MonoBehaviour {
     public int currentlevelInt;
     public int maxLevelInt;
 
+    public GameObject animObjectRef;
     public Image black;
     public Animator anim;
 
     public static LevelManagment instance = null;
 
 
-	public float [] levelUnlock_boss;
-
-    public bool goto_NxtLevel;
+	public bool goto_NxtLevel;
     
 
 
@@ -50,6 +49,14 @@ public class LevelManagment : MonoBehaviour {
 
     }
 
+    void Update()
+    {
+        if (goto_NxtLevel== true)
+        {
+            MainMenu();
+        }
+    }
+
     void OnSceneLoaded()
     {
         Debug.Log("New game level loaded");
@@ -62,6 +69,7 @@ public class LevelManagment : MonoBehaviour {
 
     public void MainMenu()
     {
+        StartCoroutine(Fading());
         SceneManager.LoadScene(0);
     }
 
@@ -80,8 +88,11 @@ public class LevelManagment : MonoBehaviour {
     IEnumerator Fading()
     {
         anim.SetBool("Fade", true);
-        yield return new WaitUntil(()=> black.color.a == 1);
-        
+        //Debug.Log("Fade activated");
+        yield return new WaitUntil(() => black.color.a >= .95);
+        anim.SetBool("isfadeing", true);
+        yield return new WaitUntil(() => black.color.a == 0);
+
     }
 
 
