@@ -22,7 +22,8 @@ public class QuestUI : MonoBehaviour {
     public int ID;
     public theShip Ship;
     public GameObject newQuests;
-    public GameObject dayover;
+    public GameObject canvas_HQ;  //variable previously called dayover
+    public GameObject canvas_Dayover;
     public qustsInfo questsLists;
 
 
@@ -49,7 +50,7 @@ public class QuestUI : MonoBehaviour {
     }
     public void queestOver()
     {
-        dayover.SetActive(true);
+        canvas_HQ.SetActive(true);
         Debug.Log("its over");
     }
 
@@ -119,6 +120,8 @@ public class QuestUI : MonoBehaviour {
         
 
     }
+
+    //Method to transition to HQ Activation
     public void endDay()
     {
 		targetHQRef.HQActivation ();
@@ -126,14 +129,19 @@ public class QuestUI : MonoBehaviour {
 
         pauseMenu.MenuOff();
         Debug.Log("dayover");
-        dayover.SetActive(true);
+        canvas_HQ.SetActive(true);
         QuestOver.SetActive(false);
-
         
-
-
       ///  SceneManager.LoadScene(Dayover);
         //// something lachlan needs to sort out
+    }
+
+    //Method called at End of Day by the Sun and Moon.
+    //Deactivates 'Return to base' canvas and then calls 'endDay' method
+    public void dayEnded()
+    {
+        canvas_Dayover.SetActive(false);
+        endDay();
     }
     public void startQuest(string QuestName)
     {
