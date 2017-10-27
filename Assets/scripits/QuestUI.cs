@@ -125,7 +125,7 @@ public class QuestUI : MonoBehaviour {
     public void endDay()
     {
 		targetHQRef.HQActivation ();
-        targetSwitchRef.CameraSwitch(true);
+        //targetSwitchRef.CameraSwitch(true);
 
         pauseMenu.MenuOff();
         Debug.Log("dayover");
@@ -140,7 +140,9 @@ public class QuestUI : MonoBehaviour {
     //Deactivates 'Return to base' canvas and then calls 'endDay' method
     public void dayEnded()
     {
+        Debug.Log("Day is completely over");
         canvas_Dayover.SetActive(false);
+        Debug.Log("EndDay Function called");
         endDay();
     }
     public void startQuest(string QuestName)

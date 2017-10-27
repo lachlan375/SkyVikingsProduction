@@ -25,8 +25,8 @@ public class CameraTargetSwitch : MonoBehaviour {
     void Start()
     {
 		//was going to use this code, but can't find HQCamera if object is not visible
-        /*origCam = GameObject.FindGameObjectWithTag("MainCamera");
-        hqCam = GameObject.FindGameObjectWithTag("HQCamera");*/
+        origCam = GameObject.FindGameObjectWithTag("MainCamera");
+        hqCam = GameObject.FindGameObjectWithTag("HQCamera");
 
     }
 
@@ -34,6 +34,7 @@ public class CameraTargetSwitch : MonoBehaviour {
 
     public void CameraSwitch(bool is_swtiching)
     {
+        /*
         Debug.Log("camera switch called");
         if (is_swtiching)
         {
@@ -46,7 +47,7 @@ public class CameraTargetSwitch : MonoBehaviour {
         {
             hqCam.SetActive(false);
             origCam.SetActive(true);
-        }
+        }*/
     }
 
 	IEnumerator Fading()

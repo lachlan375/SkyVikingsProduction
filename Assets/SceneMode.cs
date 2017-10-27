@@ -18,7 +18,7 @@ public class SceneMode : MonoBehaviour
     void Start()
     {
         lvlManageRef = gameObject.GetComponent<LevelManagment>();
-        //sceneMode_Check(0);
+        sceneMode_Check(0);
     }
 
     // Update is called once per frame
@@ -41,6 +41,7 @@ public class SceneMode : MonoBehaviour
 
     public void sceneMode_Check(int modeRef)
     {
+
         level_mode = modeRef;
         switch (level_mode)
         {
@@ -63,6 +64,7 @@ public class SceneMode : MonoBehaviour
 
             default:
                 modeUIRef.GetComponent<ModeUI>().LevelUI_Start();
+
                 level_mode++;
                 break;
         }

@@ -56,12 +56,14 @@ public class ShipStats : MonoBehaviour
 
 	public void NewShip()
 	{
-        if (currentShip < totalShips)
+        if (currentShip >= 0 && currentShip < totalShips)
         {
             currentShip++;
             testbool = false;
-            
+
         }
+        else
+            Debug.Log("Ship limit reached!!!");
         
     }
 
