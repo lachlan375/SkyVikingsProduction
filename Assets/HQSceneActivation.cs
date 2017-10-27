@@ -10,9 +10,9 @@ public class HQSceneActivation : MonoBehaviour {
     public bool is_ActiveHQMode;        //flag to check if HQ Mode is active
 
     public GameObject playerContRef;
-    //public CurrentShip instantBoat;
     public GameObject currentBoat;
 
+    
 
     public Scene hq_Scene;
     public string hqString;
@@ -22,12 +22,16 @@ public class HQSceneActivation : MonoBehaviour {
     void Start()
     {
         playerContRef = GameObject.FindGameObjectWithTag("GameController");
-        currentBoat = playerContRef.GetComponent<CurrentShip>().instantiatedShip;
-
+        currentBoat = playerContRef.GetComponent<CurrentShip>().currentShip;
 
         hqTransform = GameObject.FindGameObjectWithTag("Respawn").transform;
+
+        //currentBoat = playerContRef.GetComponent<CurrentShip>().currentShip;
+
+
         
-        currentBoat = GameObject.FindGameObjectWithTag("Player");
+        
+        
 
     }
 
@@ -44,9 +48,21 @@ public class HQSceneActivation : MonoBehaviour {
 
     public void HQActivation()
     {
-        currentBoat.transform.position = hqTransform.transform.position;
+
+            gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(true);
+
+
+        //currentBoat.transform.position = hqTransform.transform.position;
+
         //freeze animation + lock boat
         //particle effect
+
+    }
+    public void HQRelease()
+    {
+
+        gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(false);
+
     }
 
     public void HQNewBoat()

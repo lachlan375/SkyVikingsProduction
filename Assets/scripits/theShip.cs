@@ -22,8 +22,9 @@ public class theShip : MonoBehaviour {
     public MovementInputController movementController;
 
 	void Start () {
-
         
+        theQuest = GameObject.FindGameObjectWithTag("QuestManager").GetComponent<QuestUI>();
+        movementController = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementInputController>();
     }
 
     // Update is called once per frame

@@ -15,6 +15,8 @@ public class LevelManagment : MonoBehaviour {
 
     public static LevelManagment instance = null;
 
+    public int[] unlock_BossMode = new int [3];
+
 
 	public bool goto_NxtLevel;
     
@@ -42,6 +44,8 @@ public class LevelManagment : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        
+        
         //Redundant code transferred to Scene Transition class
        // maxLevelInt = SceneManager.sceneCountInBuildSettings;
         //--maxLevelInt;
