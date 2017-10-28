@@ -160,6 +160,11 @@ public class MovementInputController : MonoBehaviour {
         vertRef.MoveVertUpdate(1, false ,false);
         vertRef.enabled = true;
     }
+
+    public void MovementReset()
+    {
+
+    }
     
 
 }

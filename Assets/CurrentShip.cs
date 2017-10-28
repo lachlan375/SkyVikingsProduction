@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class CurrentShip : MonoBehaviour {
 
-	public GameObject instantiatedShip;
+	//public GameObject instantiatedShip;
     public GameObject currentShip;
 
-	public Transform posShipCurrent;
-	public Transform posShipTransformTo;
+	//public Transform posShipCurrent;
+	//public Transform posShipTransformTo;
 	public Transform posHQRespawn;
 
-	public GameObject hqContRef;
+	//public GameObject hqContRef;
 
 
-	public float spawnOffSet;
+	//public float spawnOffSet;
 
 	public bool is_spawning;
 
@@ -33,22 +33,11 @@ public class CurrentShip : MonoBehaviour {
         CurrentShipHQ_Spawn();
 	}
 
-    void ShipHQInstantiation()
-    {
-        if (currentShip != instantiatedShip)
-        {
-            NewHQShip_Spawn();
-        }
-        else
-        {
-            CurrentShipHQ_Spawn();
-        }
-    }
-
     void CurrentShipHQ_Spawn()
 	{
 		if (is_spawning == true) 
 		{
+
             currentShip.transform.position = posHQRespawn.transform.position;
             is_spawning = false;
         }
@@ -58,12 +47,15 @@ public class CurrentShip : MonoBehaviour {
 
     void NewHQShip_Spawn()
     {
+
         Destroy(currentShip);
 
-        instantiatedShip = gameObject.GetComponent<ShipStats>().shipsArray[gameObject.GetComponent<ShipStats>().currentShip];
+        currentShip = gameObject.GetComponent<ShipStats>().shipsArray[gameObject.GetComponent<ShipStats>().currentShip];
 
-        currentShip = instantiatedShip;
+        
         currentShip = Instantiate(currentShip);
+
+        //pair currentship to gameobject tree as a child
         currentShip.transform.parent = transform;
 
         currentShip.transform.position = posHQRespawn.transform.position;

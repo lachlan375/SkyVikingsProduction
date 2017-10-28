@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class DayOver : MonoBehaviour {
-    public playerStats stats;
+    
     public Text [] thetext;
      public int couter;
     public GameObject []  nextAndBack;
@@ -14,13 +14,28 @@ public class DayOver : MonoBehaviour {
     public GameObject ui;
     public sunAndmoon sunDown;
     public bool dayover;
+
+    public playerStats stats;
+    public LevelManagment lvlManagerRef;
+    public SceneMode scnModeRef;
+    public HQSceneActivation hqSceneRef;
     // Use this for initialization
+
+
+    void Start()
+    {
+        scnModeRef = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneMode>();
+        lvlManagerRef = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManagment>();
+        hqSceneRef = GameObject.FindGameObjectWithTag("HQCamera").GetComponent<HQSceneActivation>();
+
+
+    }
     void OnEnable()
     {
 
     }
         // Update is called once per frame
-        void Update () {
+    void Update () {
 		
 	}
     public void cargo()
@@ -35,7 +50,20 @@ public class DayOver : MonoBehaviour {
     }
     public void ANewday()
     {
-    
+        int modeRef;
+        //status check
+        if (stats.respectLevel > lvlManagerRef.unlock_BossMode[lvlManagerRef.currentlevelInt])
+        {
+            modeRef = 2;
+        }
+        else
+        {
+            modeRef = 1;
+        }
+        
+        gameObject.SetActive(false);
+        scnModeRef.sceneMode_Check(modeRef);
+        hqSceneRef.HQRelease();
 
     }
     public void back()

@@ -39,8 +39,9 @@ public class sunAndmoon : MonoBehaviour {
     }
     public void dayoverScreen()
     {
+        //Time.timeScale = 0;
         endDay.SetActive(true);
-        TimeStop = true;
+        //TimeStop = true;
 
     }
 }
