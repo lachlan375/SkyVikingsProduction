@@ -41,6 +41,7 @@ public class HQSceneActivation : MonoBehaviour {
         if (is_ActiveHQMode)
         {
             HQActivation();
+			is_ActiveHQMode = false;
         }
 
 
@@ -49,10 +50,10 @@ public class HQSceneActivation : MonoBehaviour {
     public void HQActivation()
     {
 
-            gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(true);
+            //gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(true);
 
-
-        //currentBoat.transform.position = hqTransform.transform.position;
+		playerContRef.GetComponent<MovementInputController> ().MovementReset();
+        currentBoat.transform.position = hqTransform.transform.position;
 
         //freeze animation + lock boat
         //particle effect
@@ -61,7 +62,7 @@ public class HQSceneActivation : MonoBehaviour {
     public void HQRelease()
     {
 
-        gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(false);
+        //gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(false);
 
     }
 

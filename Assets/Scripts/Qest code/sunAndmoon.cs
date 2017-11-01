@@ -9,6 +9,8 @@ public class sunAndmoon : MonoBehaviour {
     public GameObject moon;
     public GameObject endDay;  
 
+	public bool endDay_Triggered = false;
+
  	// Use this for initialization
 	void Start () {
  
@@ -24,12 +26,15 @@ public class sunAndmoon : MonoBehaviour {
             transform.Rotate(Vector3.right *speed*Time.deltaTime);
              Vector3 Angles = transform.eulerAngles;
             transform.eulerAngles = Angles;
-            if(Angles.x >= 180)
-            {
-                dayoverScreen();
-                Debug.Log("end day");
+			if (Angles.x >= 180) {
+				if (endDay_Triggered == false) {
+					dayoverScreen ();
+					endDay_Triggered = true;
+				}
+				Debug.Log ("end day");
  
-            }
+			} else
+				endDay_Triggered = false;
         }
 
     }

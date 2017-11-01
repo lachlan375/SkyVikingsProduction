@@ -29,10 +29,11 @@ public class MovementInputController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        rb = GetComponent<Rigidbody>();
+		rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
 
-        horizRef = gameObject.GetComponent<MovementHorizontal>();
-		vertRef = gameObject.GetComponent<MovementSVVertical>();
+		horizRef = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementHorizontal>();
+
+		vertRef = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementSVVertical>();
         rowRef = GetComponent<RowerController>();
 
 
@@ -55,9 +56,9 @@ public class MovementInputController : MonoBehaviour {
             moveHorizontal = Input.GetAxis("Horizontal");
         }
 
-        /*if (Input.GetKeyDown("VerticalCancel"))
+       /* if (Input.GetKeyDown("VerticalCancel"))
         {
-            /*movePaused = Input.GetAxis("VerticalCancel");
+            movePaused = Input.GetAxis("VerticalCancel");
             VertCancelationCheck(movePaused);
             is_rowingPaused = true;
 
@@ -134,13 +135,13 @@ public class MovementInputController : MonoBehaviour {
     /// <param name="inputMovementAllowed"></param>
 
     //Method that is called to CHECK if player object should be paused, or restarted
-    public void MovementActivationCall(bool inputMovementAllowed)
+    public void MovementLock(bool inputMovementAllowed)
     {
         if (!inputMovementAllowed)
         {
             Debug.Log("TURN OFF Movement Controller");
             //horizRef.enabled = false;
-            vertRef.enabled = false;
+            vertRef.enabled = false; 
         }
         else
         {
@@ -157,13 +158,17 @@ public class MovementInputController : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
         Debug.Log("TURN ON Movement Controller ACTIVATED");
         
-        vertRef.MoveVertUpdate(1, false ,false);
+        //vertRef.MoveVertUpdate(1, false ,false);
+		MovementReset();
         vertRef.enabled = true;
     }
 
+
+	//Function to Reset movement of ship to Zero
     public void MovementReset()
     {
-
+		currentSpeedInt = 1;
+		vertRef.MoveVertUpdate(currentSpeedInt, false, false);
     }
     
 

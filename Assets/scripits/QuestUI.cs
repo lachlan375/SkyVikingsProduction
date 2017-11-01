@@ -31,6 +31,8 @@ public class QuestUI : MonoBehaviour {
 	public HQSceneActivation targetHQRef;
     public CameraTargetSwitch targetSwitchRef;
 
+	public bool testBool = false;
+
     [Tooltip("Pause and Unpause Menu fuctionality")]
     public PauseMenuActivation pauseMenu;
     // Use this for initialization
@@ -38,6 +40,12 @@ public class QuestUI : MonoBehaviour {
         QuestsMenu.SetActive(false);
         QuestOver.SetActive(false);
 
+	}
+
+	void Update(){
+		if (testBool == true) {
+			dayEnded ();
+		}
 	}
     void OnEnable()
     {
@@ -68,7 +76,7 @@ public class QuestUI : MonoBehaviour {
             }
         }
         //Pause Menu is activated when Fucnction QuestUI is turned On
-        pauseMenu.MenuOn();
+        //pauseMenu.MenuOn();
     }
     public void  menuSetup(int townID)
     {
@@ -109,7 +117,7 @@ public class QuestUI : MonoBehaviour {
         QuestOver.SetActive(false);
         QuestsMenu.SetActive(false);
         ThePlayer.TheQuestComplet = false;
-        pauseMenu.MenuOff();
+        //pauseMenu.MenuOff();
     }
     public void takeAnewQuest()
     {
@@ -127,7 +135,7 @@ public class QuestUI : MonoBehaviour {
 		targetHQRef.HQActivation ();
         //targetSwitchRef.CameraSwitch(true);
 
-        pauseMenu.MenuOff();
+        //pauseMenu.MenuOff();
         Debug.Log("dayover");
         canvas_HQ.SetActive(true);
         QuestOver.SetActive(false);
@@ -142,9 +150,11 @@ public class QuestUI : MonoBehaviour {
     {
         Debug.Log("Day is completely over");
         canvas_Dayover.SetActive(false);
-        Debug.Log("EndDay Function called");
+        
+		Debug.Log("EndDay Function called");
         endDay();
     }
+
     public void startQuest(string QuestName)
     {
         string nameOfQuest= "";
@@ -159,6 +169,6 @@ for(int i=0; i<Quests[ID].AvailableQuests.Count; i++)
                 QuestsMenu.SetActive(false);
             }
         }
-        pauseMenu.MenuOff();
+        //pauseMenu.MenuOff();
     }
 }

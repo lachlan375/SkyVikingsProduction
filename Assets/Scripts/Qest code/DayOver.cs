@@ -19,6 +19,8 @@ public class DayOver : MonoBehaviour {
     public LevelManagment lvlManagerRef;
     public SceneMode scnModeRef;
     public HQSceneActivation hqSceneRef;
+
+	public int dayCountRef;
     // Use this for initialization
 
 
@@ -28,7 +30,7 @@ public class DayOver : MonoBehaviour {
         lvlManagerRef = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManagment>();
         hqSceneRef = GameObject.FindGameObjectWithTag("HQCamera").GetComponent<HQSceneActivation>();
 
-
+		//dayCountRef = GameObject.FindGameObjectWithTag ("SceneManager").GetComponent<LevelManagment> ().dayCount;
     }
     void OnEnable()
     {
@@ -60,10 +62,13 @@ public class DayOver : MonoBehaviour {
         {
             modeRef = 1;
         }
-        
+
+		dayCountRef++;
+		lvlManagerRef.dayCount = dayCountRef;
+
         gameObject.SetActive(false);
         scnModeRef.sceneMode_Check(modeRef);
-        hqSceneRef.HQRelease();
+        //hqSceneRef.HQRelease();
 
     }
     public void back()

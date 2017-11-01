@@ -24,7 +24,7 @@ public class theShip : MonoBehaviour {
 	void Start () {
         
         theQuest = GameObject.FindGameObjectWithTag("QuestManager").GetComponent<QuestUI>();
-        movementController = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementInputController>();
+		movementController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MovementInputController>();
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class theShip : MonoBehaviour {
     public void loadTheboat(int TownID,int QuestID,string QestGIverName)
     {
         //var s2 = gameObject.Ge
-        movementController.MovementActivationCall(false);
+        movementController.MovementLock(true);
         Debug.Log(Cargoslots.Length);
         for(int i =0; i< Cargoslots.Length; i++)
         {
@@ -45,7 +45,7 @@ public class theShip : MonoBehaviour {
             Thecargo.Add(Abox);
             
         }
-        movementController.MovementActivationCall(true);
+		movementController.MovementLock(false);
 
 
 

@@ -51,8 +51,8 @@ public class QuestObject : MonoBehaviour {
  
          if (other.tag == "Player")
         {
-            other.gameObject.GetComponent<QuestManager>().completQests(TownName);
-            if (other.gameObject.GetComponent<QuestManager>().TheQuestComplet == false)
+            other.gameObject.GetComponentInParent<QuestManager>().completQests(TownName);
+			if (other.gameObject.GetComponentInParent<QuestManager>().TheQuestComplet == false)
             {
                 inTheBox = true;
                 Debug.Log("hay");

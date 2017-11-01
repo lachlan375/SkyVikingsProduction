@@ -7,7 +7,13 @@ public class endofDayM : MonoBehaviour {
     public QuestManager quest;
      public Text gold;
     // Use this for initialization
-    void OnEnable()
+    
+	void Start()
+	{
+		quest = GameObject.FindGameObjectWithTag ("GameController").GetComponent<QuestManager> ();
+	}
+
+	void OnEnable()
     {
         int Exp = 0;
         int Gold = 0;

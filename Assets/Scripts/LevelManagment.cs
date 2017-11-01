@@ -9,6 +9,8 @@ public class LevelManagment : MonoBehaviour {
     public int currentlevelInt;
     public int maxLevelInt;
 
+	public int dayCount;
+
     public GameObject animObjectRef;
     public Image black;
     public Animator anim;
@@ -45,7 +47,7 @@ public class LevelManagment : MonoBehaviour {
     void Start ()
     {
         
-        
+		dayCount = 0;
         //Redundant code transferred to Scene Transition class
        // maxLevelInt = SceneManager.sceneCountInBuildSettings;
         //--maxLevelInt;

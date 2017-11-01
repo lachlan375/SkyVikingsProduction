@@ -6,6 +6,7 @@ public class SceneMode : MonoBehaviour
 {
     public GameObject modeUIRef;
     public LevelManagment lvlManageRef;
+	public bool bossMode_available;
 
 
     //Test Functionality in Update
@@ -46,24 +47,26 @@ public class SceneMode : MonoBehaviour
         switch (level_mode)
         {
             case 4:
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
                 modeUIRef.GetComponent<ModeUI>().GameUI_End();
                 //lvlManageRef.MainMenu();
 
                 break;
-            case 3:
-
+			case 3:
+				bossMode_available = false;
                 lvlManageRef.NextLevel();
                 break;
-            case 2:
-                modeUIRef.GetComponent<ModeUI>().BossUI_Start();
+		case 2:
+				bossMode_available = true;
+				modeUIRef.GetComponent<ModeUI>().BossUI_Start();
                 break;
-            case 1:
-                print("Normal Everyday Level - Ongoing");
-                break;
+			case 1:
+				modeUIRef.GetComponent<ModeUI> ().LevelUI_Cont();
+				break;
 
             default:
-                modeUIRef.GetComponent<ModeUI>().LevelUI_Start();
+				bossMode_available = false;
+				modeUIRef.GetComponent<ModeUI>().LevelUI_Start();
 
                 level_mode++;
                 break;

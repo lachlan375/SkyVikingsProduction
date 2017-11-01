@@ -24,7 +24,7 @@ public class CurrentShip : MonoBehaviour {
 	void Start () {
 		posHQRespawn = GameObject.FindGameObjectWithTag("Respawn").transform;
 
-        NewHQShip_Spawn();
+        //NewHQShip_Spawn();
     }
 	
 
