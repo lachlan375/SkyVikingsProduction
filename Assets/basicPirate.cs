@@ -19,7 +19,6 @@ public class basicPirate : MonoBehaviour {
  
         if (theBoat.Alert == true)
         {
-            theBoat.cannon.transform.transform.LookAt(theBoat.Player);
             if (theBoat.ReachedDesnation == true)
         {
            if(fired == false)
