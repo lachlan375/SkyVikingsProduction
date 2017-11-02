@@ -5,6 +5,8 @@ using UnityEngine;
 public class GuardianController : MonoBehaviour {
 	public GameObject canvasRef;
 	public bool guardiansMode_Unlocked;
+    public GameObject guardianRef;
+
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,7 @@ public class GuardianController : MonoBehaviour {
 	{
 		guardiansMode_Unlocked = true;
         CanvasDeativation();
+
 
     }
 
