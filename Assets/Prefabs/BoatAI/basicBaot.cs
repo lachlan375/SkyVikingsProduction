@@ -8,6 +8,7 @@ public class basicBaot : BoatAI {
     public hitBox HitBox;
     public hitBox Playerinrage;
     public Transform cannon;
+    public 
 
     // Use this for initialization
     void Start () {
@@ -20,6 +21,7 @@ public class basicBaot : BoatAI {
         if(ReachedDesnation == false)
         {
         BoatNavMesh.SetDestination(target[TheTargetID].transform.position);
+
         }
         if (Alert == false)
         {
@@ -34,7 +36,9 @@ public class basicBaot : BoatAI {
             {
                 TheTargetID = 0;
                 BoatNavMesh.stoppingDistance = 0;
+                cannon.transform.transform.LookAt(target[0]);
             }
+
         }
         if (Alert == true)
         {
@@ -47,6 +51,7 @@ public class basicBaot : BoatAI {
         }
         if(Playerinrage.inTheBox == false)
         {
+
             Alert = false;
         }
     }

@@ -49,4 +49,9 @@ public class sunAndmoon : MonoBehaviour {
         //TimeStop = true;
 
     }
+    public void moveThesun()
+    {
+        transform.Rotate(Vector3.right * speed * Time.deltaTime);
+
+    }
 }

@@ -57,6 +57,7 @@ public class SpellcCntroller : MonoBehaviour {
             {
                  if(hit == false)
                 {
+                    if (other.gameObject.GetComponent<theShip>())
                 other.gameObject.GetComponent<theShip>().removeCargo(CargotoSteal);
                     hit = true;
                 }
