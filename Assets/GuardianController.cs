@@ -11,16 +11,32 @@ public class GuardianController : MonoBehaviour {
 		
 	}
 
+    void Update()
+    {
+        if (guardiansMode_Unlocked)
+        {
+
+        }
+    }
+
 	public void HighStakesAccepted()
 	{
 		guardiansMode_Unlocked = true;
-		//canvasRef;
-	}
+        CanvasDeativation();
+
+    }
 
 	public void HighStakesDeclined()
 	{
 		guardiansMode_Unlocked = false;
-	}
+        CanvasDeativation();
+
+    }
+
+    public void CanvasDeativation()
+    {
+        canvasRef.SetActive(false);
+    }
 
 
 }

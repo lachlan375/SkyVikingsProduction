@@ -16,9 +16,9 @@ public class basicPirate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(theBoat.Alert == true)
+ 
+        if (theBoat.Alert == true)
         {
-            theBoat.cannon.transform.transform.LookAt(theBoat.Player);
             if (theBoat.ReachedDesnation == true)
         {
            if(fired == false)

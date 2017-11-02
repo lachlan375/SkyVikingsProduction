@@ -49,4 +49,11 @@ public class sunAndmoon : MonoBehaviour {
         //TimeStop = true;
 
     }
+    public void moveThesun()
+    {
+        sun.transform.LookAt(transform.position);
+        moon.transform.LookAt(transform.position);
+        transform.Rotate(0, 0, 180);
+        Debug.Log("hit");
+    }
 }

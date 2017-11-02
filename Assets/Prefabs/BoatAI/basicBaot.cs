@@ -8,7 +8,7 @@ public class basicBaot : BoatAI {
     public hitBox HitBox;
     public hitBox Playerinrage;
     public Transform cannon;
-
+    public bool coolDown;
     // Use this for initialization
     void Start () {
         TheTargetID = 0;
@@ -17,9 +17,12 @@ public class basicBaot : BoatAI {
     // Update is called once per frame
     void Update()
     {
-        if(ReachedDesnation == false)
+        cannon.transform.transform.LookAt(target[TheTargetID]);
+
+        if (ReachedDesnation == false)
         {
         BoatNavMesh.SetDestination(target[TheTargetID].transform.position);
+
         }
         if (Alert == false)
         {
@@ -34,7 +37,9 @@ public class basicBaot : BoatAI {
             {
                 TheTargetID = 0;
                 BoatNavMesh.stoppingDistance = 0;
+                cannon.transform.transform.LookAt(target[0]);
             }
+
         }
         if (Alert == true)
         {
@@ -45,9 +50,13 @@ public class basicBaot : BoatAI {
             }
 
         }
-        if(Playerinrage.inTheBox == false)
+        if(Playerinrage.inTheBox == false && ReachedDesnation == false)
         {
-            Alert = false;
+            if(coolDown == false)
+            {
+                StartCoroutine(cooltDown());
+                coolDown = true;
+            }
         }
     }
     public void restart()
@@ -58,6 +67,11 @@ public class basicBaot : BoatAI {
         ReachedDesnation = false;
 
     }
-
-
+    IEnumerator cooltDown()
+    {
+         yield return new WaitForSeconds(3);
+        Alert = false;
+        coolDown = false;
+        Debug.Log("hit");
+    }
 }
