@@ -16,30 +16,39 @@ public class CurrentShip : MonoBehaviour {
 
 	//public float spawnOffSet;
 
-	public bool is_spawning;
+	public bool updatedShipModel;
+    public bool testCall;
 
 
 
 	// Use this for initialization
 	void Start () {
 		posHQRespawn = GameObject.FindGameObjectWithTag("Respawn").transform;
-
-        //NewHQShip_Spawn();
+        CurrentShipHQ_Spawn();
     }
 	
 
 	void Update()
 	{
-        CurrentShipHQ_Spawn();
+        if (testCall == true)
+        {
+            CurrentShipHQ_Spawn();
+            testCall = false;
+        }
+
 	}
 
     void CurrentShipHQ_Spawn()
 	{
-		if (is_spawning == true) 
+		if (updatedShipModel == true) 
 		{
+            NewHQShip_Spawn();
+            updatedShipModel = false;
+        }
 
+        else
+        {
             currentShip.transform.position = posHQRespawn.transform.position;
-            is_spawning = false;
         }
 
 
@@ -53,7 +62,7 @@ public class CurrentShip : MonoBehaviour {
         currentShip = gameObject.GetComponent<ShipStats>().shipsArray[gameObject.GetComponent<ShipStats>().currentShip];
 
         
-        currentShip = Instantiate(currentShip);
+        Instantiate(currentShip);
 
         //pair currentship to gameobject tree as a child
         currentShip.transform.parent = transform;
@@ -61,9 +70,6 @@ public class CurrentShip : MonoBehaviour {
         currentShip.transform.position = posHQRespawn.transform.position;
     }
 
-    void instantiatedShipUpdate()
-    {
 
-    }
 
 }
