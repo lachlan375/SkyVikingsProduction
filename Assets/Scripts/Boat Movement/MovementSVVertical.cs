@@ -58,7 +58,7 @@ public class MovementSVVertical : MonoBehaviour {
 
 
     //Function called from Movement Controller  to current class with latest INT counter
-    public void MoveVertUpdate(int speedIntRef, bool is_rowingPaused, bool is_moving)
+    public void MoveVertUpdate(int speedIntRef, bool is_rowingPaused, bool is_moving, bool is_reversing)
     {
         currentSpeedInt = speedIntRef;
         speedCurrentVal = minSpeedArray[currentSpeedInt];

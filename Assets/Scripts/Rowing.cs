@@ -30,8 +30,8 @@ public class Rowing : MonoBehaviour {
     void Start () {
         //velocity = 1000.0f;
 
-		rowerAnimPort = gameObject.GetComponent<Animator> ();
-		rowerAnimSB = gameObject.GetComponent<Animator> ();
+		//rowerAnimPort = gameObject.GetComponent<Animator> ();
+		//rowerAnimSB = gameObject.GetComponent<Animator> ();
      }
 
 
@@ -42,7 +42,10 @@ public class Rowing : MonoBehaviour {
 		//Editing CHECK Just a check to see if function is ENABLED
 
 			rowerAnimPort.SetBool ("isRowing", moveVertRef.movingCheck);
-			rowerAnimSB.SetBool ("isRowing", moveVertRef.movingCheck);
+			rowerAnimPort.SetBool ("isReversing", moveVertRef.);
+			
+		rowerAnimSB.SetBool ("isRowing", moveVertRef.movingCheck);
+			
 
 			if (moveVertRef.movingCheck == true)
 			{

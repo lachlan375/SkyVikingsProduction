@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovementInputController : MonoBehaviour {
 
+
     public Rigidbody rb;
 
     public MovementHorizontal horizRef;
@@ -24,17 +25,23 @@ public class MovementInputController : MonoBehaviour {
 
     public bool is_rowingPaused;
     public bool is_moving;
+	public bool is_reversing;
     
 
 
     // Use this for initialization
     void Start () {
-		rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
+
+		/*
+		 * //rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
+
+		rb = gameObject.GetComponentInChildren<Rigidbody>();
 
 		horizRef = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementHorizontal>();
 
-		vertRef = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementSVVertical>();
-        rowRef = GetComponent<RowerController>();
+		//vertRef = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementSVVertical>();
+        //rowRef = GetComponent<RowerController>();
+		*/
 
 
         currentSpeedInt = 1;
@@ -65,7 +72,7 @@ public class MovementInputController : MonoBehaviour {
         }
         else { is_rowingPaused = false; }*/
 
-        vertRef.MoveVertUpdate(currentSpeedInt, is_rowingPaused, is_moving);
+        vertRef.MoveVertUpdate(currentSpeedInt, is_rowingPaused, is_moving, is_reversing);
 		horizRef.MoveHorizUpdate (currentSpeedInt);
     }
 
@@ -83,11 +90,14 @@ public class MovementInputController : MonoBehaviour {
                 if (currentSpeedInt != 1)
                 {
                     is_moving = true;
+					is_reversing = false;
                 }
 
                 else
                 {
                     is_moving = false;
+					is_reversing = false;
+
                 }
             }
             else
@@ -107,9 +117,11 @@ public class MovementInputController : MonoBehaviour {
 				if (currentSpeedInt == 1) {
 					Debug.Log ("Vessel is now stationary!!!");
 					is_moving = false;
+					is_reversing = false;
 				} else
 				{
 					is_moving = true;
+					is_reversing = true;
 				}
             }
             else
