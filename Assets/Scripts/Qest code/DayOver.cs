@@ -62,7 +62,7 @@ public class DayOver : MonoBehaviour {
         {
             modeRef = 1;
         }
-
+        Time.timeScale = 1;
 		dayCountRef++;
 		lvlManagerRef.dayCount = dayCountRef;
 
