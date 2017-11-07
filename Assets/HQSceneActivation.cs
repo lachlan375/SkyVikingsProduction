@@ -26,7 +26,7 @@ public class HQSceneActivation : MonoBehaviour {
 
         hqTransform = GameObject.FindGameObjectWithTag("Respawn").transform;
 
-        //currentBoat = playerContRef.GetComponent<CurrentShip>().currentShip;
+        currentBoat = playerContRef.GetComponent<CurrentShip>().currentShip;
 
 
         
@@ -53,7 +53,13 @@ public class HQSceneActivation : MonoBehaviour {
             //gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(true);
 
 		playerContRef.GetComponent<MovementInputController> ().MovementReset();
-        currentBoat.transform.position = hqTransform.transform.position;
+        //currentBoat.transform.position = findobject. hqTransform.transform.position;
+        playerContRef.GetComponent<CurrentShip>().CurrentShipHQ_Spawn();
+
+        //GameObject.FindGameObjectWithTag("PlayerController").GetComponent<CurrentShip>().CurrentShipHQ_Spawn();
+        
+
+        //GetComponent<CurrentShip>().transform.position = 
 
         //freeze animation + lock boat
         //particle effect
