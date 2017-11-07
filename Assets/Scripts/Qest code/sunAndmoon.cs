@@ -55,6 +55,6 @@ public class sunAndmoon : MonoBehaviour {
         sun.transform.LookAt(transform.position);
         moon.transform.LookAt(transform.position);
         transform.Rotate(0, 0, 180);
-        Debug.Log("hit");
+        Debug.Log("huyuyuyyuuyuyuyuyuyuit");
     }
 }
