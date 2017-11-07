@@ -72,7 +72,7 @@ public class MovementInputController : MonoBehaviour {
         }
         else { is_rowingPaused = false; }*/
 
-        vertRef.MoveVertUpdate(currentSpeedInt, is_rowingPaused, is_moving, is_reversing);
+        vertRef.MoveVertUpdate(currentSpeedInt, is_rowingPaused, is_moving /*, is_reversing*/);
 		horizRef.MoveHorizUpdate (currentSpeedInt);
     }
 
