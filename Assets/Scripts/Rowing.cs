@@ -42,7 +42,7 @@ public class Rowing : MonoBehaviour {
 		//Editing CHECK Just a check to see if function is ENABLED
 
 			rowerAnimPort.SetBool ("isRowing", moveVertRef.movingCheck);
-			rowerAnimPort.SetBool ("isReversing", moveVertRef.);
+			//rowerAnimPort.SetBool ("isReversing", moveVertRef.);
 			
 		rowerAnimSB.SetBool ("isRowing", moveVertRef.movingCheck);
 			
