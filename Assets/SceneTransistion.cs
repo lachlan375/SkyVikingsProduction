@@ -102,7 +102,7 @@ public class SceneTransistion : MonoBehaviour {
     {
         anim.SetBool("Fade", true);
         Debug.Log("Fade activated");
-        yield return new WaitUntil(() => black.color.a >= .95);
+        yield return new WaitUntil(() => black.color.a >= .90);
         anim.SetBool("isfadeing", true);
         yield return new WaitUntil(() => black.color.a == 0);
         //yield return new WaitForSeconds(1);
