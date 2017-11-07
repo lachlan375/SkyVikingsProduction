@@ -46,6 +46,7 @@ public class sunAndmoon : MonoBehaviour {
     {
         //Time.timeScale = 0;
         endDay.SetActive(true);
+        Time.timeScale = 0;
         //TimeStop = true;
 
     }
