@@ -2,7 +2,7 @@
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Custom/Water" {
+Shader "Custom/Water!" {
 	Properties
 	{
 		_Color("Color", Color) = (1,0,0,1)
@@ -58,6 +58,7 @@ Shader "Custom/Water" {
 			uniform float4 _Color;
 			uniform float4 _SpecColor;
 			uniform float _Shininess;
+			uniform float _realtime;
 
 			struct v2g
 			{
@@ -83,7 +84,8 @@ Shader "Custom/Water" {
 			{
 				float3 v0 = mul(unity_ObjectToWorld, v.vertex).xyz;
 
-				float phase0 = (_WaveHeight)* sin((_Time[1] * _WaveSpeed) + (v0.x * _WaveLength) + (v0.z * _WaveLength) + rand2(v0.xzz));
+				//float phase0 = (_WaveHeight)* sin((_Time[1] * _WaveSpeed) + (v0.x * _WaveLength) + (v0.z * _WaveLength) + rand2(v0.xzz));
+				float phase0 = (_WaveHeight)* sin((_realtime * _WaveSpeed) + (v0.x * _WaveLength) + (v0.z * _WaveLength) + rand2(v0.xzz));
 				float phase0_1 = (_RandomHeight)*sin(cos(rand(v0.xzz) * _RandomHeight * cos(_Time[1] * _RandomSpeed * sin(rand(v0.xxz)))));
 
 				v0.y += phase0 + phase0_1;
