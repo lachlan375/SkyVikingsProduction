@@ -32,6 +32,8 @@ public class Rowing : MonoBehaviour {
 
 		//rowerAnimPort = gameObject.GetComponent<Animator> ();
 		//rowerAnimSB = gameObject.GetComponent<Animator> ();
+
+
      }
 
 
@@ -41,13 +43,15 @@ public class Rowing : MonoBehaviour {
 	{
 		//Editing CHECK Just a check to see if function is ENABLED
 
-			rowerAnimPort.SetBool ("isRowing", moveVertRef.movingCheck);
-			//rowerAnimPort.SetBool ("isReversing", moveVertRef.);
-			
-		rowerAnimSB.SetBool ("isRowing", moveVertRef.movingCheck);
-			
+		rowerAnimPort.SetBool ("isRowing", moveVertRef.movingCheck);
+        rowerAnimPort.SetFloat("currentSpeed", moveVertRef.currentSpeedInt);
+        rowerAnimPort.SetBool ("isReversing", moveVertRef.rowingReversedCheck);
 
-			if (moveVertRef.movingCheck == true)
+        rowerAnimSB.SetBool ("isRowing", moveVertRef.movingCheck);
+        rowerAnimSB.SetFloat("currentSpeed", moveVertRef.currentSpeedInt);
+        rowerAnimSB.SetBool("isReversing", moveVertRef.rowingReversedCheck);
+
+        if (moveVertRef.movingCheck == true)
 			{
 				MinSpeed = moveVertRef.speedCurrentVal;
 			}
@@ -70,12 +74,16 @@ public class Rowing : MonoBehaviour {
                             StartCoroutine(speedDecay());
                         }
 
+                        
+
                     }
                 else
                 {
                     StartCoroutine(speedPause());
                 }
 			}
+
+            
 	}
 
 
