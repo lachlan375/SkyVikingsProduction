@@ -46,6 +46,7 @@ public class sunAndmoon : MonoBehaviour {
     {
         //Time.timeScale = 0;
         endDay.SetActive(true);
+        Time.timeScale = 0;
         //TimeStop = true;
 
     }
@@ -54,6 +55,6 @@ public class sunAndmoon : MonoBehaviour {
         sun.transform.LookAt(transform.position);
         moon.transform.LookAt(transform.position);
         transform.Rotate(0, 0, 180);
-        Debug.Log("hit");
+        Debug.Log("huyuyuyyuuyuyuyuyuyuit");
     }
 }

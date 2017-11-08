@@ -17,8 +17,11 @@ public class GuardianController : MonoBehaviour {
     {
         if (guardiansMode_Unlocked)
         {
-
+            guardianRef.SetActive(true);
         }
+
+        else
+            guardianRef.SetActive(false);
     }
 
 	public void HighStakesAccepted()

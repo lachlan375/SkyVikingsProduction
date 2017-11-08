@@ -78,7 +78,9 @@ public class ModeUI : MonoBehaviour {
 	{
 		int levelInt;
 		levelInt = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManagment>().currentlevelInt;
-		return levelInt;
+        levelInt = levelInt + 1;
+
+        return levelInt;
 	}
 
 	public int CurrentDayCount()

@@ -23,6 +23,7 @@ public class QuestManager : MonoBehaviour {
         if(CurrentQestsList[i].QueststLocation == Location)
             {
                 Debug.Log("win");
+                Debug.Log("Object loaded");
 
                 ship.reportcargo(CurrentQestsList[i].MercantscargoName);
                 if(ship.cargoDeliverd >0)

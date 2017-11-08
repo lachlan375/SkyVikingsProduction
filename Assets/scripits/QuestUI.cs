@@ -132,12 +132,12 @@ public class QuestUI : MonoBehaviour {
     //Method to transition to HQ Activation
     public void endDay()
     {
-		targetHQRef.HQActivation ();
+		targetHQRef.HQActivation();
         //targetSwitchRef.CameraSwitch(true);
 
         //pauseMenu.MenuOff();
         Debug.Log("dayover");
-        canvas_HQ.SetActive(true);
+        
         QuestOver.SetActive(false);
         
       ///  SceneManager.LoadScene(Dayover);
@@ -150,8 +150,8 @@ public class QuestUI : MonoBehaviour {
     {
         Debug.Log("Day is completely over");
         canvas_Dayover.SetActive(false);
-        
-		Debug.Log("EndDay Function called");
+        canvas_HQ.SetActive(true);
+        Debug.Log("EndDay Function called");
         endDay();
     }
 
