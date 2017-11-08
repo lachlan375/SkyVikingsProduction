@@ -91,8 +91,11 @@ public class Rowing : MonoBehaviour {
 	{
 		while (slow == true)
 		{
-			moveVertRef.rowingCurrentVal -= velocity;
-			yield return new WaitForSeconds(time);
+            if (moveVertRef.rowingCurrentVal > 0)
+			    moveVertRef.rowingCurrentVal -= velocity;
+            else
+                moveVertRef.rowingCurrentVal += velocity;
+            yield return new WaitForSeconds(time);
 		}
 	}
 
@@ -100,7 +103,7 @@ public class Rowing : MonoBehaviour {
 	{
 		while (slow == false)
 		{
-			moveVertRef.rowingCurrentVal += moveVertRef.rowingSpeedArray[moveVertRef.currentSpeedInt];
+			moveVertRef.rowingCurrentVal = moveVertRef.rowingSpeedArray[moveVertRef.currentSpeedInt];
 			yield return new WaitForSeconds(time);
 		}
 	}

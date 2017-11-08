@@ -163,6 +163,7 @@ for(int i=0; i<Quests[ID].AvailableQuests.Count; i++)
         {
             if(QuestName == Quests[ID].AvailableQuests[i].QuestName)
             {
+                Debug.LogError("Checkpoint Slow boat 1. Use this error for line refrence to identify slow boat.");
                 ThePlayer.CurrentQestsList.Add(Quests[ID].AvailableQuests[i]);
                 Quests[ID].AvailableQuests[i].Progress = QuestProgress.Accepted;
                 Ship.loadTheboat(ID, i, Quests[ID].AvailableQuests[i].MercantscargoName);
