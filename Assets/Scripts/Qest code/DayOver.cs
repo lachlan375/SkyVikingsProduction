@@ -54,7 +54,7 @@ public class DayOver : MonoBehaviour {
     {
         int modeRef;
         //status check
-        if (stats.respectLevel > lvlManagerRef.unlock_BossMode[lvlManagerRef.currentlevelInt])
+        if (stats.respectScore > lvlManagerRef.unlock_BossMode[lvlManagerRef.currentlevelInt])
         {
             modeRef = 2;
         }

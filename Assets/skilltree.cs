@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class skilltree : MonoBehaviour {
     public Text[] skills;
     public Text expText;
-    //   public skilltreeButton [] Buttons;
+ ///   public skilltreeButton [] Buttons;
     public GameObject[] Buttons;
     public PlaySatSheat stats;
     public int max;
     // Use this for initialization
     void OnEnable()
     {
+        Debug.Log(gameObject);
         int cout = 0;
         stats = FindObjectOfType<PlaySatSheat>();
         expText.text = "current exp: " + stats.Exp;
@@ -39,7 +40,7 @@ public class skilltree : MonoBehaviour {
     public void addStats(int ID)
     {
         Debug.Log("Add exp");
-        if(stats.Exp >0 && stats.TheStats[ID].StatLevel != max)
+        if(stats.Exp >0 && stats.TheStats[ID].StatLevel != stats.TheStats[ID].maxLevel)
         {
             stats.TheStats[ID].CurentExp += 1;
             stats.Exp -= 1;
@@ -49,12 +50,20 @@ public class skilltree : MonoBehaviour {
                 Debug.Log("exp"+ stats.TheStats[ID].Expmultiply);
                 stats.TheStats[ID].CurentExp = 0;
                 stats.TheStats[ID].ExpNeeded = stats.TheStats[ID].StatLevel * stats.TheStats[ID].Expmultiply;
-                stats.TheStats[ID].Stat += 1; 
+if(stats.TheStats[ID].StatKind == StatsBace.kindOfstat.FLoat)
+                {
+                    stats.TheStats[ID].StatFLoat++;
+                }
             }
-
-            skills[ID].text = stats.TheStats[ID].StatName + " level " + stats.TheStats[ID].StatLevel + "\n" + "curent Exp" + stats.TheStats[ID].CurentExp + "\n" + "Exp needed" + stats.TheStats[ID].ExpNeeded;
+            if (stats.TheStats[ID].StatKind == StatsBace.kindOfstat.Int)
+            {
+                stats.TheStats[ID].statInt++;
+            }
         }
+        skills[ID].text = stats.TheStats[ID].StatName + " level " + stats.TheStats[ID].StatLevel + "\n" + "curent Exp" + stats.TheStats[ID].CurentExp + "\n" + "Exp needed" + stats.TheStats[ID].ExpNeeded;
         expText.text = "current exp: " + stats.Exp;
+ 
+
 
     }
 

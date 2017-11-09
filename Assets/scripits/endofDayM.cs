@@ -5,13 +5,19 @@ using UnityEngine.UI;
 public class endofDayM : MonoBehaviour {
     public Text  quetSlots;
     public QuestManager quest;
-     public Text gold;
+    public playerStats player;
+    public Text gold;
+    private int loss;
+    public int gains;
+    public Text respectText;
+    public ObjectPriceList maxCargo;
     // Use this for initialization
     
 	void Start()
 	{
 		quest = GameObject.FindGameObjectWithTag ("GameController").GetComponent<QuestManager> ();
-	}
+       
+    }
 
 	void OnEnable()
     {
@@ -21,7 +27,14 @@ public class endofDayM : MonoBehaviour {
         {
             quetSlots.text = "no quests coplet ";
         }
-         for(int i = 0;i< 20; i++)
+        if(quest.CurrentQestsList.Count >0)
+        {
+           for(int i = 0; i< quest.CurrentQestsList.Count;i++)
+            {
+                loss += quest.CurrentQestsList[i].QuestRespect;
+            }
+        }
+         for(int i = 0;i< maxCargo.maxCargo; i++)
         {
             
              if(i< quest.CompletQestList.Count)
@@ -30,12 +43,21 @@ public class endofDayM : MonoBehaviour {
                 quetSlots.text += quest.CompletQestList[i].QuestName+"  Exp:"+quest.CompletQestList[i].ExpReward+ "\n";
                 Gold += 5;
                 Exp += quest.CompletQestList[i].ExpReward;
-             }
-             
+                gains += quest.CompletQestList[i].QuestRespect;
+
+            }
+
         }
         gold.text ="gold:" + Gold +"  Exp"+Exp;
+        respectText.text = "respect :" + "-" + loss + "  " +"+"+gains;
+        player.respectScore += gains;
+        player.respectScore -= gains;
+        if(player.respectScore <0)
+        {
+            Debug.Log("game over");
+        }
 
-     }
+    }
 
     void Update ()
     {
