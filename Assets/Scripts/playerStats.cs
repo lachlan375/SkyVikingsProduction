@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class playerStatUpdate : MonoBehaviour {
+
     public static playerStatUpdate instance = null;
 
     public GameObject levelManager; //ref to actual level manager

@@ -30,6 +30,9 @@ public class Quest
     public int ExpReward;
     public CargoVaule vaule;
     public ObjectPriceList price;
+    public int RespectLevelNeeded;
+    [Tooltip("if the quest is complet  you earn this if you louse you louse this")]
+    public int QuestRespect;
     public int goldFOrquest;
     [Tooltip("this is to help check if  the cargo made it ")]
     public string MercantscargoName;

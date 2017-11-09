@@ -15,7 +15,7 @@ public class example : MonoBehaviour {
 
 if(item.StatName == stat)
             {
-                speed = item.Stat;
+                speed = item.StatFLoat;
             }
                     }
 

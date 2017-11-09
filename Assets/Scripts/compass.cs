@@ -16,8 +16,8 @@ public Vector3 northDirection;
 	
 	// Update is called once per frame
 	void Update () {
-       /// changeNorthDirection();
-     //   changemissionDirection();
+        changeNorthDirection();
+         changemissionDirection();
     }
     public void changeNorthDirection()
     {
