@@ -64,7 +64,7 @@ public class MovementSVVertical : MonoBehaviour {
     {
         currentSpeedInt = speedIntRef;
         speedCurrentVal = minSpeedArray[currentSpeedInt];
-		rowingCurrentVal = rowingSpeedArray [currentSpeedInt];
+		//rowingCurrentVal = rowingSpeedArray [currentSpeedInt];
 
         rowingPausedCheck = is_rowingPaused;
         rowingReversedCheck = is_reversing;
