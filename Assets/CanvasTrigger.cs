@@ -6,39 +6,24 @@ public class CanvasTrigger : MonoBehaviour {
 
     // Use this for initialization
     public GameObject canvasRef;
-    public UnityEvent onAnyKeyEvent;
-
-    public Canvas merchantCanvas;
+    public bool is_triggered = false;
+    
 
     // Use this for initialization
     void Start()
     {
-        canvasRef = gameObject.transform.GetChild(0).Find("")
-    }
-
-    // Update is called once per frame
-
-
-
-    void Update()
-    {
-        if (Input.anyKeyDown == true)
-        {
-            if (canvasRef != null)
-            {
-                canvasRef.SetActive(false);
-            }
-            onAnyKeyEvent.Invoke();
-        }
+        canvasRef = transform.GetChild(0).gameObject;
+        canvasRef.SetActive(is_triggered);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            is_triggered = true;
             
         }
-
+        canvasRef.SetActive(is_triggered);
 
     }
 
@@ -46,9 +31,9 @@ public class CanvasTrigger : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            
+            is_triggered = false;
         }
-
+        canvasRef.SetActive(is_triggered);
     }
 
 
