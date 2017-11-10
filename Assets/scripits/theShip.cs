@@ -13,17 +13,19 @@ public class theShip : MonoBehaviour {
     [Tooltip("this is so the ships cargo will move with the ship")]
     public GameObject CargoHold;
     public Transform[] Cargoslots;
-    public List<GameObject> Thecargo = new List<GameObject>();
+    public List<CargoInformation> Thecargo = new List<CargoInformation>();
     [Header("shiping")]
     public bool fanncyShiping;
     public float time;
     public bool yes;
     public int cargoDeliverd;
     public MovementInputController movementController;
-
+    public QuestManager questM;
+    [Header("keeps track of the caargo on the ship and here its loaded")]
+    public int cargoCounter;
 	void Start () {
         
-        theQuest = GameObject.FindGameObjectWithTag("QuestManager").GetComponent<QuestUI>();
+
 		movementController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MovementInputController>();
     }
 
@@ -32,18 +34,24 @@ public class theShip : MonoBehaviour {
 
     }
 
-    public void loadTheboat(int TownID,int QuestID,string QestGIverName)
+    public void loadTheboat()
     {
         //var s2 = gameObject.Ge
-        movementController.MovementLock(true);
+       // movementController.MovementLock(true);
         Debug.Log(Cargoslots.Length);
-        for(int i =0; i< Cargoslots.Length; i++)
+ 
+
+        for (int i =cargoCounter; i< Cargoslots.Length; i++)
         {
-            var Abox = Instantiate(theQuest.Quests[TownID].AvailableQuests[QuestID].TheCargo[0].theCargo, new Vector3(Cargoslots[i].transform.position.x, shipsDeack.transform.position.y, Cargoslots[i].transform.position.z), Quaternion.identity);
-            Abox.gameObject.name = QestGIverName;
-            Abox.transform.parent = CargoHold.transform;
-            Thecargo.Add(Abox);
-            
+          if(questM.CurrentQestsList[i].loaded == false)
+            {
+                var Abox = Instantiate(questM.CurrentQestsList[i].cargo, new Vector3(Cargoslots[i].transform.position.x, shipsDeack.transform.position.y, Cargoslots[i].transform.position.z), Quaternion.identity);
+                Abox.transform.parent = CargoHold.transform;
+                Thecargo.Add(Abox.GetComponent<CargoInformation>());
+                questM.CurrentQestsList[i].loaded = true;
+                cargoCounter++;
+            }
+
         }
 		movementController.MovementLock(false);
 
@@ -51,48 +59,61 @@ public class theShip : MonoBehaviour {
 
 
     }
-    public void reportcargo( string gameobjectName)
+    public void reportcargo( string desnation)
     {
-        cargoDeliverd = 0;
         for(int i = 0; i< Thecargo.Count; i++)
         {
-            if(gameobjectName == Thecargo[i].name)
+            if(desnation == Thecargo[i].CargoDesnation)
             {
-                cargoDeliverd++;
-                Debug.Log("i was hit");
-                Destroy(Thecargo[i]);
+                Debug.Log("i was delverd");
+                Thecargo[i].destoyself();
                 Thecargo.Remove(Thecargo[i]);
                 i -= 1;
+                cargoCounter -= 1;
             }
         }
   
 
     }
-    public void destoyCargo()
+
+    public void removeCargo()
     {
-        
-        while (Cargoslots.Length >0)
+        if (questM.CurrentQestsList.Count == 1)
         {
-             
-            Destroy(Thecargo[0]);
-            Thecargo.Remove(Thecargo[0]);
+            questM.CurrentQestsList[0].cargo.GetComponent<CargoInformation>().steallcargo();
         }
-    }
-    public void removeCargo(int amountoRemove)
-    {
-        
-            for(int i = 0; i< amountoRemove; i++)
+        bool foundcaro = false;
+        CargoVaule thevaule = CargoVaule.Rare;
+        int cargoCouter = 0;
+        if (questM.CurrentQestsList.Count > 1)
+        {
+            while (foundcaro == false)
             {
-            if (Thecargo.Count > 0)
-            {
-                Destroy(Thecargo[0]);
-        Thecargo.Remove(Thecargo[0]);
-            
-            }
-  
-        }
-  
+                if (questM.CurrentQestsList[0].vaule == thevaule)
+                {
+                    questM.CurrentQestsList[cargoCouter].cargo.GetComponent<CargoInformation>().steallcargo();
+                    foundcaro = true;
+                }
+                else
+                {
+                    cargoCouter++;
+                    if (cargoCouter > questM.CurrentQestsList.Count - 1)
+                    {
+                        if (thevaule == CargoVaule.Rare)
+                        {
+                            thevaule = CargoVaule.Uncommon;
+                        }
+                        if (thevaule == CargoVaule.Uncommon)
+                        {
+                            thevaule = CargoVaule.Common;
+                        }
+                        cargoCouter = 0;
+                    }
+                }
 
+            }
+
+        }
 
 
     }

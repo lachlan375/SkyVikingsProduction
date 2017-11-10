@@ -8,11 +8,7 @@ public class steallCargo : MonoBehaviour {
   public float spellTimeDuration;
     public Rigidbody bullet;
 
-    void Start()
-    {
-
-
-    }
+   
     void Update()
 
     {
@@ -29,8 +25,7 @@ public class steallCargo : MonoBehaviour {
     {
         if (other.tag.Equals("Boat"))
         {
-            Debug.Log("push a thing ");
-            other.gameObject.GetComponent<theShip>().removeCargo(CargotoSteal);
+            other.gameObject.GetComponent<theShip>();
             Destroy(gameObject);
         }
     }

@@ -1,11 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
-public class CargoInformation
+ public class CargoInformation : MonoBehaviour
 {
- //   public CargoVaule Cargovaule;
+    public string CargoDesnation;
     public GameObject theCargo; 
-	public int CargoAmount;	
-	
+	public int CargoAmount;
+    public CargoVaule thevalue;
+    public int cargoLeft;
+    public int startingAmount;
+     
+    public void destoyself()
+    {
+        Destroy(gameObject);
+    }
+    public void steallcargo()
+    {
+    if(CargoAmount >1)
+        {
+        CargoAmount -= 1;
+        cargoLeft = CargoAmount/startingAmount*100;
+        }
+        
+
+    } 
 }
