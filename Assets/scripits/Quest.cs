@@ -10,24 +10,22 @@ public class Quest
     public string QuestName; 
     [Tooltip("Track qests progress")]
     public QuestProgress Progress;
+
     [Tooltip("Qests description")]
     public string QuestDescription;
     [Tooltip("Give players A quck hinit")]
     public string Hint;
 [HideInInspector]
-    public string QueststLocation;
-    [Tooltip("just put the gole in here")]
+     [Tooltip("just put the gole in here")]
     public GameObject qestLocationGameObject;   
     [Header("Quest goles")]
     [Tooltip("name of the qest objctive")]
     public string QuestObjective;
     [Tooltip("curent number of qest objctive")]
-    public int QestObjectiveCout;
-    [Tooltip("Qest Requirements")]
-    public int QuestObjectiveRequirements;
     [Header("Quest rewards")]
-    [Tooltip("how much Exp to hand out")]
+
     public int ExpReward;
+    [Tooltip("how much Exp to hand out")]
     public CargoVaule vaule;
     public ObjectPriceList price;
     public int RespectLevelNeeded;
@@ -36,10 +34,12 @@ public class Quest
     public int goldFOrquest;
     [Tooltip("this is to help check if  the cargo made it ")]
     public string MercantscargoName;
-    public List<CargoInformation> TheCargo = new List<CargoInformation>();
-    public void setup()
+    public GameObject cargo;
+    public bool loaded;
+     public void setup()
     {
-        QueststLocation = qestLocationGameObject.name;
+
+        cargo.GetComponent<CargoInformation>().CargoDesnation = qestLocationGameObject.name;
      }
     public void ExpTogive(int caroAmount)
     {

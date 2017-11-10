@@ -25,8 +25,9 @@ public class QuestUI : MonoBehaviour {
     public GameObject canvas_HQ;  //variable previously called dayover
     public GameObject canvas_Dayover;
     public qustsInfo questsLists;
-
-
+    public playerStats RepScore;
+    private int  lastID;
+    public string RepText;
 	//Lachlans HQ Additions
 	public HQSceneActivation targetHQRef;
     public CameraTargetSwitch targetSwitchRef;
@@ -65,6 +66,7 @@ public class QuestUI : MonoBehaviour {
 
     public void turnon(string TownName)
     {
+        
          for(int i = 0; i<Quests.Count; i++)
         {
             if (Quests[i].TownName == TownName)
@@ -73,6 +75,7 @@ public class QuestUI : MonoBehaviour {
                 flavorText.text = Quests[i].flavorText;
                 QuestOver.SetActive(true);             
                 menuSetup(i);
+                lastID = i;
             }
         }
         //Pause Menu is activated when Fucnction QuestUI is turned On
@@ -90,15 +93,19 @@ public class QuestUI : MonoBehaviour {
             Buttons[i].SetActive(false);
             if (i< Quests[townID].AvailableQuests.Count)
             {
-                if (Quests[townID].AvailableQuests[i].Progress == QuestProgress.Available)
+                if (Quests[townID].AvailableQuests[i].Progress == QuestProgress.Available && RepScore.respectScore >= Quests[townID].AvailableQuests[i].RespectLevelNeeded)
                 {
                     Buttons[textcount].SetActive(true);
-                    questText[textcount].text = "Cargo:" + Quests[townID].AvailableQuests[i].QuestName + "\n" + "Vaule:" + Quests[townID].AvailableQuests[i].vaule+"\n"+ "Deliver to:" + Quests[townID].AvailableQuests[i].QueststLocation;
+                    questText[textcount].text = "Cargo:" + Quests[townID].AvailableQuests[i].QuestName + "\n" + "Vaule:" + Quests[townID].AvailableQuests[i].vaule+"\n"+ "Deliver to:" + Quests[townID].AvailableQuests[i].qestLocationGameObject.name;
                     Buttons[textcount].gameObject.GetComponent<QuestButton>().QuestName = Quests[townID].AvailableQuests[i].QuestName;
-                    textcount++;
-                  
+                    textcount++;                  
                 }
+                if (Quests[townID].AvailableQuests[i].Progress == QuestProgress.Available && RepScore.respectScore <= Quests[townID].AvailableQuests[i].RespectLevelNeeded)
+                {
+                    questText[textcount].text = RepText;
+                    textcount++;
 
+                }
             }
         }
         if(textcount == 0)
@@ -155,21 +162,31 @@ public class QuestUI : MonoBehaviour {
         endDay();
     }
 
-    public void startQuest(string QuestName)
+    public void choseQuest(string QuestName)
     {
-        string nameOfQuest= "";
-        Debug.Log("Start qu3est ACTIVATED!!!");
-for(int i=0; i<Quests[ID].AvailableQuests.Count; i++)
+        if(ThePlayer.CurrentQestsList.Count < ThePlayer.maxCargo)
         {
-            if(QuestName == Quests[ID].AvailableQuests[i].QuestName)
+            Debug.Log("ThePlayer.CurrentQestsList.Count");
+            for (int i = 0; i < Quests[ID].AvailableQuests.Count; i++)
             {
-                Debug.LogError("Checkpoint Slow boat 1. Use this error for line refrence to identify slow boat.");
-                ThePlayer.CurrentQestsList.Add(Quests[ID].AvailableQuests[i]);
-                Quests[ID].AvailableQuests[i].Progress = QuestProgress.Accepted;
-                Ship.loadTheboat(ID, i, Quests[ID].AvailableQuests[i].MercantscargoName);
-                QuestsMenu.SetActive(false);
+                if (QuestName == Quests[ID].AvailableQuests[i].QuestName)
+                {
+                    ThePlayer.CurrentQestsList.Add(Quests[ID].AvailableQuests[i]);
+                    Quests[ID].AvailableQuests[i].Progress = QuestProgress.Accepted;
+                }
             }
         }
-        //pauseMenu.MenuOff();
+        else
+        {
+            Debug.Log("toou cant take this quest");
+        }
+ 
+         //pauseMenu.MenuOff();
+    }
+    public void startQuest()
+    {
+        QuestsMenu.SetActive(false);
+        Ship.loadTheboat();
+
     }
 }

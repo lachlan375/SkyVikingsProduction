@@ -40,6 +40,7 @@ public class skilltree : MonoBehaviour {
     public void addStats(int ID)
     {
         Debug.Log("Add exp");
+       
         if(stats.Exp >0 && stats.TheStats[ID].StatLevel != stats.TheStats[ID].maxLevel)
         {
             stats.TheStats[ID].CurentExp += 1;
