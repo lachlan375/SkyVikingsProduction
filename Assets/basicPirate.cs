@@ -7,7 +7,7 @@ public class basicPirate : MonoBehaviour
     public basicBaot theBoat;
     public bool fired;
     public float realodTime;
-    public int amoutTosteal;
+    public int amotTosteal;
     public gunContoler gun;
 
     // Use this for initialization
@@ -36,7 +36,7 @@ public class basicPirate : MonoBehaviour
     }
     IEnumerator fireTheCanons()
     {
-        gun.startfire(amoutTosteal);
+        gun.startfire();
         yield return new WaitForSeconds(realodTime);
         fired = false;
         theBoat.restart();

@@ -23,7 +23,7 @@ public class playerStats : MonoBehaviour {
     }
     void Update()
     {
-        respectText.text = "respect:" + respectScore;
+   ///     respectText.text = "respect:" + respectScore;
 
     }
 

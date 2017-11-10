@@ -14,7 +14,6 @@ public class gunContoler : MonoBehaviour {
     public float TimeBetweenShots;
     private float shotcouter;
     public float maxshots;
-    private int cargoToSteal;
      void Start () {
      }
 	
@@ -25,14 +24,9 @@ public class gunContoler : MonoBehaviour {
              var theSpell = Instantiate(bullet, fireponit.transform.position, fireponit.transform.rotation);
        }
 	}
-    public void startfire(int steal)
+    public void startfire()
     {
-        cargoToSteal = steal;
-        var theSpell = Instantiate(bullet, fireponit.transform.position, fireponit.transform.rotation);
-        theSpell.GetComponent<SpellcCntroller>().CargotoSteal = cargoToSteal;
+       Instantiate(bullet, fireponit.transform.position, fireponit.transform.rotation);
     }
-    public void throwSnowball()
-    {
-        Instantiate(bullet, fireponit.transform.position, fireponit.transform.rotation);
-    }
+ 
 }
