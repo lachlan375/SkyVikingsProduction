@@ -23,7 +23,7 @@ public class qustsInfo : MonoBehaviour {
         QuestLog.SetActive(true);
         foreach (Quest Quests in theQuests.CurrentQestsList)
         {
-            QuestText.text += "name" + Quests.QuestName + "\n" + " location " + Quests.QueststLocation +"\n"+ "hint"+ Quests.Hint + "\n" ;
+            QuestText.text += "name" + Quests.QuestName + "\n" + " location " + Quests.qestLocationGameObject.name + "\n"+ "hint"+ Quests.Hint + "\n"+Quests.cargo.GetComponent<CargoInformation>().cargoLeft +" %"+"of the cargo left";
         }
  	}
 	

@@ -21,7 +21,7 @@ public class YetiControler : MonoBehaviour
  
     public void finshed()
     {
-        throwSnowbal.throwSnowball();
+        throwSnowbal.startfire();
         YetiAini.SetBool("throwing", false);
     }
     public void raw()

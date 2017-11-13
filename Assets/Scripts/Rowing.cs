@@ -26,17 +26,12 @@ public class Rowing : MonoBehaviour {
 
 	public float currentSpeed;
 
+
+    public float acceleration = 100;
+
     // Use this for initialization
     void Start () {
-        //velocity = 1000.0f;
-
-		//rowerAnimPort = gameObject.GetComponent<Animator> ();
-		//rowerAnimSB = gameObject.GetComponent<Animator> ();
-
-
-     }
-
-
+    }
 
 	// Update is called once per frame
 	void Update ()
@@ -51,6 +46,24 @@ public class Rowing : MonoBehaviour {
         rowerAnimSB.SetFloat("currentSpeed", moveVertRef.currentSpeedInt);
         rowerAnimSB.SetBool("isReversing", moveVertRef.rowingReversedCheck);
 
+        // if we're moving forwards, accelerate when the oars are engaged
+        if (moveVertRef.movingCheck)
+        {
+            if (!slow)
+                moveVertRef.rowingCurrentVal += Time.deltaTime * acceleration;
+        }
+        else if (moveVertRef.rowingReversedCheck)
+        {
+            if (!slow)
+                moveVertRef.rowingCurrentVal -= Time.deltaTime * acceleration *0.5f;
+        }
+        else // slow down
+        {
+            moveVertRef.rowingCurrentVal *= 0.99f; // TODO
+        }
+
+
+        /*
         if (moveVertRef.movingCheck == true)
 			{
 				MinSpeed = moveVertRef.speedCurrentVal;
@@ -81,7 +94,7 @@ public class Rowing : MonoBehaviour {
                 {
                     StartCoroutine(speedPause());
                 }
-			}
+			}*/
 
             
 	}

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum QuestProgress { NotAvailable, Available, Accepted, Done }
+public enum QuestProgress { NotAvailable, Available, Accepted, Done,failed }
 
 public class QuestManager : MonoBehaviour {
     [Header("Quests information")]
@@ -14,26 +14,41 @@ public class QuestManager : MonoBehaviour {
     public QuestUI QestComplet;
     public theShip ship;
     public bool TheQuestComplet;
+    public int maxCargo;
+    public PlaySatSheat cargosats;
+    void Start()
+    {
+        cargosats = FindObjectOfType<PlaySatSheat>();
+        foreach (StatsBace item in cargosats.TheStats)
+        {
 
+            if (item.StatName == "maxCargo")
+            {
+                maxCargo = item.statInt;
+            }
+        }
+
+    }
     public void completQests(string Location)
     {
 
  for(int i = 0; i<CurrentQestsList.Count; i++)
         {
-        if(CurrentQestsList[i].QueststLocation == Location)
+        if(CurrentQestsList[i].qestLocationGameObject.name == Location)
             {
                 Debug.Log("win");
                 Debug.Log("Object loaded");
 
-                ship.reportcargo(CurrentQestsList[i].MercantscargoName);
-                if(ship.cargoDeliverd >0)
+                ship.reportcargo(Location);
+                if(CurrentQestsList[i].cargo.GetComponent<CargoInformation>().CargoAmount > 1)
                 {
                 CurrentQestsList[i].Progress = QuestProgress.Done;
                     CurrentQestsList[i].ExpTogive(ship.cargoDeliverd);
                 }
                 else
                 {
-                    CurrentQestsList[i].Progress = QuestProgress.NotAvailable;
+                    Debug.Log("fail");
+                    CurrentQestsList[i].Progress = QuestProgress.failed;
                 }
                 CompletQestList.Add(CurrentQestsList[i]);
                 CurrentQestsList.Remove(CurrentQestsList[i]);
