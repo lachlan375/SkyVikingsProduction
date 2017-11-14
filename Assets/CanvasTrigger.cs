@@ -7,15 +7,20 @@ public class CanvasTrigger : MonoBehaviour {
     // Use this for initialization
     public GameObject canvasRef;
     public bool is_triggered = false;
+
+	public int childObject_ToUse;
     
+	public bool loop_once;
 
     // Use this for initialization
     void Start()
     {
-        canvasRef = transform.GetChild(0).gameObject;
+		
+		canvasRef = transform.GetChild(childObject_ToUse).gameObject;
         canvasRef.SetActive(is_triggered);
     }
 
+	//when Ontrigger is activated, activate canvas object in child transform
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -24,6 +29,7 @@ public class CanvasTrigger : MonoBehaviour {
             
         }
         canvasRef.SetActive(is_triggered);
+
 
     }
 
