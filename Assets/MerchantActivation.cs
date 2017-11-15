@@ -11,7 +11,7 @@ public class MerchantActivation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        merchant_anim = gameObject.GetComponent<Animator>();
+        merchant_anim = gameObject.GetComponentInParent<Animator>();
 	}
 	
     void OnTriggerEnter(Collider other)

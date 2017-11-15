@@ -10,6 +10,12 @@ public class BoatSelectionUI : MonoBehaviour {
     Animation anticlockAnim;
 
     Animation currAnim;
+	public Animation anim;
+
+	public bool isunlocked_anim = true;
+	public int inputAxis;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -17,22 +23,42 @@ public class BoatSelectionUI : MonoBehaviour {
 
         
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            float startTime = boatSelectedInt * 0.2f;
-            animator.enabled = true;
-            animator.Play("HQBoatSelection", -1, startTime);
-        }
+        
+		//check to see if input is enable
+		////it may still be finishing animation
 
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            float startTime = boatSelectedInt * 0.2f;
-            animator.enabled = true;
-            animator.Play("HQBoatSelectionAnti", -1, startTime);
-        }
+		if (isunlocked_anim) {
+
+			if (Input.GetKeyDown (KeyCode.RightArrow))
+			{
+				
+				anim["HQBoatSelection"].speed = 1.0f;
+				inputAxis = 1;
+				float startTime = boatSelectedInt * 0.2f;
+				animator.enabled = true;
+
+				animator.Play ("HQBoatSelection", 0, startTime);
+
+
+				isunlocked_anim = false;
+			}
+
+			else if (Input.GetKeyDown (KeyCode.LeftArrow))
+			{
+				
+				anim["HQBoatSelection"].speed = -1.0f;
+				inputAxis = -1;
+				float startTime = boatSelectedInt * 0.2f;
+				animator.enabled = true;
+
+				animator.Play ("HQBoatSelection", 0, startTime);
+				isunlocked_anim = false;
+			}
+				
+		}
 	}
 
     public void setBoat1()
@@ -69,7 +95,8 @@ public class BoatSelectionUI : MonoBehaviour {
         animator.SetInteger("currentBoatInt", boatSelectedInt);
 
         // stop the animations form playing ?
-        animator.enabled = false; 
+        animator.enabled = false;
+		isunlocked_anim = true;
     }
 
     void animStop()
