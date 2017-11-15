@@ -19,14 +19,14 @@ public class theShip : MonoBehaviour {
     public float time;
     public bool yes;
     public int cargoDeliverd;
-    public MovementInputController movementController;
+    //public MovementInputController movementController;
     public QuestManager questM;
     [Header("keeps track of the caargo on the ship and here its loaded")]
     public int cargoCounter;
 	void Start () {
         
-
-		movementController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MovementInputController>();
+		//Lachlan's change - No longer require
+		//movementController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MovementInputController>();
     }
 
     // Update is called once per frame
@@ -53,7 +53,8 @@ public class theShip : MonoBehaviour {
             }
 
         }
-		movementController.MovementLock(false);
+		//Lachlan's change - No longer require
+		//movementController.MovementLock(false);
 
 
 

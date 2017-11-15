@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class RowingAnim : MonoBehaviour {
 
-	public Rowing rowingRef;
-
-	// Use this for initialization
-
+    public ShipController shipController;
 
 	public void SpeedStart()
 	{
-		rowingRef.slow = false;
-		Debug.Log ("Oars in FAST mode");
+        shipController.oarsEngaged = true;
+        shipController.numStrokes++;
 	}
 
 	public void SpeedDecay()
 	{
-		rowingRef.slow = true;
-		Debug.Log ("Oars in SPEED mode");
-	}
+        shipController.oarsEngaged = false;
+    }
 
 
 }
