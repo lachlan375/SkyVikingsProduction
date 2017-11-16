@@ -64,7 +64,7 @@ public class BoatSelectionUI : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+        /*
         //check to see if input is enable
         ////it may still be finishing animation
 
@@ -91,7 +91,7 @@ public class BoatSelectionUI : MonoBehaviour {
 
 
             isunlocked_anim = false;
-        }
+        }*/
     }
 
     public void setBoat1()
