@@ -7,17 +7,17 @@ public class endofDayM : MonoBehaviour
 {
     public Text quetSlots;
     public QuestManager quest;
-    public playerStats player;
     public Text gold;
-    private int loss;
+    public int loss;
     public int gains;
     public Text respectText;
-    public ObjectPriceList maxCargo;
+    public ObjectPriceList pricelist;
+    public GameObject[] buttons;
     // Use this for initialization
 
     void Start()
     {
-        quest = GameObject.FindGameObjectWithTag("GameController").GetComponent<QuestManager>();
+        quest = FindObjectOfType<QuestManager>();
 
     }
 
@@ -49,18 +49,17 @@ public class endofDayM : MonoBehaviour
                     #region cargo value coulataor 
                     if (quest.CompletQestList[i].vaule == CargoVaule.Common)
                     {
-                        Questvaule = maxCargo.CommonVaule;
+                        Questvaule = pricelist.CommonVaule;
                     }
                     if (quest.CompletQestList[i].vaule == CargoVaule.Uncommon)
                     {
-                        Questvaule = maxCargo.UncommonVale;
+                        Questvaule = pricelist.UncommonVale;
                     }
                     if (quest.CompletQestList[i].vaule == CargoVaule.Rare)
                     {
-                        Questvaule = maxCargo.UncommonVale;
+                        Questvaule = pricelist.UncommonVale;
                     }
                     Gold = Questvaule * quest.CompletQestList[i].cargo.GetComponent<CargoInformation>().CargoAmount;
-                    Exp += quest.CompletQestList[i].ExpReward;
                     gains += quest.CompletQestList[i].QuestRespect;
                     #endregion 
                 }
@@ -71,7 +70,14 @@ public class endofDayM : MonoBehaviour
 
             }
 
-
         }
+    }
+    public void endday()
+    {
+        Debug.Log("give the player gold and go the hq mode");
+    }
+    public void gameOver()
+    {
+        Debug.Log("game over");
     }
 }

@@ -7,9 +7,9 @@ using UnityEngine;
     public GameObject theCargo; 
 	public int CargoAmount;
     public CargoVaule thevalue;
-    public int cargoLeft;
-    public int startingAmount;
-     
+    public float cargoLeft;
+    public float startingAmount;
+    public cargoremoved cargoAni; 
     public void destoyself()
     {
         Destroy(gameObject);
@@ -19,9 +19,15 @@ using UnityEngine;
     if(CargoAmount >1)
         {
         CargoAmount -= 1;
-        cargoLeft = CargoAmount/startingAmount*100;
-        }
-        
+        cargoLeft = (Mathf.Round(CargoAmount / startingAmount * 100));
 
-    } 
+
+            if (cargoLeft == 50 || cargoLeft == 25 || cargoLeft == 10)
+            {
+                cargoAni.play();
+            }
+        }       
+
+    }
+    
 }

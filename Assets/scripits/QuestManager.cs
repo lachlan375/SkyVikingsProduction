@@ -15,19 +15,13 @@ public class QuestManager : MonoBehaviour {
     public theShip ship;
     public bool TheQuestComplet;
     public int maxCargo;
-    public PlaySatSheat cargosats;
+    public BoatStatOverview cargo;
     void Start()
     {
-        Debug.Log(gameObject); 
-        cargosats = FindObjectOfType<PlaySatSheat>();
-        foreach (StatsBace item in cargosats.TheStats)
-        {
+        Debug.Log(gameObject);
+        cargo = FindObjectOfType<BoatStatOverview>();
+        maxCargo = cargo.maxCargoLimit;
 
-            if (item.StatName == "maxCargo")
-            {
-                maxCargo = item.statInt;
-            }
-        }
 
     }
     public void completQests(string Location)
