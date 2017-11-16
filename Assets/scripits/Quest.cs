@@ -15,7 +15,7 @@ public class Quest
     public string QuestDescription;
     [Tooltip("Give players A quck hinit")]
     public string Hint;
-[HideInInspector]
+//[HideInInspector]
      [Tooltip("just put the gole in here")]
     public GameObject qestLocationGameObject;   
     [Header("Quest goles")]
