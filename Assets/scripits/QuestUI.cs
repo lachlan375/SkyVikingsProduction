@@ -173,7 +173,8 @@ public class QuestUI : MonoBehaviour {
                 {
                     ThePlayer.CurrentQestsList.Add(Quests[ID].AvailableQuests[i]);
                     Quests[ID].AvailableQuests[i].Progress = QuestProgress.Accepted;
-                }
+                    reastart();
+                 }
             }
         }
         else
@@ -188,5 +189,35 @@ public class QuestUI : MonoBehaviour {
         QuestsMenu.SetActive(false);
         Ship.loadTheboat();
 
+    }
+    public void reastart()
+    {
+        int text = 0;
+        for (int i = 0; i < questText.Length; i++)
+        {
+            questText[i].text = "";
+            Buttons[i].SetActive(false);
+            if (i < Quests[ID].AvailableQuests.Count)
+            {
+                if (Quests[ID].AvailableQuests[i].Progress == QuestProgress.Available && RepScore.respectScore >= Quests[ID].AvailableQuests[i].RespectLevelNeeded)
+                {
+                    Buttons[ID].SetActive(true);
+                    questText[ID].text = "Cargo:" + Quests[ID].AvailableQuests[i].QuestName + "\n" + "Vaule:" + Quests[ID].AvailableQuests[i].vaule + "\n" + "Deliver to:" + Quests[ID].AvailableQuests[i].qestLocationGameObject.name;
+                    Buttons[ID].gameObject.GetComponent<QuestButton>().QuestName = Quests[ID].AvailableQuests[i].QuestName;
+                    text++;
+                }
+                if (Quests[ID].AvailableQuests[i].Progress == QuestProgress.Available && RepScore.respectScore <= Quests[ID].AvailableQuests[i].RespectLevelNeeded)
+                {
+                    questText[ID].text = RepText;
+                    text++;
+
+                }
+            }
+        }
+        if (text == 0)
+        {
+            questText[0].text = "NO QUESTS";
+
+        }
     }
 }

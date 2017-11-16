@@ -18,6 +18,7 @@ public class QuestManager : MonoBehaviour {
     public PlaySatSheat cargosats;
     void Start()
     {
+        Debug.Log(gameObject); 
         cargosats = FindObjectOfType<PlaySatSheat>();
         foreach (StatsBace item in cargosats.TheStats)
         {
@@ -31,7 +32,7 @@ public class QuestManager : MonoBehaviour {
     }
     public void completQests(string Location)
     {
-
+        Debug.Log(gameObject);
  for(int i = 0; i<CurrentQestsList.Count; i++)
         {
         if(CurrentQestsList[i].qestLocationGameObject.name == Location)
