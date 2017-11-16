@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipController : MonoBehaviour {
+public class ShipController : MonoBehaviour
+{
 
     public bool oarsEngaged;
     public int numStrokes = 0;
@@ -28,23 +29,42 @@ public class ShipController : MonoBehaviour {
 
     public Animator rowerAnimPort;
     public Animator rowerAnimSB;
-
+    public List<Transform> respawnPoints;
     public float timeCount;  //Timer initiated when keypress taken off;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         rb = GetComponent<Rigidbody>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
+    }
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(3);
+        Transform close = respawnPoints[0];
+        foreach (var point in respawnPoints)
+        {
+            if (Vector3.Distance(close.position, transform.position) > Vector3.Distance(point.position, transform.position))
+            {
+                close = point;
+            }
+        }
+        transform.position = close.position;
+        transform.rotation = close.rotation;
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        RaycastHit hit;
+        if (!rb.SweepTest(Vector3.down, out hit))
+        {
+            StartCoroutine(Respawn());
+        }
         // turn the boat based on the horizontal axis input
         UpdateTurn();
 
         // move the boat forwards and backward based on vertical axis
         UpdateRowing();
-	}
+    }
 
     public float rowingSpeed = 0;
 
@@ -55,7 +75,7 @@ public class ShipController : MonoBehaviour {
 
         bool isRowing = false;
         bool isReversing = false;
-        
+
 
 
         // if we press back, accelerate backwards
@@ -97,7 +117,7 @@ public class ShipController : MonoBehaviour {
 
         rb.AddForce(numStrokes * power * force * thrust * transform.forward);
 
-        rowingSpeed =  50 * rb.velocity.magnitude;
+        rowingSpeed = 50 * rb.velocity.magnitude;
 
         // update rowing animation
 
