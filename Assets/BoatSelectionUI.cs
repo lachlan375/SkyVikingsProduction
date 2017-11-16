@@ -13,7 +13,7 @@ public class BoatSelectionUI : MonoBehaviour {
 	public Animation anim;
 
 	public bool isunlocked_anim = true;
-	public int inputAxis;
+	public float inputAxis;
 
 
 
@@ -24,8 +24,8 @@ public class BoatSelectionUI : MonoBehaviour {
         
 	}
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    /*void Update () {
         
 		//check to see if input is enable
 		////it may still be finishing animation
@@ -59,7 +59,40 @@ public class BoatSelectionUI : MonoBehaviour {
 			}
 				
 		}
-	}
+	}*/
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        //check to see if input is enable
+        ////it may still be finishing animation
+
+        if (isunlocked_anim)
+        {
+
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                inputAxis = 1.0f;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                inputAxis = -1.0f;
+            }
+
+            
+
+            //anim["HQBoatSelection"].speed = inputAxis;
+
+            float startTime = boatSelectedInt * 0.2f;
+            animator.enabled = true;
+
+            animator.Play("HQBoatSelection", 0, startTime);
+
+
+            isunlocked_anim = false;
+        }
+    }
 
     public void setBoat1()
     {
