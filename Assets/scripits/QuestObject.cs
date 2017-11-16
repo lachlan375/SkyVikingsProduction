@@ -19,8 +19,11 @@ public class QuestObject : MonoBehaviour {
     public List<Quest> AvailableQuests = new List<Quest>();
     public Camera mercantsFaceCam;
       public bool inTheBox;
+    public GameObject mercantsFaceCamobject;
       void Start ()
     {
+        mercantsFaceCamobject.SetActive(false);
+        mercantsFaceCam = mercantsFaceCamobject.GetComponent<Camera>();
         Caroprice = FindObjectOfType<ObjectPriceList>();
         TownName = gameObject.name;
  for(int i = 0; i < AvailableQuests.Count; i++)
@@ -38,6 +41,7 @@ public class QuestObject : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space)) 
 
             {
+                mercantsFaceCamobject.SetActive(true);
                 questUI.turnon(TownName);
                 inTheBox = false;
 
