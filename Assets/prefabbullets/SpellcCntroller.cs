@@ -51,20 +51,15 @@ public class SpellcCntroller : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
-        if(pirate == true)
-        {
+        
             if (other.tag.Equals("Boat"))
             {
-                 if(hit == false)
-                {
-                    if (other.gameObject.GetComponent<theShip>())
-                other.gameObject.GetComponent<theShip>().removeCargo();
-                    hit = true;
-                }
+                 
+                 other.gameObject.GetComponent<theShip>().removeCargo();
+            Debug.Log("hit");
             }
 
-        }
-        
+               
 
     }
     public void finshed()

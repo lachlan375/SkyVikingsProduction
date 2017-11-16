@@ -14,13 +14,11 @@ public class QuestManager : MonoBehaviour {
     public QuestUI QestComplet;
     public theShip ship;
     public bool TheQuestComplet;
-    public int maxCargo;
     public BoatStatOverview cargo;
     void Start()
     {
         Debug.Log(gameObject);
         cargo = FindObjectOfType<BoatStatOverview>();
-        maxCargo = cargo.maxCargoLimit;
 
 
     }

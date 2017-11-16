@@ -7,18 +7,20 @@ public class endofDayM : MonoBehaviour
 {
     public Text quetSlots;
     public QuestManager quest;
+    public playerStats player;
     public Text gold;
     public int loss;
     public int gains;
     public Text respectText;
     public ObjectPriceList pricelist;
-    public GameObject[] buttons;
+    public GameObject gameover;
+    public GameObject newday;
     // Use this for initialization
 
     void Start()
     {
         quest = FindObjectOfType<QuestManager>();
-
+        player = FindObjectOfType<playerStats>();
     }
 
     void OnEnable()
@@ -37,7 +39,7 @@ public class endofDayM : MonoBehaviour
                 loss += quest.CurrentQestsList[i].QuestRespect / 2;
             }
         }
-        for (int i = 0; i < quest.maxCargo; i++)
+        for (int i = 0; i < quest.cargo.maxCargoLimit; i++)
         {
 
             if (i < quest.CompletQestList.Count)
@@ -61,6 +63,7 @@ public class endofDayM : MonoBehaviour
                     }
                     Gold = Questvaule * quest.CompletQestList[i].cargo.GetComponent<CargoInformation>().CargoAmount;
                     gains += quest.CompletQestList[i].QuestRespect;
+                  
                     #endregion 
                 }
                 if (quest.CompletQestList[i].Progress == QuestProgress.failed)
@@ -68,8 +71,12 @@ public class endofDayM : MonoBehaviour
                     loss += quest.CurrentQestsList[i].QuestRespect;
                 }
 
-            }
+                player.respectScore += gains-loss;
+                player.gold += Gold;
 
+            }
+            gameover.SetActive(player.respectScore <= 0);
+            newday.SetActive(player.respectScore > 0);
         }
     }
     public void endday()

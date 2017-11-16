@@ -17,6 +17,7 @@ public class QuestObject : MonoBehaviour {
     [Tooltip("Qest ID")]
     public ObjectPriceList Caroprice;
     public List<Quest> AvailableQuests = new List<Quest>();
+    public Camera mercantsFaceCam;
       public bool inTheBox;
       void Start ()
     {

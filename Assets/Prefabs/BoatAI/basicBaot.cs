@@ -50,7 +50,7 @@ public class basicBaot : BoatAI {
             }
 
         }
-        if(Playerinrage.inTheBox == false && ReachedDesnation == false)
+        if(Playerinrage.inTheBox == false)
         {
             if(coolDown == false)
             {
@@ -69,7 +69,7 @@ public class basicBaot : BoatAI {
     }
     IEnumerator cooltDown()
     {
-         yield return new WaitForSeconds(3);
+         yield return new WaitForSeconds(5);
         Alert = false;
         coolDown = false;
         Debug.Log("hit");

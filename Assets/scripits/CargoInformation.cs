@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
  public class CargoInformation : MonoBehaviour
 {
+    [HideInInspector]
     public string CargoDesnation;
-    public GameObject theCargo; 
+    [Tooltip("this is just for debugging to eazly tell whos lost there stuff")]
+    public string cargoName;
 	public int CargoAmount;
+    [Tooltip("this is for the pireats to look at")]
     public CargoVaule thevalue;
+    [HideInInspector]
     public float cargoLeft;
-    public float startingAmount;
-    public cargoremoved cargoAni; 
-    public void destoyself()
+    [HideInInspector]
+        public float startingAmount;
+    void OnEnable()
+    {
+        startingAmount = CargoAmount;
+    }
+         public void destoyself()
     {
         Destroy(gameObject);
     }
@@ -20,12 +28,9 @@ using UnityEngine;
         {
         CargoAmount -= 1;
         cargoLeft = (Mathf.Round(CargoAmount / startingAmount * 100));
+            Debug.Log(cargoName + cargoLeft);
 
-
-            if (cargoLeft == 50 || cargoLeft == 25 || cargoLeft == 10)
-            {
-                cargoAni.play();
-            }
+            
         }       
 
     }

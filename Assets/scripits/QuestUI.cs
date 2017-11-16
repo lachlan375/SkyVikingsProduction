@@ -31,7 +31,7 @@ public class QuestUI : MonoBehaviour {
 	//Lachlans HQ Additions
 	public HQSceneActivation targetHQRef;
     public CameraTargetSwitch targetSwitchRef;
-
+    public Camera playerCamra;
 	public bool testBool = false;
 
     [Tooltip("Pause and Unpause Menu fuctionality")]
@@ -50,8 +50,9 @@ public class QuestUI : MonoBehaviour {
 	}
     void OnEnable()
     {
-        header.text = Quests[0].QuestGIverName;
-        flavorText.text = Quests[0].flavorText;
+        ///header.text = Quests[0].QuestGIverName;
+      ////  flavorText.text = Quests[0].flavorText;
+
         QuestOver.SetActive(true);
         menuSetup(0);
         
@@ -76,6 +77,8 @@ public class QuestUI : MonoBehaviour {
                 QuestOver.SetActive(true);             
                 menuSetup(i);
                 lastID = i;
+                playerCamra.depth = 0;
+                Quests[i].mercantsFaceCam.depth = 2;
             }
         }
         //Pause Menu is activated when Fucnction QuestUI is turned On
@@ -124,6 +127,8 @@ public class QuestUI : MonoBehaviour {
         QuestOver.SetActive(false);
         QuestsMenu.SetActive(false);
         ThePlayer.TheQuestComplet = false;
+        playerCamra.depth = 2;
+        Quests[ID].mercantsFaceCam.depth = 0;
         //pauseMenu.MenuOff();
     }
     public void takeAnewQuest()
@@ -164,7 +169,7 @@ public class QuestUI : MonoBehaviour {
 
     public void choseQuest(string QuestName)
     {
-        if(ThePlayer.CurrentQestsList.Count < ThePlayer.maxCargo)
+        if(ThePlayer.CurrentQestsList.Count < ThePlayer.cargo.maxCargoLimit)
         {
             Debug.Log("ThePlayer.CurrentQestsList.Count");
             for (int i = 0; i < Quests[ID].AvailableQuests.Count; i++)

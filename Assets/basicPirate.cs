@@ -5,9 +5,11 @@ using UnityEngine;
 public class basicPirate : MonoBehaviour
 {
     public basicBaot theBoat;
+    [HideInInspector]
     public bool fired;
+  
     public float realodTime;
-    public int amotTosteal;
+    [Tooltip("this can be enything its just a place holder name ")]
     public gunContoler gun;
 
     // Use this for initialization
