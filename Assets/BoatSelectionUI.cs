@@ -3,137 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BoatSelectionUI : MonoBehaviour {
-    public int boatSelectedInt;
 
-    Animator animator;
-    Animation animClock;
-    Animation anticlockAnim;
+    public Transform[] boats;
+    public int currentIndex;
+    public float speed = 90;
 
-    Animation currAnim;
-	public Animation anim;
+    void Start()
+    {
+        // find all child objects
+        boats = new Transform[transform.childCount];
+        for (int i = 0; i < boats.Length; i++)
+        {
+            boats[i] = transform.GetChild(i);
+            // make them look at the centre
+            boats[i].LookAt(transform.position);
+        }
 
-	public bool isunlocked_anim = true;
-	public float inputAxis;
-
-
-
-	// Use this for initialization
-	void Start () {
-        animator = GetComponent<Animator>();
-
-        
-	}
-
-    // Update is called once per frame
-    /*void Update () {
-        
-		//check to see if input is enable
-		////it may still be finishing animation
-
-		if (isunlocked_anim) {
-
-			if (Input.GetKeyDown (KeyCode.RightArrow))
-			{
-				
-				anim["HQBoatSelection"].speed = 1.0f;
-				inputAxis = 1;
-				float startTime = boatSelectedInt * 0.2f;
-				animator.enabled = true;
-
-				animator.Play ("HQBoatSelection", 0, startTime);
+        currentIndex = 0;
+    }
 
 
-				isunlocked_anim = false;
-			}
-
-			else if (Input.GetKeyDown (KeyCode.LeftArrow))
-			{
-				
-				anim["HQBoatSelection"].speed = -1.0f;
-				inputAxis = -1;
-				float startTime = boatSelectedInt * 0.2f;
-				animator.enabled = true;
-
-				animator.Play ("HQBoatSelection", 0, startTime);
-				isunlocked_anim = false;
-			}
-				
-		}
-	}*/
-
-    // Update is called once per frame
     void Update()
     {
-        /*
-        //check to see if input is enable
-        ////it may still be finishing animation
-
-        if (isunlocked_anim)
+        // if we press left arrow, move back one in index
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            currentIndex--;
+        }
 
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                inputAxis = 1.0f;
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                inputAxis = -1.0f;
-            }
+        // if we press right arrow, move forward one in index
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            currentIndex++;
+        }
 
-            
+        // keep in the valid range
+        currentIndex = (currentIndex+ boats.Length) % boats.Length;
 
-            //anim["HQBoatSelection"].speed = inputAxis;
+        // get our desired angle
+        float desiredAngle = -boats[currentIndex].localEulerAngles.y;
 
-            float startTime = boatSelectedInt * 0.2f;
-            animator.enabled = true;
-
-            animator.Play("HQBoatSelection", 0, startTime);
-
-
-            isunlocked_anim = false;
-        }*/
-    }
-
-    public void setBoat1()
-    {
-        AnimSet(0);
-    }
-
-    public void setBoat2()
-    {
-        AnimSet(1);
-    }
-
-    public void setBoat3()
-    {
-        AnimSet(2);
-    }
-
-    public void setBoat4()
-    {
-        AnimSet(3);
-    }
-
-    public void setBoat5()
-    {
-        AnimSet(4);
-    }
-
-    void AnimSet(int currentInt)
-    {
-        if (boatSelectedInt == currentInt)
-            return;
-
-        boatSelectedInt = currentInt;
-        animator.SetInteger("currentBoatInt", boatSelectedInt);
-
-        // stop the animations form playing ?
-        animator.enabled = false;
-		isunlocked_anim = true;
-    }
-
-    void animStop()
-    {
-        
+        // move towards it
+        float angle = transform.eulerAngles.y;
+        angle = Mathf.MoveTowardsAngle(angle, desiredAngle, speed * Time.deltaTime);
+        transform.eulerAngles = new Vector3(0, angle, 0);
     }
 }

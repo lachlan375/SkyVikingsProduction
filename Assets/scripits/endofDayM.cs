@@ -75,8 +75,8 @@ public class endofDayM : MonoBehaviour
                 player.gold += Gold;
 
             }
-            gameover.SetActive(player.respectScore <= 0);
-            newday.SetActive(player.respectScore > 0);
+            gameover.SetActive(player.respectScore < 0);
+            newday.SetActive(player.respectScore >= 0);
         }
     }
     public void endday()
