@@ -8,11 +8,8 @@ public class NavMeshAI : BoatAI
 
     public Transform pathholder;
     public NavMeshAgent BoatNavMesh;
-    //  public hitBox HitBox;
     public List<Transform> thePath = new List<Transform>();
     public float waitTime;
-    public float TurnSpeed;
-    public bool playerInrage;
     public bool stop;
     public Vector3 faceingPonit;
     public int newID;
@@ -46,33 +43,19 @@ public class NavMeshAI : BoatAI
     // Update is called once per frame
     void Update()
     {
-        if (Alert == true)
-        {
-
-
-            BoatNavMesh.stoppingDistance = StopingDisteance;
-            BoatNavMesh.SetDestination(Player.transform.position);
-            if (BoatNavMesh.remainingDistance <= BoatNavMesh.stoppingDistance)
-            {
-                ReachedDesnation = true;
-
-            }
-        }
-        if (Alert == false && stop == false)
-        {
+        if(stop == false)
             BoatNavMesh.SetDestination(thePath[TheTargetID].transform.position);
             if (BoatNavMesh.remainingDistance <= BoatNavMesh.stoppingDistance)
             {
                 StartCoroutine(waitforAsecond());
                 TheTargetID = (TheTargetID + 1) % thePath.Count;
-                faceingPonit = thePath[TheTargetID].transform.position;
-                BoatNavMesh.SetDestination(thePath[TheTargetID].transform.position);
-            }
-        }
-        if (playerInrage == false)
-        {
-            Alert = false;     
-        }
+            ///faceingPonit = thePath[TheTargetID].transform.position;
+            transform.forward = thePath[TheTargetID].transform.position -transform.position;
+            transform.eulerAngles = new Vector3(0, thePath[TheTargetID].transform.eulerAngles.y, 0);
+
+            BoatNavMesh.SetDestination(thePath[TheTargetID].transform.position);
+            }        
+
     }
     IEnumerator waitforAsecond()
     {
