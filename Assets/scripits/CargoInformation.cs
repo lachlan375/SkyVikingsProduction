@@ -14,11 +14,15 @@ using UnityEngine;
     public float cargoLeft;
     [HideInInspector]
         public float startingAmount;
+    public Animator BoxAni;
+
     void OnEnable()
     {
         startingAmount = CargoAmount;
+        StartCoroutine(hitBox());
+
     }
-         public void destoyself()
+    public void destoyself()
     {
         Destroy(gameObject);
     }
@@ -29,10 +33,20 @@ using UnityEngine;
         CargoAmount -= 1;
         cargoLeft = (Mathf.Round(CargoAmount / startingAmount * 100));
             Debug.Log(cargoName + cargoLeft);
-
+            StartCoroutine(hitBox());
             
         }       
 
     }
-    
+  
+    IEnumerator hitBox()
+    {
+        Debug.Log("hi im a box");
+        BoxAni.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+         BoxAni.enabled = false;
+        Debug.Log("i am done");
+                
+    }
+
 }

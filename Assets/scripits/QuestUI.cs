@@ -191,6 +191,7 @@ public class QuestUI : MonoBehaviour {
     }
     public void startQuest()
     {
+        Quests[ID].mercantsFaceCamobject.SetActive(true);
         QuestsMenu.SetActive(false);
         Ship.loadTheboat();
 
