@@ -11,7 +11,7 @@ public class CameraTargetSwitch : MonoBehaviour {
 	public Image black;
 	public Animator anim;
 
-
+	private bool is_switching;
 
 
     void Awake()
@@ -32,22 +32,24 @@ public class CameraTargetSwitch : MonoBehaviour {
 
     
 
-    public void CameraSwitch(bool is_swtiching)
+    public void CameraSwitch()
     {
-        /*
+        
         Debug.Log("camera switch called");
-        if (is_swtiching)
+        if (!is_switching)
         {
 
             hqCam.SetActive(true);
             origCam.SetActive(false);
             Debug.Log("HQ Cam activated!!!");
+			is_switching = true;
         }
         else
         {
             hqCam.SetActive(false);
             origCam.SetActive(true);
-        }*/
+			is_switching = false;
+        }
     }
 
 	IEnumerator Fading()
