@@ -32,13 +32,17 @@ public class ShipController : MonoBehaviour
     public List<Transform> respawnPoints;
     public float timeCount;  //Timer initiated when keypress taken off;
 
+    bool respawning = false;
+
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
+
     IEnumerator Respawn()
     {
+        respawning = true;
         yield return new WaitForSeconds(3);
         Transform close = respawnPoints[0];
         foreach (var point in respawnPoints)
@@ -50,15 +54,18 @@ public class ShipController : MonoBehaviour
         }
         transform.position = close.position;
         transform.rotation = close.rotation;
+        respawning = false;
     }
+
     // Update is called once per frame
     void Update()
     {
         RaycastHit hit;
-        if (!rb.SweepTest(Vector3.down, out hit))
+        if (!rb.SweepTest(Vector3.down, out hit) && !respawning)
         {
             StartCoroutine(Respawn());
         }
+
         // turn the boat based on the horizontal axis input
         UpdateTurn();
 
