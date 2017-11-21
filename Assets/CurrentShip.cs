@@ -5,11 +5,10 @@ using UnityEngine;
 public class CurrentShip : MonoBehaviour
 {
 
-    //public GameObject instantiatedShip;
-    public GameObject currentShip;
 
-    //public Transform posShipCurrent;
-    //public Transform posShipTransformTo;
+    public GameObject currentShip;
+	public 
+
     public Vector3 posHQRespawn;
 
     //public GameObject hqContRef;
@@ -44,7 +43,7 @@ public class CurrentShip : MonoBehaviour
     {
         if (updatedShipModel == true)
         {
-            NewHQShip_Spawn();
+			//ActivateHQShip_Spawn();
             updatedShipModel = false;
         }
 
@@ -59,12 +58,12 @@ public class CurrentShip : MonoBehaviour
 
     }
 
-    void NewHQShip_Spawn()
+    void ActivateHQShip_Spawn(int activatedShip)
     {
 
         Destroy(currentShip);
 
-        currentShip = gameObject.GetComponent<ShipStats>().shipsArray[gameObject.GetComponent<ShipStats>().currentShip];
+        //currentShip = gameObject.GetComponent<ShipStats>().shipsArray[gameObject.GetComponent<ShipStats>().currentShip];
 
 
         Instantiate(currentShip);

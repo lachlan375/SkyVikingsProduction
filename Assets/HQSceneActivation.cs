@@ -13,10 +13,14 @@ public class HQSceneActivation : MonoBehaviour {
     public GameObject currentBoat;
     Vector3 spawn;
 
-    
 
-    public Scene hq_Scene;
-    public string hqString;
+
+	GameObject hqCam;
+	GameObject origCam;
+	private bool is_switching;
+
+    //public Scene hq_Scene;
+    //public string hqString;
 
 
     // Use this for initialization
@@ -31,6 +35,9 @@ public class HQSceneActivation : MonoBehaviour {
         currentBoat = playerContRef.GetComponent<CurrentShip>().currentShip;
 
 
+
+		origCam = GameObject.FindGameObjectWithTag("MainCamera");
+		hqCam = GameObject.FindGameObjectWithTag("HQCamera");
         
         
         
@@ -40,19 +47,20 @@ public class HQSceneActivation : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (is_ActiveHQMode)
-        {
-            HQActivation();
-			is_ActiveHQMode = false;
-        }
-
+		if (is_ActiveHQMode) {
+			HQActivation ();
+//			is_ActiveHQMode = false;
+			CameraSwitch ();
+		}
 
     }
 
     public void HQActivation()
     {
 
-        //gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(true);
+		CameraSwitch ();
+
+		//gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(true);
         currentBoat.transform.position = spawn;
 		playerContRef.GetComponent<MovementInputController> ().MovementReset();
         //currentBoat.transform.position = findobject. hqTransform.transform.position;
@@ -70,7 +78,8 @@ public class HQSceneActivation : MonoBehaviour {
     public void HQRelease()
     {
 
-        //gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(false);
+		CameraSwitch ();
+		//gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(false);
 
     }
 
@@ -78,4 +87,25 @@ public class HQSceneActivation : MonoBehaviour {
     {
 
     }
+
+	public void CameraSwitch()
+	{
+
+		Debug.Log("camera switch called");
+		if (!is_switching)
+		{
+
+			hqCam.SetActive(true);
+			origCam.SetActive(false);
+			Debug.Log("HQ Cam activated!!!");
+			is_switching = true;
+		}
+		else
+		{
+			hqCam.SetActive(false);
+			origCam.SetActive(true);
+			is_switching = false;
+		}
+	}
+
 }
