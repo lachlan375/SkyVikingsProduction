@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelManagment : MonoBehaviour {
+public class LevelManagment : MonoBehaviour
+{
 
     public int currentlevelInt;
     public int maxLevelInt;
 
-	public int dayCount;
+    public int dayCount;
 
     public GameObject animObjectRef;
     public Image black;
@@ -17,11 +18,11 @@ public class LevelManagment : MonoBehaviour {
 
     public static LevelManagment instance = null;
 
-    public int[] unlock_BossMode = new int [3];
+    public int[] unlock_BossMode = new int[3];
 
 
-	public bool goto_NxtLevel;
-    
+    public bool goto_NxtLevel;
+
 
 
     void Awake()
@@ -40,24 +41,24 @@ public class LevelManagment : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
         }
 
-        
+
     }
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-        
-		dayCount = 0;
+
+        dayCount = 0;
         //Redundant code transferred to Scene Transition class
-       // maxLevelInt = SceneManager.sceneCountInBuildSettings;
+        // maxLevelInt = SceneManager.sceneCountInBuildSettings;
         //--maxLevelInt;
-        
+
 
     }
 
     void Update()
     {
-        if (goto_NxtLevel== true)
+        if (goto_NxtLevel == true)
         {
             MainMenu();
         }
@@ -75,7 +76,7 @@ public class LevelManagment : MonoBehaviour {
 
     public void MainMenu()
     {
-        StartCoroutine(Fading());
+        //StartCoroutine(Fading());
         SceneManager.LoadScene(0);
     }
 
@@ -84,21 +85,36 @@ public class LevelManagment : MonoBehaviour {
         if (currentlevelInt < maxLevelInt)
         {
             currentlevelInt++;
-            StartCoroutine(Fading());
+            //StartCoroutine(Fading());
 
             SceneManager.LoadScene(currentlevelInt);
         }
     }
 
-  
-    IEnumerator Fading()
+    public void Level01To02()
+    {
+        StartCoroutine(Fading01());
+    }
+
+    public void Level02To03()
+    {
+        StartCoroutine(Fading02());
+    }
+
+    IEnumerator Fading01()
     {
         anim.SetBool("Fade", true);
-        //Debug.Log("Fade activated");
         yield return new WaitUntil(() => black.color.a >= .95);
         anim.SetBool("isfadeing", true);
-        yield return new WaitUntil(() => black.color.a == 0);
+        SceneNames.LoadScene("Level_02");
+    }
 
+    IEnumerator Fading02()
+    {
+        anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => black.color.a >= .95);
+        anim.SetBool("isfadeing", true);
+        SceneNames.LoadScene("Level_03");
     }
 
 

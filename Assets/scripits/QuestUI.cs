@@ -40,7 +40,7 @@ public class QuestUI : MonoBehaviour {
     void Start () {
         QuestsMenu.SetActive(false);
         QuestOver.SetActive(false);
-
+       
 	}
 
 	void Update(){
