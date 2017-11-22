@@ -21,19 +21,25 @@ public class ShipStats : MonoBehaviour
     public float maxSpeed;
     public float minSpeed;
 
-	[Header("Ship Progress")]
-	//public int currentShip;
-	public int totalShips;
 
 
-	[Header("Current Ship")]
 
 
-	//public int shipStateInt;
+	[Header("Ships List")]
+    public int totalShips;
+    //public int shipStateInt;
 
-	public List<ShipStatsState> shippingList = new List<ShipStatsState>();
+    public List<ShipStatsState> shippingList = new List<ShipStatsState>();
+
+    [Header("Current Ship")]
+    public int currentShipInt;
+    public GameObject currentShip;
+
+    public Vector3 posHQRespawn;
+
 
     public bool testbool;
+    public int testInt;
 
     void Awake()
     {
@@ -69,19 +75,48 @@ public class ShipStats : MonoBehaviour
 
 		totalShips = transform.childCount;
 
-
-
 		for(int i = 0; i < totalShips - 1; i++)
 		{
 			shippingList[i].Setup(i);
 
 		}
-	}
 
-	public void UpdateCurrentShip(int shiptoactivate)
+        posHQRespawn = GameObject.FindGameObjectWithTag("Respawn").transform.position;
+        currentShip = transform.GetChild(currentShipInt).gameObject;
+    }
+
+    void Update()
+    {
+        if (testbool == true)
+        {
+            UpdateCurrentShip(testInt);
+
+            testbool = false;
+        }
+
+    }
+
+    public void DeactivateCurrentShip()
+    {
+        currentShip.SetActive(false);
+    }
+
+	public void UpdateCurrentShip(int shipToActivate)
 	{
-		
-	}
+
+        if (currentShipInt != shipToActivate)
+        {
+            currentShipInt = shipToActivate;
+            currentShip = transform.GetChild(currentShipInt).gameObject;
+        }
+
+        
+        currentShip.SetActive(true);
+
+        
+
+    }
+
 
 
 

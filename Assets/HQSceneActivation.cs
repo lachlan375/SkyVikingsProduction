@@ -15,8 +15,8 @@ public class HQSceneActivation : MonoBehaviour {
 
 
 
-	GameObject hqCam;
-	GameObject origCam;
+	public GameObject hqCam;
+	public GameObject origCam;
 	private bool is_switching;
 
     //public Scene hq_Scene;
@@ -58,13 +58,14 @@ public class HQSceneActivation : MonoBehaviour {
     public void HQActivation()
     {
 
+        playerContRef.GetComponent<ShipStats>().DeactivateCurrentShip();
 		CameraSwitch ();
 
 		//gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(true);
-        currentBoat.transform.position = spawn;
-		playerContRef.GetComponent<MovementInputController> ().MovementReset();
+        //currentBoat.transform.position = spawn;
+		//playerContRef.GetComponent<MovementInputController> ().MovementReset();
         //currentBoat.transform.position = findobject. hqTransform.transform.position;
-        playerContRef.GetComponent<CurrentShip>().CurrentShipHQ_Spawn();
+        //playerContRef.GetComponent<CurrentShip>().CurrentShipHQ_Spawn();
 
         //GameObject.FindGameObjectWithTag("PlayerController").GetComponent<CurrentShip>().CurrentShipHQ_Spawn();
         
@@ -79,6 +80,7 @@ public class HQSceneActivation : MonoBehaviour {
     {
 
 		CameraSwitch ();
+        
 		//gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(false);
 
     }

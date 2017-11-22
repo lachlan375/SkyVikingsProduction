@@ -7,7 +7,7 @@ public class CurrentShip : MonoBehaviour
 
 
     public GameObject currentShip;
-	public 
+	
 
     public Vector3 posHQRespawn;
 
@@ -34,6 +34,9 @@ public class CurrentShip : MonoBehaviour
         if (testCall == true)
         {
             CurrentShipHQ_Spawn();
+
+            currentShip.SetActive(false);
+
             testCall = false;
         }
 

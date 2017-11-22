@@ -29,7 +29,8 @@ public class HQCanvasSetup : MonoBehaviour {
 		progressStats = playerControllerRef.gameObject.GetComponent<playerStats> ();
 
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () {
 		LockedScreen ();
@@ -91,4 +92,6 @@ public class HQCanvasSetup : MonoBehaviour {
 	{
 		playerShipStats.UpdateCurrentShip (HqBoat);
 	}
+
+
 }

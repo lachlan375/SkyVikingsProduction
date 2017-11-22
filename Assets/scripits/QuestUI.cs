@@ -144,8 +144,10 @@ public class QuestUI : MonoBehaviour {
     //Method to transition to HQ Activation
     public void endDay()
     {
-		canvas_HQ.SetActive(true);
-		targetHQRef.HQActivation();
+
+        canvas_HQ.SetActive(true);
+        targetHQRef.HQActivation();
+
         //targetSwitchRef.CameraSwitch(true);
 
         //pauseMenu.MenuOff();

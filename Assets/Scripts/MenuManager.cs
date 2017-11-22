@@ -12,7 +12,9 @@ public class MenuManager : MonoBehaviour {
 
     public int newGame = 2;
                                             
-    void Start () {
+    void Start ()
+    {
+
         sceneTransitRef = gameObject.GetComponent<SceneTransistion>();
     }
 	
