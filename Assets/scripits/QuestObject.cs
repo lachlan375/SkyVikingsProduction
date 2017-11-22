@@ -8,6 +8,8 @@ public class QuestObject : MonoBehaviour {
     [Header("Quests giver information")]
     [Tooltip("this dosent need to be filled out the game object becomes the  names")]
     public string TownName;
+    [Tooltip("someting about there store")]
+    public string townHinit;
     [Tooltip("this is the qest givers name it can be ennything you like")]
      public string QuestGIverName;
     [Tooltip("someting about there store")]
@@ -26,6 +28,18 @@ public class QuestObject : MonoBehaviour {
         mercantsFaceCam = mercantsFaceCamobject.GetComponent<Camera>();
         Caroprice = FindObjectOfType<ObjectPriceList>();
         TownName = gameObject.name;
+        for(int i = 0; i<AvailableQuests.Count; i++)
+        {
+            Debug.Log("YO"+gameObject);
+            if(AvailableQuests[i].qestLocationGameObject.GetComponent<QuestObject>() != null)
+            {
+            AvailableQuests[i].Hint = AvailableQuests[i].qestLocationGameObject.GetComponent<QuestObject>().townHinit;
+            }
+            else
+            {
+                AvailableQuests[i].Hint = "cant find quest";
+            }
+        }
  for(int i = 0; i < AvailableQuests.Count; i++)
         {
             AvailableQuests[i].setup();

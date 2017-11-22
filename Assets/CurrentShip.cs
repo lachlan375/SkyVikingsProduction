@@ -7,7 +7,6 @@ public class CurrentShip : MonoBehaviour
 
 
     public GameObject currentShip;
-	public 
 
     public Vector3 posHQRespawn;
 
