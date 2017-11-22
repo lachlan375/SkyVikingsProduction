@@ -72,6 +72,6 @@ public class basicBaot : BoatAI {
          yield return new WaitForSeconds(5);
         Alert = false;
         coolDown = false;
-        Debug.Log("hit");
+
     }
 }

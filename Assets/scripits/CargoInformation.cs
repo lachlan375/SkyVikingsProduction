@@ -41,11 +41,10 @@ using UnityEngine;
   
     IEnumerator hitBox()
     {
-        Debug.Log("hi im a box");
         BoxAni.enabled = true;
         yield return new WaitForSeconds(0.1f);
          BoxAni.enabled = false;
-        Debug.Log("i am done");
+
                 
     }
 
