@@ -92,25 +92,9 @@ public class SceneTransistion : MonoBehaviour {
                     Debug.Log("No choice has been made");
                     break;
             }
-            StartCoroutine(Fading());
         //}
 
-    }
-
-    
-    IEnumerator Fading()
-    {
-        anim.SetBool("Fade", true);
-        Debug.Log("Fade activated");
-        yield return new WaitUntil(() => black.color.a >= .90);
-        anim.SetBool("isfadeing", true);
-        yield return new WaitUntil(() => black.color.a == 0);
-        //yield return new WaitForSeconds(1);
-        Debug.Log("Scene loaded");
-        SceneManager.LoadScene(index);
-		
-    }
-    
+    }   
 
     void NextLevel()
     {

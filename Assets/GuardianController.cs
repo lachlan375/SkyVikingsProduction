@@ -6,11 +6,11 @@ public class GuardianController : MonoBehaviour {
 	public GameObject canvasRef;
 	public bool guardiansMode_Unlocked;
     public GameObject guardianRef;
+    public GameObject toEnable;
 
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 
     void Update()
@@ -28,8 +28,7 @@ public class GuardianController : MonoBehaviour {
 	{
 		guardiansMode_Unlocked = true;
         CanvasDeativation();
-
-
+        toEnable.SetActive(true);
     }
 
 	public void HighStakesDeclined()
