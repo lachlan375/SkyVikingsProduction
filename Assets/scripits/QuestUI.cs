@@ -141,6 +141,11 @@ public class QuestUI : MonoBehaviour {
 
     }
 
+    public void NewDay()
+    {
+
+    }
+
     //Method to transition to HQ Activation
     public void endDay()
     {

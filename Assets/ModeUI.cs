@@ -9,8 +9,10 @@ public class ModeUI : MonoBehaviour {
 
     public GameObject bossStart_canvas;
     public GameObject gameOver_canvas;
+    public GameObject gameQuit_canvas;
+    public GameObject merchant_canvas;
 
-	public int currentLevel;
+    public int currentLevel;
 	public int currentDayRef;
 	public string currentLevelString;
 
@@ -64,8 +66,19 @@ public class ModeUI : MonoBehaviour {
 
 		levelBossText.text = "Level " + currentLevel + " Enemy Guardian Awakened";
 
+    }
 
+    public void GameUI_Quit()
+    {
+        merchant_canvas.SetActive(false);
+        gameQuit_canvas.SetActive(true);
 
+    }
+
+    public void GameUI_QuitCancel()
+    {
+        gameQuit_canvas.SetActive(false);
+        merchant_canvas.SetActive(true);
     }
 
     public void GameUI_End()
@@ -73,6 +86,8 @@ public class ModeUI : MonoBehaviour {
         gameOver_canvas.SetActive(true);
 
     }
+
+
 
 	public int CurrentLevelReturn()
 	{
@@ -89,4 +104,5 @@ public class ModeUI : MonoBehaviour {
 		dayInt = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManagment>().dayCount;
 		return dayInt;
 	}
+
 }
