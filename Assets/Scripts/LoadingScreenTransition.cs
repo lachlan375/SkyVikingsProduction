@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class LoadingScreenTransition : MonoBehaviour {
 
+    public GameObject cv01, cv02, cv03;
+
 	void Start () {
+        if (SceneNames.sceneToLoad == "Level_01")
+            cv01.SetActive(true);
+        else if (SceneNames.sceneToLoad == "Level_02")
+            cv02.SetActive(true);
+        else if (SceneNames.sceneToLoad == "Level_03")
+            cv03.SetActive(true);
+
         if (SceneNames.loading)
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(SceneNames.sceneToLoad);
         SceneNames.loading = false;
