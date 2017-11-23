@@ -30,33 +30,29 @@ public class SceneMode : MonoBehaviour
             sceneMode_Check(level_mode);
             testCall = false;
         }
-        /*if (level_mode == 4)
-        {
-            if (Input.GetKey(KeyCode.P))
-            {
-                Time.timeScale = 1;
-                lvlManageRef.MainMenu();
-            }
-        }*/
+
     }
 
     public void sceneMode_Check(int modeRef)
     {
 
+
+
         level_mode = modeRef;
         switch (level_mode)
         {
-            case 4:
-                //Time.timeScale = 0;
-                modeUIRef.GetComponent<ModeUI>().GameUI_End();
-                //lvlManageRef.MainMenu();
 
+            case 5:
+                modeUIRef.GetComponent<ModeUI>().GameUI_End();
+                break;
+            case 4:
+                modeUIRef.GetComponent<ModeUI>().GameUI_End();
                 break;
 			case 3:
 				bossMode_available = false;
                 lvlManageRef.NextLevel();
                 break;
-		case 2:
+		    case 2:
 				bossMode_available = true;
 				modeUIRef.GetComponent<ModeUI>().BossUI_Start();
                 break;

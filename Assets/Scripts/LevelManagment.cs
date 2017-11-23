@@ -101,6 +101,11 @@ public class LevelManagment : MonoBehaviour
         StartCoroutine(Fading02());
     }
 
+    public void QuitToMenu()
+    {
+        StartCoroutine(FadingMenu());
+    }
+
     IEnumerator Fading01()
     {
         anim.SetBool("Fade", true);
@@ -117,5 +122,12 @@ public class LevelManagment : MonoBehaviour
         SceneNames.LoadScene("Level_03");
     }
 
+    IEnumerator FadingMenu()
+    {
+        anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => black.color.a >= .95);
+        anim.SetBool("isfadeing", true);
+        SceneNames.LoadScene("MenuTest");
+    }
 
 }

@@ -59,6 +59,7 @@ public class HQSceneActivation : MonoBehaviour {
     {
 
         playerContRef.GetComponent<ShipStats>().DeactivateCurrentShip();
+
 		CameraSwitch ();
 
 

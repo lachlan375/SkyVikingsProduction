@@ -86,5 +86,7 @@ public class endofDayM : MonoBehaviour
     public void gameOver()
     {
         Debug.Log("game over");
+
+
     }
 }
