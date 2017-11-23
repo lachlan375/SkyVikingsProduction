@@ -11,6 +11,9 @@ public class HQSceneActivation : MonoBehaviour {
 
     public GameObject playerContRef;
     public GameObject currentBoat;
+
+    public GameObject boatSelection_Range;
+
     Vector3 spawn;
 
 
@@ -59,8 +62,10 @@ public class HQSceneActivation : MonoBehaviour {
     {
 
         playerContRef.GetComponent<ShipStats>().DeactivateCurrentShip();
+        boatSelection_Range.SetActive(true);
 
-		CameraSwitch ();
+
+        CameraSwitch ();
 
 
     }
@@ -68,6 +73,7 @@ public class HQSceneActivation : MonoBehaviour {
     {
 
         playerContRef.GetComponent<ShipStats>().ActivateCurrentShip();
+        boatSelection_Range.SetActive(false);
         CameraSwitch ();
     }
 

@@ -8,6 +8,7 @@ public class endofDayM : MonoBehaviour
     public Text quetSlots;
     public QuestManager quest;
     public playerStats player;
+    public LevelManagment levelManager;
     public Text gold;
     public int loss;
     public int gains;
@@ -15,12 +16,19 @@ public class endofDayM : MonoBehaviour
     public ObjectPriceList pricelist;
     public GameObject gameover;
     public GameObject newday;
+
+    public SceneMode sceneModeRef;
+
+    
+
     // Use this for initialization
 
     void Start()
     {
         quest = FindObjectOfType<QuestManager>();
         player = FindObjectOfType<playerStats>();
+        sceneModeRef = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneMode>();
+        levelManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManagment>();
     }
 
     void OnEnable()
@@ -75,18 +83,32 @@ public class endofDayM : MonoBehaviour
                 player.gold += Gold;
 
             }
-            gameover.SetActive(player.respectScore < 0);
+            if (gameover)
+            {
+                gameover.SetActive(player.respectScore < 0);
+            }
             newday.SetActive(player.respectScore >= 0);
         }
     }
     public void endday()
     {
+        int playerRespectInt = player.respectScore;
+        int levelRespectInt = levelManager.unlock_BossMode[levelManager.currentlevelInt];
+
+        if (playerRespectInt >= levelRespectInt)
+        {
+            sceneModeRef.sceneMode_Check(2);
+        }
+        else
+        {
+            sceneModeRef.sceneMode_Check(1);
+        }
+
         Debug.Log("give the player gold and go the hq mode");
     }
     public void gameOver()
     {
+        sceneModeRef.sceneMode_Check(5);
         Debug.Log("game over");
-
-
     }
 }

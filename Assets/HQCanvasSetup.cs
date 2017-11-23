@@ -42,6 +42,7 @@ public class HQCanvasSetup : MonoBehaviour {
 	}
 
 
+    //Called from Boat Selection Capsule to Set current boat selection
 
 	public void SelectionUpdate(int currentBoat)
 	{
@@ -91,10 +92,15 @@ public class HQCanvasSetup : MonoBehaviour {
 	}
 
 
-	void Button_Activation()
+	public void Button_Activation()
 	{
-		playerShipStats.UpdateCurrentShip (HqBoat);
-	}
+        Debug.Log("Button Activated");
+        currentBoatState.is_activated = false;
+        playerShipStats.UpdateCurrentShip (HqBoat);
+        currentBoatState.is_activated = true;
+
+
+    }
 
 
 }

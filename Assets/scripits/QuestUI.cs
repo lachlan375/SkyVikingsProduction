@@ -143,13 +143,14 @@ public class QuestUI : MonoBehaviour {
 
     public void NewDay()
     {
-
+        canvas_HQ.SetActive(false);
+        targetHQRef.HQRelease();
     }
 
     //Method to transition to HQ Activation
     public void endDay()
     {
-
+        QuestOver.SetActive(false);
         canvas_HQ.SetActive(true);
         targetHQRef.HQActivation();
 
@@ -157,7 +158,7 @@ public class QuestUI : MonoBehaviour {
         //pauseMenu.MenuOff();
         Debug.Log("dayover");
         
-        QuestOver.SetActive(false);
+
         
       ///  SceneManager.LoadScene(Dayover);
         //// something lachlan needs to sort out

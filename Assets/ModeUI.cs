@@ -19,25 +19,19 @@ public class ModeUI : MonoBehaviour {
 	public Text levelStartText;
 	public Text levelBossText;
 
-	public bool testbool;
+    public bool testbool;
 
     // Use this for initialization
     void Start () {
 		currentLevel = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManagment>().currentlevelInt;
-	}
+        currentDayRef = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManagment>().dayCount;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
-		//
 
-		/*if (testbool == true) 
-		{
-			LevelUI_Start ();
-			//BossUI_Start ();
-			testbool = false;
-
-		}*/
 	}
 
     public void LevelUI_Start()
@@ -53,18 +47,19 @@ public class ModeUI : MonoBehaviour {
 
     public void LevelUI_Cont()
     {
-		level_canvas.SetActive(true);
+        //LevelManagment.dayCount = LevelManagment.dayCount++;
 		currentLevel = CurrentLevelReturn ();
-		currentDayRef = CurrentDayCount ();
+        currentDayRef++;
 		levelStartText.text = "Level " + currentLevel + " Day " + currentDayRef;
+        level_canvas.SetActive(true);
     }
 
     public void BossUI_Start()
     {
 		bossStart_canvas.SetActive(true);
 		currentLevel = CurrentLevelReturn ();
-
-		levelBossText.text = "Level " + currentLevel + " Enemy Guardian Awakened";
+        currentDayRef++;
+        levelBossText.text = "Level " + currentLevel + " Enemy Guardian Awakened";
 
     }
 
@@ -98,11 +93,5 @@ public class ModeUI : MonoBehaviour {
         return levelInt;
 	}
 
-	public int CurrentDayCount()
-	{
-		int dayInt;
-		dayInt = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManagment>().dayCount;
-		return dayInt;
-	}
 
 }

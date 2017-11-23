@@ -43,7 +43,7 @@ public class SceneMode : MonoBehaviour
         {
 
             case 5:
-                modeUIRef.GetComponent<ModeUI>().GameUI_End();
+                modeUIRef.GetComponent<ModeUI>().GameUI_Quit();
                 break;
             case 4:
                 modeUIRef.GetComponent<ModeUI>().GameUI_End();

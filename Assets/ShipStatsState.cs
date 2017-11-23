@@ -15,6 +15,8 @@ public class ShipStatsState {
 
 	public bool is_owned;
 
+    public bool is_activated;
+
 	// Use this for initialization
 
 
