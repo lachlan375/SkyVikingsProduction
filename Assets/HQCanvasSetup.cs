@@ -19,6 +19,7 @@ public class HQCanvasSetup : MonoBehaviour {
 
 	public ShipStatsState currentBoatState;
 
+
 	private int hqBoat;
 	// Use this for initialization
 	void Start () {
@@ -29,6 +30,8 @@ public class HQCanvasSetup : MonoBehaviour {
 		progressStats = playerControllerRef.gameObject.GetComponent<playerStats> ();
 
 	}
+
+
 
 
 	// Update is called once per frame

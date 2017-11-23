@@ -38,6 +38,7 @@ public class HQSceneActivation : MonoBehaviour {
 
 		origCam = GameObject.FindGameObjectWithTag("MainCamera");
 		hqCam = GameObject.FindGameObjectWithTag("HQCamera");
+        hqCam.SetActive(false);
         
         
         
@@ -49,7 +50,6 @@ public class HQSceneActivation : MonoBehaviour {
     {
 		if (is_ActiveHQMode) {
 			HQActivation ();
-//			is_ActiveHQMode = false;
 			CameraSwitch ();
 		}
 
@@ -61,33 +61,13 @@ public class HQSceneActivation : MonoBehaviour {
         playerContRef.GetComponent<ShipStats>().DeactivateCurrentShip();
 		CameraSwitch ();
 
-		//gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(true);
-        //currentBoat.transform.position = spawn;
-		//playerContRef.GetComponent<MovementInputController> ().MovementReset();
-        //currentBoat.transform.position = findobject. hqTransform.transform.position;
-        //playerContRef.GetComponent<CurrentShip>().CurrentShipHQ_Spawn();
-
-        //GameObject.FindGameObjectWithTag("PlayerController").GetComponent<CurrentShip>().CurrentShipHQ_Spawn();
-        
-
-        //GetComponent<CurrentShip>().transform.position = 
-
-        //freeze animation + lock boat
-        //particle effect
 
     }
     public void HQRelease()
     {
 
-		CameraSwitch ();
-        
-		//gameObject.GetComponent<CameraTargetSwitch>().CameraSwitch(false);
-
-    }
-
-    public void HQNewBoat()
-    {
-
+        playerContRef.GetComponent<ShipStats>().ActivateCurrentShip();
+        CameraSwitch ();
     }
 
 	public void CameraSwitch()

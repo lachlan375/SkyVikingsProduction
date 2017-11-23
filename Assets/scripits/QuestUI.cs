@@ -148,7 +148,6 @@ public class QuestUI : MonoBehaviour {
         canvas_HQ.SetActive(true);
         targetHQRef.HQActivation();
 
-        //targetSwitchRef.CameraSwitch(true);
 
         //pauseMenu.MenuOff();
         Debug.Log("dayover");

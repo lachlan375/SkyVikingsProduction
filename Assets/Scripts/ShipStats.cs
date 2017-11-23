@@ -82,7 +82,10 @@ public class ShipStats : MonoBehaviour
 		}
 
         posHQRespawn = GameObject.FindGameObjectWithTag("Respawn").transform.position;
+
         currentShip = transform.GetChild(currentShipInt).gameObject;
+
+        
     }
 
     void Update()
@@ -109,12 +112,19 @@ public class ShipStats : MonoBehaviour
             currentShipInt = shipToActivate;
             currentShip = transform.GetChild(currentShipInt).gameObject;
         }
-
-        
+     
         currentShip.SetActive(true);
 
-        
+        currentShip.transform.position = posHQRespawn;
 
+
+    }
+
+    public void ActivateCurrentShip()
+    {
+        currentShip.SetActive(true);
+
+        currentShip.transform.position = posHQRespawn;
     }
 
 

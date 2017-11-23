@@ -120,6 +120,11 @@ public class ShipController : MonoBehaviour
         if (oarsEngaged)
         {
             power = 1.0f;
+            // give us double power for the first stroke
+            if (numStrokes < 4)
+            {
+                power = 2.0f;
+            }
         }
 
         rb.AddForce(numStrokes * power * force * thrust * transform.forward);
