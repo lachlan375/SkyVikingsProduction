@@ -71,10 +71,11 @@ public class HQSceneActivation : MonoBehaviour {
     }
     public void HQRelease()
     {
-
+		boatSelection_Range.SetActive(false);
         playerContRef.GetComponent<ShipStats>().ActivateCurrentShip();
-        boatSelection_Range.SetActive(false);
+
         CameraSwitch ();
+		playerContRef.GetComponent<ShipStats>().ActivateCurrentShip();
     }
 
 	public void CameraSwitch()
@@ -94,6 +95,7 @@ public class HQSceneActivation : MonoBehaviour {
 			hqCam.SetActive(false);
 			origCam.SetActive(true);
 			is_switching = false;
+			abstract
 		}
 	}
 

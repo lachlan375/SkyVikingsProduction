@@ -19,6 +19,9 @@ public class endofDayM : MonoBehaviour
 
     public SceneMode sceneModeRef;
 
+	public HQSceneActivation targetHQRef;
+	public GameObject canvas_HQ;
+
     
 
     // Use this for initialization
@@ -29,6 +32,8 @@ public class endofDayM : MonoBehaviour
         player = FindObjectOfType<playerStats>();
         sceneModeRef = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneMode>();
         levelManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<LevelManagment>();
+
+		canvas_HQ = transform.parent.gameObject;
     }
 
     void OnEnable()
@@ -90,6 +95,14 @@ public class endofDayM : MonoBehaviour
             newday.SetActive(player.respectScore >= 0);
         }
     }
+
+	public void NewDay()
+	{
+		canvas_HQ.SetActive(false);
+		targetHQRef.HQRelease();
+
+		endday ();
+	}
     public void endday()
     {
         int playerRespectInt = player.respectScore;

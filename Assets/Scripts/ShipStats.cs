@@ -127,7 +127,14 @@ public class ShipStats : MonoBehaviour
         currentShip.transform.position = posHQRespawn;
     }
 
-
+	public void ResetActivatedShips()
+	{
+		for (int i = 0; i < totalShips; i++)
+		{
+			shippingList [i].is_activated = false;
+		}
+			
+	}
 
 
 

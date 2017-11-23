@@ -8,7 +8,7 @@ public class BoatSelectionUI : MonoBehaviour {
     public int currentIndex;
     public float speed = 90;
 
-	
+	public HQCanvasSetup CanvasSelection;
 
 
     void Start()
@@ -52,7 +52,7 @@ public class BoatSelectionUI : MonoBehaviour {
         transform.eulerAngles = new Vector3(0, angle, 0);
 
 		//playerRef = GameObject.FindWithTag ("GameController");
-		//CanvasSelection.SelectionUpdate(currentIndex);
+		CanvasSelection.SelectionUpdate(currentIndex);
 
 		//Original getter/setter ref
 		//CanvasSelection.HqBoat = currentIndex;

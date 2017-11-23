@@ -51,16 +51,18 @@ public class ModeUI : MonoBehaviour {
 		currentLevel = CurrentLevelReturn ();
         currentDayRef++;
 		levelStartText.text = "Level " + currentLevel + " Day " + currentDayRef;
-        level_canvas.SetActive(true);
+        
+		level_canvas.SetActive(true);
     }
 
     public void BossUI_Start()
     {
-		bossStart_canvas.SetActive(true);
+		
 		currentLevel = CurrentLevelReturn ();
         currentDayRef++;
         levelBossText.text = "Level " + currentLevel + " Enemy Guardian Awakened";
 
+		bossStart_canvas.SetActive(true);
     }
 
     public void GameUI_Quit()

@@ -141,11 +141,7 @@ public class QuestUI : MonoBehaviour {
 
     }
 
-    public void NewDay()
-    {
-        canvas_HQ.SetActive(false);
-        targetHQRef.HQRelease();
-    }
+
 
     //Method to transition to HQ Activation
     public void endDay()

@@ -14,8 +14,12 @@ public class HQCanvasSetup : MonoBehaviour {
 
 	//UI References
 	public GameObject Activate_Button;
+	public GameObject Activated_Button;
+	public GameObject Purchaseable_Button;
 	public GameObject Purchase_Button;
 	public GameObject Locked_Image;
+
+
 
 	public ShipStatsState currentBoatState;
 
@@ -72,35 +76,68 @@ public class HQCanvasSetup : MonoBehaviour {
 
 	void ButtonSetup ()
 	{
-		if (currentBoatState.is_unlocked == true) {
+		if (currentBoatState.is_unlocked == true)
+		{
 			if (currentBoatState.is_owned == false)
 			{
-				Purchase_Button.SetActive (true);
+				
 				Activate_Button.SetActive (false);
+
+				if (progressStats.gold >= currentBoatState.unlock_cost) {
+					Purchase_Button.SetActive (true);
+					Purchaseable_Button.SetActive (false);
+				} else {
+					Purchase_Button.SetActive (false);
+					Purchaseable_Button.SetActive (true);
+				}
+
 			}
+
 			else
+					
 			{
 				Purchase_Button.SetActive (false);
-				Activate_Button.SetActive (true);
+				if (currentBoatState.is_activated == true) {
+					Activated_Button.SetActive (true);
+					Activate_Button.SetActive (false);
+				}
+				else
+				{
+					Activated_Button.SetActive (false);
+					Activate_Button.SetActive (true);
+				}
 			}
 		}
 		else
 		{
 			Purchase_Button.SetActive (false);
 			Activate_Button.SetActive (false);
+			Activated_Button.SetActive (false);
 		}
+
+
 	}
 
 
 	public void Button_Activation()
 	{
+		
+		playerShipStats.ResetActivatedShips ();
         Debug.Log("Button Activated");
-        currentBoatState.is_activated = false;
         playerShipStats.UpdateCurrentShip (HqBoat);
         currentBoatState.is_activated = true;
 
 
     }
 
+	public void Button_Purchase()
+	{
 
+		playerShipStats.ResetActivatedShips ();
+		Debug.Log("Button Activated");
+		playerShipStats.UpdateCurrentShip (HqBoat);
+		currentBoatState.is_activated = true;
+
+
+	}
 }
