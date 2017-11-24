@@ -31,11 +31,11 @@ public class HQSceneActivation : MonoBehaviour {
     {
         spawn = currentBoat.transform.position;
         playerContRef = GameObject.FindGameObjectWithTag("GameController");
-        currentBoat = playerContRef.GetComponent<CurrentShip>().currentShip;
+        currentBoat = playerContRef.GetComponent<ShipStats>().currentShip;
 
         hqTransform = GameObject.FindGameObjectWithTag("Respawn").transform;
 
-        currentBoat = playerContRef.GetComponent<CurrentShip>().currentShip;
+        //currentBoat = playerContRef.GetComponent<CurrentShip>().currentShip;
 
 
 
