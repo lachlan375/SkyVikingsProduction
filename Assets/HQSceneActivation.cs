@@ -95,7 +95,7 @@ public class HQSceneActivation : MonoBehaviour {
 			hqCam.SetActive(false);
 			origCam.SetActive(true);
 			is_switching = false;
-			abstract
+
 		}
 	}
 

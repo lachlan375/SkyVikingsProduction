@@ -76,17 +76,21 @@ public class HQCanvasSetup : MonoBehaviour {
 
 	void ButtonSetup ()
 	{
+
 		if (currentBoatState.is_unlocked == true)
 		{
 			if (currentBoatState.is_owned == false)
 			{
 				
 				Activate_Button.SetActive (false);
+                Activated_Button.SetActive(false);
 
-				if (progressStats.gold >= currentBoatState.unlock_cost) {
+                if (progressStats.gold >= currentBoatState.unlock_cost) {
 					Purchase_Button.SetActive (true);
 					Purchaseable_Button.SetActive (false);
-				} else {
+				}
+
+                else {
 					Purchase_Button.SetActive (false);
 					Purchaseable_Button.SetActive (true);
 				}
@@ -108,10 +112,13 @@ public class HQCanvasSetup : MonoBehaviour {
 				}
 			}
 		}
-		else
+
+        //Result if boat is locked
+        else
 		{
 			Purchase_Button.SetActive (false);
-			Activate_Button.SetActive (false);
+            Purchaseable_Button.SetActive(false);
+            Activate_Button.SetActive (false);
 			Activated_Button.SetActive (false);
 		}
 
