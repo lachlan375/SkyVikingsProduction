@@ -7,7 +7,7 @@ public class LoadingScreenTransition : MonoBehaviour {
     public GameObject cv01, cv02, cv03;
 
 	void Start () {
-        if (SceneNames.sceneToLoad == "Level_01")
+        if (SceneNames.sceneToLoad == "level1Integration")
             cv01.SetActive(true);
         else if (SceneNames.sceneToLoad == "Level_02")
             cv02.SetActive(true);

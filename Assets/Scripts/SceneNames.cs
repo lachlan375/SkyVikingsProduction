@@ -6,7 +6,7 @@ public class SceneNames : MonoBehaviour
 {
     public static string MainMenu = "MenuTest";
     public static string LoadingScreen = "LoadingScreen";
-    public static string Level01 = "Level_01";
+    public static string Level01 = "level1Integration";
     public static string Level02 = "Level_02";
     public static string Level03 = "Level_03";
 

@@ -44,7 +44,7 @@ public class MenuManager : MonoBehaviour {
         yield return new WaitUntil(() => black.color.a >= .90);
         anim.SetBool("isfadeing", true);
         //yield return new WaitUntil(() => black.color.a == 0);
-        SceneNames.LoadScene("Level_01");
+        SceneNames.LoadScene("level1Integration");
     }
 
 }
