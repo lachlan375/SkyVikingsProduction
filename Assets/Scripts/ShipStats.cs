@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Cameras;
 
 public class ShipStats : MonoBehaviour
 {
@@ -21,8 +22,10 @@ public class ShipStats : MonoBehaviour
     public float maxSpeed;
     public float minSpeed;
 
+	[Tooltip("Referencing Camera follow class")]
+	public AbstractTargetFollower cameraFollowObject;
 
-
+	public Transform currentShip_Transform;
 
 
 	[Header("Ships List")]
@@ -85,6 +88,7 @@ public class ShipStats : MonoBehaviour
 
         currentShip = transform.GetChild(currentShipInt).gameObject;
 
+		cameraFollowObject = GameObject.FindGameObjectWithTag ("MainCameraRoot").GetComponent<AbstractTargetFollower>();
         
     }
 
@@ -112,10 +116,16 @@ public class ShipStats : MonoBehaviour
             currentShipInt = shipToActivate;
             currentShip = transform.GetChild(currentShipInt).gameObject;
         }
-     
-        currentShip.SetActive(true);
 
-        currentShip.transform.position = posHQRespawn;
+		else
+			{
+				currentShip = transform.GetChild(currentShipInt).gameObject;
+			}
+     
+        //currentShip.SetActive(true);
+
+        //currentShip.transform.position = posHQRespawn;
+
 
 
     }
@@ -125,6 +135,9 @@ public class ShipStats : MonoBehaviour
         currentShip.SetActive(true);
 
         currentShip.transform.position = posHQRespawn;
+		currentShip_Transform = currentShip.transform;
+		cameraFollowObject.SetTarget (currentShip_Transform);
+
     }
 
 	public void ResetActivatedShips()

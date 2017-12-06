@@ -53,7 +53,7 @@ public class HQSceneActivation : MonoBehaviour {
     {
 		if (is_ActiveHQMode) {
 			HQActivation ();
-			CameraSwitch ();
+			CameraSwitch_Off ();
 		}
 
     }
@@ -64,39 +64,36 @@ public class HQSceneActivation : MonoBehaviour {
         playerContRef.GetComponent<ShipStats>().DeactivateCurrentShip();
         boatSelection_Range.SetActive(true);
 
-
-        CameraSwitch ();
+		//is_switching = true;
+        CameraSwitch_On ();
 
 
     }
     public void HQRelease()
     {
 		boatSelection_Range.SetActive(false);
-        playerContRef.GetComponent<ShipStats>().ActivateCurrentShip();
+        //playerContRef.GetComponent<ShipStats>().ActivateCurrentShip();
 
-        CameraSwitch ();
+		CameraSwitch_Off ();
 		playerContRef.GetComponent<ShipStats>().ActivateCurrentShip();
     }
 
-	public void CameraSwitch()
+	public void CameraSwitch_On()
 	{
 
-		Debug.Log("camera switch called");
-		if (!is_switching)
-		{
-
-			hqCam.SetActive(true);
-			origCam.SetActive(false);
-			Debug.Log("HQ Cam activated!!!");
-			is_switching = true;
-		}
-		else
-		{
-			hqCam.SetActive(false);
-			origCam.SetActive(true);
-			is_switching = false;
-
-		}
+		hqCam.SetActive (true);
+		origCam.SetActive (false);
+		Debug.Log ("HQ Cam activated!!!");
 	}
+
+	public void CameraSwitch_Off()
+	{
+
+
+		origCam.SetActive(true);
+		hqCam.SetActive(false);
+		Debug.Log ("HQ Cam activated!!!");
+	}
+		
 
 }

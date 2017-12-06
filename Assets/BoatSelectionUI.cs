@@ -29,7 +29,7 @@ public class BoatSelectionUI : MonoBehaviour {
     void Update()
     {
         // if we press left arrow, move back one in index
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        /*if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             currentIndex--;
         }
@@ -38,7 +38,7 @@ public class BoatSelectionUI : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             currentIndex++;
-        }
+        }*/
 
         // keep in the valid range
         currentIndex = (currentIndex+ boats.Length) % boats.Length;
@@ -57,6 +57,16 @@ public class BoatSelectionUI : MonoBehaviour {
 		//Original getter/setter ref
 		//CanvasSelection.HqBoat = currentIndex;
     }
+
+	public void onClick_LeftButton()
+	{
+		currentIndex++;
+	}
+
+	public void onClick_RightButton()
+	{
+		currentIndex--;
+	}
 
 
 }
